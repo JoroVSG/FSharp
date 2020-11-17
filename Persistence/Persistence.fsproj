@@ -13,7 +13,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(IsWindows)' == 'true'">
     <!-- Your path of full .NET Framework FSC compiler. -->
-    <FscToolPath>C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\CommonExtensions\Microsoft\FSharp</FscToolPath>
+    <FscToolPath>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\FSharp</FscToolPath>
     <FscToolExe>fsc.exe</FscToolExe>
   </PropertyGroup>
   

@@ -1,7 +1,7 @@
 module DataContext
 open FSharp.Data.Sql
 [<Literal>]
-let ConnectionString = "Data source = localhost; initial catalog = Rodeo.bgQL6; user id = sa; password = Temp123!";
+let ConnectionString = "data source=.;Initial catalog=Rodeo.bgQL;Integrated Security=SSPI;";
 
 type RodeoSchema = SqlDataProvider<Common.DatabaseProviderTypes.MSSQLSERVER, ConnectionString>
 

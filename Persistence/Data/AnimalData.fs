@@ -12,14 +12,8 @@ let animalAsync =
        let! res =
            query {
                for animal in RodeoContext.Dbo.Animal do
-               select animal
+               select (animal.AnimalId, animal.Name)
            } |> Seq.executeQueryAsync
-       let mapped = res |> Seq.map(fun animal -> animal.MapTo<AnimalType>())
+       let mapped = res |> Seq.map(fun (id, name) -> { AnimalId = id; Name = name })
        return mapped
-   } |> Async.StartAsTask
-
-let animals = 
-    query {
-       for animal in RodeoContext.Dbo.Animal do
-       select animal
-    } |> Seq.map(fun animal -> animal.MapTo<AnimalType>())
+   }
