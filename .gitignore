@@ -1,1 +1,3 @@
 /Persistence/bin/Debug/netstandard2.0/
+/Persistence/obj/
+.ionide/symbolCache.db

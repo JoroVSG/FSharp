@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <DotnetFscCompilerPath/>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <IsWindows Condition="'$(OS)' == 'Windows_NT'">true</IsWindows>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildRuntimeType)' == 'Core'">
+    <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
+    <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(IsWindows)' == 'true'">
+    <!-- Your path of full .NET Framework FSC compiler. -->
+    <FscToolPath>C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\CommonExtensions\Microsoft\FSharp</FscToolPath>
+    <FscToolExe>fsc.exe</FscToolExe>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(IsOSX)' == 'true'">
+    <FscToolPath>/Library/Frameworks/Mono.framework/Versions/Current/Commands</FscToolPath>
+    <FscToolExe>fsharpc</FscToolExe>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(IsLinux)' == 'true'">
+    <FscToolPath>/usr/bin</FscToolPath>
+    <FscToolExe>fsharpc</FscToolExe>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="DbContext.fs" />
+    <Compile Include="Data\AnimalData.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="SQLProvider" Version="1.1.93" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
+  </ItemGroup>
+<!--  <Target Name="PostBuild" AfterTargets="PostBuildEvent">-->
+<!--        <Exec Command="copy ..\..\..\packages\System.Data.SqlClient\runtimes\win\lib\netstandard2.0\System.Data.SqlClient.dll bin\Debug\netcoreapp2.0\" Condition="'$(IsWindows)' == 'true'" />-->
+<!--        <Exec Command="cp /usr/local/share/dotnet/sdk/NuGetFallbackFolder/system.data.sqlclient/4.6.0/runtimes/win/lib/netstandard2.0/System.Data.SqlClient.dll bin/Debug/netstandard2.0/" Condition="'$(IsWindows)' != 'true'" />-->
+<!--        <Exec Command="cp /Users/a1398/Documents/FSharp.Data.SqlProvider.dll bin/Debug/netstandard2.0/" Condition="'$(IsWindows)' != 'true'" />-->
+<!--    </Target>-->
+</Project>
