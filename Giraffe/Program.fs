@@ -2,7 +2,8 @@ module JwtApp.App
 
 open System
 open System.IO
-open System.Threading.Tasks
+open Giraffe.Serialization
+open JsonApiSerializer
 open Microsoft.AspNetCore.Authentication
 open Microsoft.AspNetCore.Authentication.JwtBearer
 open Microsoft.AspNetCore.Builder
@@ -14,6 +15,8 @@ open Microsoft.Extensions.DependencyInjection
 open App.Handlers.GreetHandler
 open App.Common.Authentication
 open App.Handlers.ClaimHandler
+open App.Handlers.ApplicationHandler
+open Microsoft.Extensions.DependencyInjection;
 open Giraffe
 
 let mutable Configurations: IConfigurationRoot = null
@@ -24,6 +27,7 @@ let allGetRoutes: HttpHandler list =
     [ route "/" >=> text "Public endpoint."]
     @ greetGetRoutes
     @ claimGetRoutes
+    @ applicationsGetRoutes
 
 let webApp =
     choose [
@@ -53,10 +57,12 @@ let jwtBearerOptions (cfg : JwtBearerOptions) =
     cfg.TokenValidationParameters <- (getTokenValidationParameters Configurations).Result
 
 let configureServices (services : IServiceCollection) =
-    ignore <| services
+    services
         .AddGiraffe()
         .AddAuthentication(authenticationOptions)
-        .AddJwtBearer(Action<JwtBearerOptions> jwtBearerOptions)
+        .AddJwtBearer(Action<JwtBearerOptions> jwtBearerOptions) |> ignore
+        
+    services.AddSingleton<IJsonSerializer>(NewtonsoftJsonSerializer(JsonApiSerializerSettings())) |> ignore
 
 let configureLogging (builder : ILoggingBuilder) =
     let filter (l : LogLevel) = l.Equals LogLevel.Error

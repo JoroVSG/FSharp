@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <DotnetFscCompilerPath/>
+    <DotnetFscCompilerPath />
   </PropertyGroup>
   
   <PropertyGroup>
@@ -28,6 +28,7 @@
   <ItemGroup>
     <Compile Include="DbContext.fs" />
     <Compile Include="Data\AnimalData.fs" />
+    <Compile Include="Data\ApplicationData.fs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="SQLProvider" Version="1.1.93" />

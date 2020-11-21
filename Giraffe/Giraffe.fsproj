@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>Giraffe.App</AssemblyName>
-    <DotnetFscCompilerPath/>
+    <DotnetFscCompilerPath />
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
   </PropertyGroup>
 
@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <PackageReference Include="Giraffe" Version="4.1.*" />
+    <PackageReference Include="JsonApiSerializer" Version="1.7.4" />
     <PackageReference Include="TaskBuilder.fs" Version="2.1.0" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.*" />
@@ -36,8 +37,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Compile Include="App\Common\Authentication.fs" />
+    <Compile Include="App\Common\JsonApiResponse.fs" />
     <Compile Include="App\Handlers\GreetHandler.fs" />
     <Compile Include="App\Handlers\ClaimHandler.fs" />
+    <Compile Include="App\Handlers\ApplicationHandler.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>

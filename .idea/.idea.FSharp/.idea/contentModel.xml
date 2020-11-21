@@ -7,8 +7,10 @@
         <e p="App" t="Include">
           <e p="Common" t="Include">
             <e p="Authentication.fs" t="Include" />
+            <e p="JsonApiResponse.fs" t="Include" />
           </e>
           <e p="Handlers" t="Include">
+            <e p="ApplicationHandler.fs" t="Include" />
             <e p="ClaimHandler.fs" t="Include" />
             <e p="GreetHandler.fs" t="Include" />
           </e>
@@ -31,6 +33,7 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Data" t="Include">
           <e p="AnimalData.fs" t="Include" />
+          <e p="ApplicationData.fs" t="Include" />
         </e>
         <e p="DbContext.fs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />

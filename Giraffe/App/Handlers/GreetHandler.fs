@@ -12,17 +12,17 @@ let greet =
         let name = claim.Value
         text ("Hello " + name) next ctx
 
-let animalsAsyncHandler =
-   fun (next : HttpFunc) (ctx : HttpContext) ->
-       task {
-           let! res = animalAsync
-           return! json res next ctx
-       }
+//let animalsAsyncHandler =
+//   fun (next : HttpFunc) (ctx : HttpContext) ->
+//       task {
+//           let! res = animalAsync
+//           return! json res next ctx
+//       }
 
 
 let greetGetRoutes: HttpHandler list = [
     route "/greet" >=> authorize'' >=> greet
-    route "/animals" >=> authorize'' >=> animalsAsyncHandler
+    // route "/animals" >=> authorize'' >=> animalsAsyncHandler
 ]
     
 
