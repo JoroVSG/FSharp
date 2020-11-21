@@ -21,9 +21,8 @@ let animalsAsyncHandler =
 
 
 let greetGetRoutes: HttpHandler list = [
-    route "/greet" >=> authorize' >=> greet
-    route "/animalsAsync" >=> authorize' >=> animalsAsyncHandler
-    route "/animals" >=> authorize' >=> fun (next : HttpFunc) (ctx : HttpContext) -> json animals next ctx
+    route "/greet" >=> authorize'' >=> greet
+    route "/animals" >=> authorize'' >=> animalsAsyncHandler
 ]
     
 

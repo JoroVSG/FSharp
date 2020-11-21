@@ -2,6 +2,7 @@ module JwtApp.App
 
 open System
 open System.IO
+open System.Threading.Tasks
 open Microsoft.AspNetCore.Authentication
 open Microsoft.AspNetCore.Authentication.JwtBearer
 open Microsoft.AspNetCore.Builder
@@ -49,7 +50,7 @@ let jwtBearerOptions (cfg : JwtBearerOptions) =
     cfg.IncludeErrorDetails <- true
     cfg.Authority <- Configurations.["AzureAd:Authority"]
     cfg.Audience <- Configurations.["AzureAd:Audience"]
-    cfg.TokenValidationParameters <- getTokenValidationParameters Configurations
+    cfg.TokenValidationParameters <- (getTokenValidationParameters Configurations).Result
 
 let configureServices (services : IServiceCollection) =
     ignore <| services

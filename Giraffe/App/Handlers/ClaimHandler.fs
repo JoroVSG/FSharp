@@ -12,5 +12,5 @@ let showClaims =
         json simpleClaims next ctx
         
 let claimGetRoutes: HttpHandler list = [
-        route "/claims" >=> authorize' >=> showClaims
+        route "/claims" >=> authorize'' >=> showClaims
     ]
