@@ -16,23 +16,22 @@ open App.Handlers.GreetHandler
 open App.Common.Authentication
 open App.Handlers.ClaimHandler
 open App.Handlers.ApplicationHandler
-open Microsoft.Extensions.DependencyInjection;
 open Giraffe
 
+
 let mutable Configurations: IConfigurationRoot = null
-//let authorize =
-//    requiresAuthentication (challenge JwtBearerDefaults.AuthenticationScheme)
 
 let allGetRoutes: HttpHandler list =
     [ route "/" >=> text "Public endpoint."]
     @ greetGetRoutes
     @ claimGetRoutes
     @ applicationsGetRoutes
+let allPostRoutes: HttpHandler list = applicationPostRoutes @ greetPostRoutes
 
 let webApp =
     choose [
         GET >=> choose allGetRoutes
-        POST >=> choose greetPostRoutes
+        POST >=> choose allPostRoutes
         setStatusCode 404 >=> text "Not Found" ]
 
 let errorHandler (ex : Exception) (logger : ILogger) =

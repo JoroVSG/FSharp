@@ -1,7 +1,7 @@
 module App.Handlers.ApplicationHandler
 
 open App.Common
-open FSharp.Control.Tasks
+open FSharp.Control.Tasks.V2.ContextInsensitive
 open Microsoft.AspNetCore.Http
 open Giraffe
 open Authentication
@@ -15,12 +15,23 @@ let getAllApplications = fun (next: HttpFunc) (ctx: HttpContext) ->
     }
 
 let getApplicationById = fun guid (next: HttpFunc) (ctx: HttpContext) ->
-    task{
+    task {
         let! application = getAllApplicationByIdAsync guid
         return! json (jsonApiWrap application) next ctx
     }
     
+let createApplication = fun (next: HttpFunc) (ctx: HttpContext) ->
+    task {
+        let! application = ctx.BindJsonAsync<Application>()
+        let! newApp = createApplication application 
+        return! json (jsonApiWrap newApp) next ctx
+    }
+    
 let applicationsGetRoutes: HttpHandler list = [
-    route "/applications" >=> authorize'' >=> getAllApplications
-    routef "/applications/%O" (fun guid -> authorize'' >=> getApplicationById guid)
+    route "/applications" >=> authorize >=> getAllApplications
+    routef "/applications/%O" (fun guid -> authorize >=> getApplicationById guid)
+]
+
+let applicationPostRoutes: HttpHandler list = [
+    route "/applications" >=> authorize >=> createApplication
 ]

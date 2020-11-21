@@ -2,6 +2,7 @@ module App.Common.Authentication
     
 open System.IdentityModel.Tokens.Jwt
 open System.Security.Claims
+open Microsoft.AspNetCore.Authentication.JwtBearer
 open Microsoft.AspNetCore.Http
 open Microsoft.Extensions.Configuration
 open Microsoft.IdentityModel.Protocols
@@ -9,6 +10,15 @@ open Microsoft.IdentityModel.Protocols.OpenIdConnect
 open Microsoft.IdentityModel.Tokens
 open FSharp.Control.Tasks.V2
 open Giraffe
+
+
+let unAuthorized =
+    RequestErrors.UNAUTHORIZED
+        JwtBearerDefaults.AuthenticationScheme
+        ""
+        "Unauthorized access"
+
+let authorize: HttpHandler = requiresAuthentication unAuthorized
 
 let getTokenValidationParameters = fun (config: IConfiguration) ->
     let wellKnowEndpoint = config.["AzureAd:Authority"] + ".well-known/openid-configuration"
@@ -43,6 +53,7 @@ let return401 = fun (ctx: HttpContext) ->
         return Some ctx
     }
 
+let return401': HttpHandler = setStatusCode 401 >=> text "Unauthorized access"
 let authorize': HttpHandler =
     fun (next: HttpFunc) (ctx: HttpContext) ->
         task {
@@ -57,8 +68,8 @@ let authorize': HttpHandler =
                     let identity = ctx.User.Identity :?> ClaimsIdentity
                     identity.AddClaim(Claim("access", token))
                     return! next ctx
-                | _ -> return! return401 ctx
-            | Error _ -> return! return401 ctx
+                | _ -> return! return401' next ctx
+            | Error _ -> return! return401' next ctx
         }
         
 

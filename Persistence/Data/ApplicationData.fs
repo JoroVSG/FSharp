@@ -5,14 +5,14 @@ open DataContext
 open FSharp.Data.Sql
 open FSharp.Data.Sql.Common
 
-
+[<CLIMutable>]
 type Application = {
     [<MappedColumn("IdApplication")>]Id: Guid
     Description: string
     Name: string
     Code: string
     Rating: int
-    Image: string
+    Image: byte[]
 }
 
 let getAllApplicationsAsync =
@@ -38,3 +38,17 @@ let getAllApplicationByIdAsync = fun (guid: Guid) ->
        
        return res.MapTo<Application>()
    }
+   
+let applications = CLCSPortalContext.Dbo.Application
+let createApplication = fun (app: Application) ->
+    async {
+        let row = applications.Create()
+        row.Description <- app.Description
+        row.Name <- app.Name
+        row.IdApplication <- app.Id
+        row.Rating <- app.Rating
+        row.Image <- app.Image
+        do! CLCSPortalContext.SubmitUpdatesAsync()
+        return row.MapTo<Application>()
+    }
+   
