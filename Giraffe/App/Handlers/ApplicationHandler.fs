@@ -27,6 +27,12 @@ let createApplication = fun (next: HttpFunc) (ctx: HttpContext) ->
         return! json (jsonApiWrap newApp) next ctx
     }
     
+let deleteApplication = fun guid (next: HttpFunc) (ctx: HttpContext) ->
+    task {
+        let! newApp = deleteApplication guid 
+        return! json (jsonApiWrap newApp) next ctx
+    }
+    
 let applicationsGetRoutes: HttpHandler list = [
     route "/applications" >=> authorize >=> getAllApplications
     routef "/applications/%O" (fun guid -> authorize >=> getApplicationById guid)
@@ -34,4 +40,8 @@ let applicationsGetRoutes: HttpHandler list = [
 
 let applicationPostRoutes: HttpHandler list = [
     route "/applications" >=> authorize >=> createApplication
+]
+
+let applicationDeleteRoutes: HttpHandler list = [
+    routef "/applications/%O" (fun guid -> authorize >=> deleteApplication guid)
 ]

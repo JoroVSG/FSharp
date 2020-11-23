@@ -27,11 +27,13 @@ let allGetRoutes: HttpHandler list =
     @ claimGetRoutes
     @ applicationsGetRoutes
 let allPostRoutes: HttpHandler list = applicationPostRoutes @ greetPostRoutes
+let allDeleteRoutes: HttpHandler list = applicationDeleteRoutes
 
 let webApp =
     choose [
         GET >=> choose allGetRoutes
         POST >=> choose allPostRoutes
+        DELETE >=> choose allDeleteRoutes
         setStatusCode 404 >=> text "Not Found" ]
 
 let errorHandler (ex : Exception) (logger : ILogger) =

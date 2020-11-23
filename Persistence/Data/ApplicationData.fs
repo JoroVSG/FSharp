@@ -5,6 +5,12 @@ open DataContext
 open FSharp.Data.Sql
 open FSharp.Data.Sql.Common
 
+type OperationStatus = {
+    Id: Guid
+    Success: bool
+    Exception: Exception option
+}   
+
 [<CLIMutable>]
 type Application = {
     [<MappedColumn("IdApplication")>]Id: Guid
@@ -12,7 +18,7 @@ type Application = {
     Name: string
     Code: string
     Rating: int
-    Image: byte[]
+    Image: byte[] option
 }
 
 let getAllApplicationsAsync =
@@ -45,10 +51,23 @@ let createApplication = fun (app: Application) ->
         let row = applications.Create()
         row.Description <- app.Description
         row.Name <- app.Name
-        row.IdApplication <- app.Id
+        row.IdApplication <- Guid.NewGuid()
         row.Rating <- app.Rating
-        row.Image <- app.Image
+        
         do! CLCSPortalContext.SubmitUpdatesAsync()
-        return row.MapTo<Application>()
+        return! getAllApplicationByIdAsync row.IdApplication 
+    }
+    
+let deleteApplication = fun (idApplication: Guid) ->
+    async {
+        let! _ =
+            query {
+                for app in CLCSPortalContext.Dbo.Application do
+                where (app.IdApplication = idApplication)
+                select app
+            } |> Seq.``delete all items from single table``
+        
+        let operationStatus: OperationStatus = { Id = Guid.NewGuid(); Success = true; Exception = None }
+        return operationStatus
     }
    
