@@ -11,7 +11,8 @@ open App.Common.JsonApiResponse
 let getAllApplications = fun (next: HttpFunc) (ctx: HttpContext) ->
     task {
         let! applications = getAllApplicationsAsync
-        return! json (jsonApiWrap applications) next ctx
+        let res = jsonApiWrap applications
+        return! json applications next ctx
     }
 
 let getApplicationById = fun guid (next: HttpFunc) (ctx: HttpContext) ->

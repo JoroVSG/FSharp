@@ -38,6 +38,8 @@
     </Content>
     <Compile Include="App\Common\Authentication.fs" />
     <Compile Include="App\Common\JsonApiResponse.fs" />
+    <Compile Include="App\Common\Exceptions.fs" />
+    <Compile Include="App\Common\Converters.fs" />
     <Compile Include="App\Handlers\GreetHandler.fs" />
     <Compile Include="App\Handlers\ClaimHandler.fs" />
     <Compile Include="App\Handlers\ApplicationHandler.fs" />

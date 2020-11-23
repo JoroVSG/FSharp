@@ -2,7 +2,9 @@ module JwtApp.App
 
 open System
 open System.IO
+open Giraffe
 open Giraffe.Serialization
+open App.Common.Converters
 open JsonApiSerializer
 open Microsoft.AspNetCore.Authentication
 open Microsoft.AspNetCore.Authentication.JwtBearer
@@ -16,7 +18,8 @@ open App.Handlers.GreetHandler
 open App.Common.Authentication
 open App.Handlers.ClaimHandler
 open App.Handlers.ApplicationHandler
-open Giraffe
+open App.Common.Exceptions
+open Newtonsoft.Json
 
 
 let mutable Configurations: IConfigurationRoot = null
@@ -30,7 +33,7 @@ let allPostRoutes: HttpHandler list = applicationPostRoutes @ greetPostRoutes
 let allDeleteRoutes: HttpHandler list = applicationDeleteRoutes
 
 let webApp =
-    choose [
+     choose [
         GET >=> choose allGetRoutes
         POST >=> choose allPostRoutes
         DELETE >=> choose allDeleteRoutes
@@ -38,7 +41,7 @@ let webApp =
 
 let errorHandler (ex : Exception) (logger : ILogger) =
     logger.LogError(EventId(), ex, "An unhandled exception has occurred while executing the request.")
-    clearResponse >=> setStatusCode 500 >=> text ex.Message
+    clearResponse >=> handleErrorJsonAPI ex
 
 let configureApp (app : IApplicationBuilder) =
     app.UseAuthentication()
@@ -63,7 +66,10 @@ let configureServices (services : IServiceCollection) =
         .AddAuthentication(authenticationOptions)
         .AddJwtBearer(Action<JwtBearerOptions> jwtBearerOptions) |> ignore
         
-    services.AddSingleton<IJsonSerializer>(NewtonsoftJsonSerializer(JsonApiSerializerSettings())) |> ignore
+    let settings = JsonApiSerializerSettings()
+    settings.Converters.Add(IdiomaticDuConverter())
+        
+    services.AddSingleton<IJsonSerializer>(NewtonsoftJsonSerializer(settings)) |> ignore
 
 let configureLogging (builder : ILoggingBuilder) =
     let filter (l : LogLevel) = l.Equals LogLevel.Error

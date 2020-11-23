@@ -7,6 +7,8 @@
         <e p="App" t="Include">
           <e p="Common" t="Include">
             <e p="Authentication.fs" t="Include" />
+            <e p="Converters.fs" t="Include" />
+            <e p="Exceptions.fs" t="Include" />
             <e p="JsonApiResponse.fs" t="Include" />
           </e>
           <e p="Handlers" t="Include">
