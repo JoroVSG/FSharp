@@ -12,7 +12,7 @@ let getAllApplications = fun (next: HttpFunc) (ctx: HttpContext) ->
     task {
         let! applications = getAllApplicationsAsync
         let res = jsonApiWrap applications
-        return! json applications next ctx
+        return! json res next ctx
     }
 
 let getApplicationById = fun guid (next: HttpFunc) (ctx: HttpContext) ->
@@ -21,7 +21,7 @@ let getApplicationById = fun guid (next: HttpFunc) (ctx: HttpContext) ->
         return! json (jsonApiWrap application) next ctx
     }
     
-let createApplication = fun (next: HttpFunc) (ctx: HttpContext) ->
+let createApplication: HttpHandler = fun (next: HttpFunc) (ctx: HttpContext) ->
     task {
         let! application = ctx.BindJsonAsync<Application>()
         let! newApp = createApplication application 

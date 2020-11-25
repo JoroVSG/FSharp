@@ -7,6 +7,6 @@ let ConnectionString = "Server=192.168.5.11;Initial Catalog=AUTOTEST_CLCSAPI;Per
 //[<Literal>]
 //let ConnectionString = "data source=.;Initial catalog=LoanVantage_Trunk_IBS_1;Integrated Security=SSPI;";
 // data source=DEV;Initial catalog=CLCSPortal;user=LVAccount;password=cluemt**1!;persist security info=False;
-type CLCSPortalSchema = SqlDataProvider<Common.DatabaseProviderTypes.MSSQLSERVER, ConnectionString, UseOptionTypes = true>
+type CLCSPortalSchema = SqlDataProvider<Common.DatabaseProviderTypes.MSSQLSERVER, ConnectionString>
 
 let CLCSPortalContext = CLCSPortalSchema.GetDataContext ConnectionString

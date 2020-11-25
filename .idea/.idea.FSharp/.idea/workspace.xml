@@ -9,17 +9,25 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46d54f0c-fb97-4b15-8016-29c67a0ec41f" name="Default Changelist" comment="Adding Applications delete request">
-      <change afterPath="$PROJECT_DIR$/Giraffe/App/Common/Converters.fs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Giraffe/App/Common/Exceptions.fs" afterDir="false" />
+    <list default="true" id="46d54f0c-fb97-4b15-8016-29c67a0ec41f" name="Default Changelist" comment="Intoducing to JSON api error handling">
+      <change afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/Security/ProfitstarsAdmin.fs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Giraffe/App/Helpers/MSALClient.fs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Giraffe/bin/Debug/netcoreapp3.1/FSharp.Data.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Persistence/Data/UserData.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FSharp.sln.DotSettings" beforeDir="false" afterPath="$PROJECT_DIR$/FSharp.sln.DotSettings" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/App/Common/Converters.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Common/Converters.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/App/Common/Exceptions.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Common/Exceptions.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Giraffe/Program.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/Program.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistence/Data/AnimalData.fs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Persistence/Data/ApplicationData.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Persistence/Data/ApplicationData.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Persistence/DbContext.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Persistence/DbContext.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistence/Persistence.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Persistence/Persistence.fsproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,23 +43,32 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/00/7cd189e8/ErrorConverter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/b5/70c0104d/ResourceObjectConverter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12891E82-5FCE-44A5-81E5-BBBB579C1D49/55/JsonSerializerProxy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/76/8936de56/JsonApiSerializerSettings.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6E8577AF-C9C8-478C-958A-8E78C6765091/F/JwtBearerDefaults.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12891E82-5FCE-44A5-81E5-BBBB579C1D49/54/JsonSerializerInternalWriter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8EA671DC-AA55-3F8B-3AE4-5555DE2BBE52/16/486b1580/Seq.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12891E82-5FCE-44A5-81E5-BBBB579C1D49/19/JsonWriter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12891E82-5FCE-44A5-81E5-BBBB579C1D49/38/ThreadSafeStore.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B8FBDA1D-094A-499E-A0FE-9E6D9A3EC1D7/7/ConcurrentDictionary.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12891E82-5FCE-44A5-81E5-BBBB579C1D49/3E/DefaultContractResolver.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/IL/0A06CD3F-C48C-4801-A858-F75C007863D2/c3/58180770/02000027.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B19537B-F065-4C3F-9F78-85C4099CD3AA/14E/ExecutionContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Projects/WebApiFSharp/FSharp/Persistence/Data/ApplicationData.fs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8EA671DC-AA55-3F8B-3AE4-5555DE2BBE52/61/a6c39545/QueryImplementation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12891E82-5FCE-44A5-81E5-BBBB579C1D49/11/JsonSerializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B19537B-F065-4C3F-9F78-85C4099CD3AA/147/CancellationToken.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6E8577AF-C9C8-478C-958A-8E78C6765091/F/JwtBearerDefaults.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B7F86EBA-729B-7611-A87B-A0188AFE11AD/6/ResponseWriters.fs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8EA671DC-AA55-3F8B-3AE4-5555DE2BBE52/fd/2714731e/AsyncOperations.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5B9EE785-6983-06F6-A745-038385E79E5B/1/TaskBuilder.fs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8EA671DC-AA55-3F8B-3AE4-5555DE2BBE52/16/486b1580/Seq.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/IL/0A06CD3F-C48C-4801-A858-F75C007863D2/15/dd318783/02000016.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/A7BD76B1-E4BB-5E55-F477-E28DCB1AC56C/C/async.fs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/ba/e4529ece/Error.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/6b/81b5ba46/DocumentRoot`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B7F86EBA-729B-7611-A87B-A0188AFE11AD/A/ModelBinding.fs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Projects/WebApiFSharp/FSharp/Giraffe/App/Common/Authentication.fs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/5b/45f69aac/JsonApiContractResolver.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5E14A7B8-A4AE-E358-A745-0383B8A7145E/1/Http.fs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -59,19 +76,24 @@
         <option value="$PROJECT_DIR$/SqlClient/Class1.cs" />
         <option value="$PROJECT_DIR$/SqlClient/SqlClient.csproj" />
         <option value="$PROJECT_DIR$/Persistence/Library.fs" />
-        <option value="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" />
         <option value="$PROJECT_DIR$/Persistence/Persistence.fsproj" />
         <option value="$PROJECT_DIR$/Persistence/Data/AnimalData.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Common/JsonApiResponse.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ClaimHandler.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Handlers/GreetHandler.fs" />
-        <option value="$PROJECT_DIR$/Giraffe/App/Common/Authentication.fs" />
+        <option value="$PROJECT_DIR$/Giraffe/App/Common/Converters.fs" />
         <option value="$PROJECT_DIR$/Persistence/DbContext.fs" />
         <option value="$PROJECT_DIR$/Persistence/Data/ApplicationData.fs" />
-        <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" />
+        <option value="$PROJECT_DIR$/Persistence/Data/UserData.fs" />
         <option value="$PROJECT_DIR$/Giraffe/Program.fs" />
-        <option value="$PROJECT_DIR$/Giraffe/App/Common/Converters.fs" />
+        <option value="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" />
+        <option value="$PROJECT_DIR$/Giraffe/appsettings.json" />
+        <option value="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" />
+        <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" />
+        <option value="$PROJECT_DIR$/Giraffe/App/Common/Authentication.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Common/Exceptions.fs" />
+        <option value="$PROJECT_DIR$/Giraffe/App/Helpers/MSALClient.fs" />
+        <option value="$PROJECT_DIR$/Giraffe/App/Handlers/Security/ProfitstarsAdmin.fs" />
       </list>
     </option>
   </component>
@@ -158,7 +180,11 @@
       <workItem from="1605477514585" duration="13635000" />
       <workItem from="1605596597863" duration="339000" />
       <workItem from="1605623690707" duration="16717000" />
-      <workItem from="1605952437086" duration="45127000" />
+      <workItem from="1605952437086" duration="59774000" />
+      <workItem from="1606278156035" duration="837000" />
+      <workItem from="1606279043973" duration="449000" />
+      <workItem from="1606286715654" duration="5522000" />
+      <workItem from="1606292935159" duration="4680000" />
     </task>
     <task id="LOCAL-00001" summary="Clean up on AnimalData.fs">
       <created>1605628859739</created>
@@ -195,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606119300542</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Intoducing to JSON api error handling">
+      <created>1606169821329</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1606169821329</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,109 +259,114 @@
     <MESSAGE value="Adding Applications to the router" />
     <MESSAGE value="Adding Applications post request" />
     <MESSAGE value="Adding Applications delete request" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding Applications delete request" />
+    <MESSAGE value="Intoducing to JSON api error handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="Intoducing to JSON api error handling" />
   </component>
   <component name="WindowStateProjectService">
     <state x="766" y="515" width="1208" height="885" key="#xdebugger.evaluate" timestamp="1606168763581">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="766" y="515" width="1208" height="885" key="#xdebugger.evaluate/0.0.2560.1400@0.0.2560.1400" timestamp="1606168763581" />
-    <state width="768" height="659" key="DebuggerActiveHint" timestamp="1606168767857">
+    <state width="768" height="659" key="DebuggerActiveHint" timestamp="1606290650749">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="768" height="659" key="DebuggerActiveHint/0.0.2560.1400@0.0.2560.1400" timestamp="1606168767857" />
-    <state width="2493" height="679" key="GridCell.Tab.0.bottom" timestamp="1606169619776">
+    <state width="768" height="659" key="DebuggerActiveHint/0.0.2560.1400@0.0.2560.1400" timestamp="1606290650749" />
+    <state x="92" y="92" width="2376" height="1216" key="DiffContextDialog" timestamp="1606201863173">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2493" height="679" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1606169619776" />
+    <state x="92" y="92" width="2376" height="1216" key="DiffContextDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1606201863173" />
+    <state width="2493" height="392" key="GridCell.Tab.0.bottom" timestamp="1606296287073">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2493" height="392" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1606296287073" />
     <state width="1390" height="197" key="GridCell.Tab.0.bottom/0.23.1440.814@0.23.1440.814" timestamp="1605480649580" />
     <state width="1390" height="197" key="GridCell.Tab.0.bottom/0.23.1440.816@0.23.1440.816" timestamp="1605596577629" />
     <state width="1390" height="197" key="GridCell.Tab.0.bottom/0.23.1440.822@0.23.1440.822" timestamp="1605560906371" />
-    <state width="2493" height="679" key="GridCell.Tab.0.center" timestamp="1606169619776">
+    <state width="2493" height="392" key="GridCell.Tab.0.center" timestamp="1606296287073">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2493" height="679" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1606169619776" />
+    <state width="2493" height="392" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1606296287073" />
     <state width="1390" height="197" key="GridCell.Tab.0.center/0.23.1440.814@0.23.1440.814" timestamp="1605480649580" />
     <state width="1390" height="197" key="GridCell.Tab.0.center/0.23.1440.816@0.23.1440.816" timestamp="1605596577628" />
     <state width="1390" height="197" key="GridCell.Tab.0.center/0.23.1440.822@0.23.1440.822" timestamp="1605560906370" />
-    <state width="2493" height="679" key="GridCell.Tab.0.left" timestamp="1606169619776">
+    <state width="2493" height="392" key="GridCell.Tab.0.left" timestamp="1606296287072">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2493" height="679" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1606169619776" />
+    <state width="2493" height="392" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1606296287072" />
     <state width="1390" height="197" key="GridCell.Tab.0.left/0.23.1440.814@0.23.1440.814" timestamp="1605480649579" />
     <state width="1390" height="197" key="GridCell.Tab.0.left/0.23.1440.816@0.23.1440.816" timestamp="1605596577628" />
     <state width="1390" height="197" key="GridCell.Tab.0.left/0.23.1440.822@0.23.1440.822" timestamp="1605560906369" />
-    <state width="2493" height="679" key="GridCell.Tab.0.right" timestamp="1606169619776">
+    <state width="2493" height="392" key="GridCell.Tab.0.right" timestamp="1606296287073">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2493" height="679" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1606169619776" />
+    <state width="2493" height="392" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1606296287073" />
     <state width="1390" height="197" key="GridCell.Tab.0.right/0.23.1440.814@0.23.1440.814" timestamp="1605480649580" />
     <state width="1390" height="197" key="GridCell.Tab.0.right/0.23.1440.816@0.23.1440.816" timestamp="1605596577629" />
     <state width="1390" height="197" key="GridCell.Tab.0.right/0.23.1440.822@0.23.1440.822" timestamp="1605560906370" />
-    <state width="2493" height="679" key="GridCell.Tab.1.bottom" timestamp="1606169619613">
+    <state width="2493" height="392" key="GridCell.Tab.1.bottom" timestamp="1606296286882">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2493" height="679" key="GridCell.Tab.1.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1606169619613" />
-    <state width="2493" height="679" key="GridCell.Tab.1.center" timestamp="1606169619613">
+    <state width="2493" height="392" key="GridCell.Tab.1.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1606296286882" />
+    <state width="2493" height="392" key="GridCell.Tab.1.center" timestamp="1606296286882">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2493" height="679" key="GridCell.Tab.1.center/0.0.2560.1400@0.0.2560.1400" timestamp="1606169619613" />
-    <state width="2493" height="679" key="GridCell.Tab.1.left" timestamp="1606169619612">
+    <state width="2493" height="392" key="GridCell.Tab.1.center/0.0.2560.1400@0.0.2560.1400" timestamp="1606296286882" />
+    <state width="2493" height="392" key="GridCell.Tab.1.left" timestamp="1606296286882">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2493" height="679" key="GridCell.Tab.1.left/0.0.2560.1400@0.0.2560.1400" timestamp="1606169619612" />
-    <state width="2493" height="679" key="GridCell.Tab.1.right" timestamp="1606169619613">
+    <state width="2493" height="392" key="GridCell.Tab.1.left/0.0.2560.1400@0.0.2560.1400" timestamp="1606296286882" />
+    <state width="2493" height="392" key="GridCell.Tab.1.right" timestamp="1606296286882">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2493" height="679" key="GridCell.Tab.1.right/0.0.2560.1400@0.0.2560.1400" timestamp="1606169619613" />
-    <state width="2493" height="679" key="GridCell.Tab.2.bottom" timestamp="1606169619613">
+    <state width="2493" height="392" key="GridCell.Tab.1.right/0.0.2560.1400@0.0.2560.1400" timestamp="1606296286882" />
+    <state width="2493" height="392" key="GridCell.Tab.2.bottom" timestamp="1606296286882">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2493" height="679" key="GridCell.Tab.2.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1606169619613" />
-    <state width="2493" height="679" key="GridCell.Tab.2.center" timestamp="1606169619613">
+    <state width="2493" height="392" key="GridCell.Tab.2.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1606296286882" />
+    <state width="2493" height="392" key="GridCell.Tab.2.center" timestamp="1606296286882">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2493" height="679" key="GridCell.Tab.2.center/0.0.2560.1400@0.0.2560.1400" timestamp="1606169619613" />
-    <state width="2493" height="679" key="GridCell.Tab.2.left" timestamp="1606169619613">
+    <state width="2493" height="392" key="GridCell.Tab.2.center/0.0.2560.1400@0.0.2560.1400" timestamp="1606296286882" />
+    <state width="2493" height="392" key="GridCell.Tab.2.left" timestamp="1606296286882">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2493" height="679" key="GridCell.Tab.2.left/0.0.2560.1400@0.0.2560.1400" timestamp="1606169619613" />
-    <state width="2493" height="679" key="GridCell.Tab.2.right" timestamp="1606169619613">
+    <state width="2493" height="392" key="GridCell.Tab.2.left/0.0.2560.1400@0.0.2560.1400" timestamp="1606296286882" />
+    <state width="2493" height="392" key="GridCell.Tab.2.right" timestamp="1606296286882">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2493" height="679" key="GridCell.Tab.2.right/0.0.2560.1400@0.0.2560.1400" timestamp="1606169619613" />
-    <state width="2493" height="679" key="GridCell.Tab.3.bottom" timestamp="1606169619613">
+    <state width="2493" height="392" key="GridCell.Tab.2.right/0.0.2560.1400@0.0.2560.1400" timestamp="1606296286882" />
+    <state width="2493" height="392" key="GridCell.Tab.3.bottom" timestamp="1606296286884">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2493" height="679" key="GridCell.Tab.3.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1606169619613" />
-    <state width="2493" height="679" key="GridCell.Tab.3.center" timestamp="1606169619613">
+    <state width="2493" height="392" key="GridCell.Tab.3.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1606296286884" />
+    <state width="2493" height="392" key="GridCell.Tab.3.center" timestamp="1606296286883">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2493" height="679" key="GridCell.Tab.3.center/0.0.2560.1400@0.0.2560.1400" timestamp="1606169619613" />
-    <state width="2493" height="679" key="GridCell.Tab.3.left" timestamp="1606169619613">
+    <state width="2493" height="392" key="GridCell.Tab.3.center/0.0.2560.1400@0.0.2560.1400" timestamp="1606296286883" />
+    <state width="2493" height="392" key="GridCell.Tab.3.left" timestamp="1606296286883">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2493" height="679" key="GridCell.Tab.3.left/0.0.2560.1400@0.0.2560.1400" timestamp="1606169619613" />
-    <state width="2493" height="679" key="GridCell.Tab.3.right" timestamp="1606169619613">
+    <state width="2493" height="392" key="GridCell.Tab.3.left/0.0.2560.1400@0.0.2560.1400" timestamp="1606296286883" />
+    <state width="2493" height="392" key="GridCell.Tab.3.right" timestamp="1606296286883">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2493" height="679" key="GridCell.Tab.3.right/0.0.2560.1400@0.0.2560.1400" timestamp="1606169619613" />
-    <state width="2493" height="679" key="GridCell.Tab.4.bottom" timestamp="1606169619614">
+    <state width="2493" height="392" key="GridCell.Tab.3.right/0.0.2560.1400@0.0.2560.1400" timestamp="1606296286883" />
+    <state width="2493" height="392" key="GridCell.Tab.4.bottom" timestamp="1606296286884">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2493" height="679" key="GridCell.Tab.4.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1606169619614" />
-    <state width="2493" height="679" key="GridCell.Tab.4.center" timestamp="1606169619614">
+    <state width="2493" height="392" key="GridCell.Tab.4.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1606296286884" />
+    <state width="2493" height="392" key="GridCell.Tab.4.center" timestamp="1606296286884">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2493" height="679" key="GridCell.Tab.4.center/0.0.2560.1400@0.0.2560.1400" timestamp="1606169619614" />
-    <state width="2493" height="679" key="GridCell.Tab.4.left" timestamp="1606169619613">
+    <state width="2493" height="392" key="GridCell.Tab.4.center/0.0.2560.1400@0.0.2560.1400" timestamp="1606296286884" />
+    <state width="2493" height="392" key="GridCell.Tab.4.left" timestamp="1606296286884">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2493" height="679" key="GridCell.Tab.4.left/0.0.2560.1400@0.0.2560.1400" timestamp="1606169619613" />
-    <state width="2493" height="679" key="GridCell.Tab.4.right" timestamp="1606169619614">
+    <state width="2493" height="392" key="GridCell.Tab.4.left/0.0.2560.1400@0.0.2560.1400" timestamp="1606296286884" />
+    <state width="2493" height="392" key="GridCell.Tab.4.right" timestamp="1606296286884">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2493" height="679" key="GridCell.Tab.4.right/0.0.2560.1400@0.0.2560.1400" timestamp="1606169619614" />
+    <state width="2493" height="392" key="GridCell.Tab.4.right/0.0.2560.1400@0.0.2560.1400" timestamp="1606296286884" />
     <state x="220" y="106" key="Rider.ProjectTemplateDialog.Size" timestamp="1605479519131">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
@@ -341,53 +379,61 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="538" y="169" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1605952448938" />
-    <state x="672" y="301" key="Vcs.Push.Dialog.v2" timestamp="1606119302713">
+    <state x="1041" y="260" key="VCS.ChangeListViewerDialog" timestamp="1606201850418">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="672" y="301" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1606119302713" />
-    <state width="696" height="703" key="XDebugger.FullValuePopup" timestamp="1605988764065">
+    <state x="1041" y="260" key="VCS.ChangeListViewerDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1606201850418" />
+    <state x="672" y="301" key="Vcs.Push.Dialog.v2" timestamp="1606169823752">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="696" height="703" key="XDebugger.FullValuePopup/0.0.2560.1400@0.0.2560.1400" timestamp="1605988764065" />
+    <state x="672" y="301" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1606169823752" />
+    <state width="696" height="703" key="XDebugger.FullValuePopup" timestamp="1606201977386">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="696" height="703" key="XDebugger.FullValuePopup/0.0.2560.1400@0.0.2560.1400" timestamp="1606201977386" />
     <state x="495" y="307" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1605596937632">
       <screen x="0" y="23" width="1440" height="821" />
     </state>
     <state x="495" y="305" key="git4idea.remote.GitConfigureRemotesDialog/0.23.1440.816@0.23.1440.816" timestamp="1605596617937" />
     <state x="495" y="307" key="git4idea.remote.GitConfigureRemotesDialog/0.23.1440.821@0.23.1440.821" timestamp="1605596937632" />
-    <state x="533" y="287" key="run.anything.popup" timestamp="1605993314458">
+    <state x="533" y="287" key="run.anything.popup" timestamp="1606279426251">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="533" y="287" key="run.anything.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1605993314458" />
+    <state x="533" y="287" key="run.anything.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1606279426251" />
     <state x="300" y="190" key="run.anything.popup/0.23.1440.814@0.23.1440.814" timestamp="1605481761604" />
+    <state x="773" y="0" width="1009" height="1470" key="search.everywhere.popup" timestamp="1606236271313">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="773" y="0" width="1009" height="1470" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1606236271313" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Giraffe/App/Common/Converters.fs</url>
-          <line>123</line>
-          <properties documentPath="C:\Projects\WebApiFSharp\FSharp\Giraffe\App\Common\Converters.fs" initialLine="93">
+          <url>file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/b5/70c0104d/ResourceObjectConverter.cs</url>
+          <line>96</line>
+          <properties documentPath="C:\Users\Joro\AppData\Roaming\JetBrains\Rider2020.2\resharper-host\DecompilerCache\decompiler\0A06CD3F-C48C-4801-A858-F75C007863D2\b5\70c0104d\ResourceObjectConverter.cs" initialLine="96">
             <startOffsets>
-              <option value="5182" />
+              <option value="4710" />
             </startOffsets>
             <endOffsets>
-              <option value="5182" />
+              <option value="4795" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="21" />
+          <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Giraffe/App/Common/Converters.fs</url>
-          <line>44</line>
-          <properties documentPath="C:\Projects\WebApiFSharp\FSharp\Giraffe\App\Common\Converters.fs" initialLine="44">
+          <url>file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/b5/70c0104d/ResourceObjectConverter.cs</url>
+          <line>246</line>
+          <properties documentPath="C:\Users\Joro\AppData\Roaming\JetBrains\Rider2020.2\resharper-host\DecompilerCache\decompiler\0A06CD3F-C48C-4801-A858-F75C007863D2\b5\70c0104d\ResourceObjectConverter.cs" initialLine="246">
             <startOffsets>
-              <option value="1586" />
+              <option value="11524" />
             </startOffsets>
             <endOffsets>
-              <option value="1621" />
+              <option value="11608" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="26" />
+          <option name="timeStamp" value="31" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

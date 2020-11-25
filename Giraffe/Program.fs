@@ -6,6 +6,7 @@ open Giraffe
 open Giraffe.Serialization
 open App.Common.Converters
 open JsonApiSerializer
+open JsonApiSerializer.ContractResolvers
 open Microsoft.AspNetCore.Authentication
 open Microsoft.AspNetCore.Authentication.JwtBearer
 open Microsoft.AspNetCore.Builder
@@ -20,6 +21,8 @@ open App.Handlers.ClaimHandler
 open App.Handlers.ApplicationHandler
 open App.Common.Exceptions
 open Newtonsoft.Json
+open Newtonsoft.Json.Serialization
+open App.Handlers.UserHandler
 
 
 let mutable Configurations: IConfigurationRoot = null
@@ -29,6 +32,7 @@ let allGetRoutes: HttpHandler list =
     @ greetGetRoutes
     @ claimGetRoutes
     @ applicationsGetRoutes
+    @ usersGetRoutes
 let allPostRoutes: HttpHandler list = applicationPostRoutes @ greetPostRoutes
 let allDeleteRoutes: HttpHandler list = applicationDeleteRoutes
 
@@ -66,8 +70,9 @@ let configureServices (services : IServiceCollection) =
         .AddAuthentication(authenticationOptions)
         .AddJwtBearer(Action<JwtBearerOptions> jwtBearerOptions) |> ignore
         
-    let settings = JsonApiSerializerSettings()
-    settings.Converters.Add(IdiomaticDuConverter())
+    let settings = JsonSerializerSettings()
+    settings.ContractResolver <- DefaultContractResolver()
+    settings.Converters.Add(OptionConverter())
         
     services.AddSingleton<IJsonSerializer>(NewtonsoftJsonSerializer(settings)) |> ignore
 

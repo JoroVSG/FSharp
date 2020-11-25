@@ -12,6 +12,17 @@ open Microsoft.AspNetCore.Server.IIS
 open Microsoft.Data.SqlClient
 open Newtonsoft.Json
 
+let createJsonApiError = fun message code ->
+    let error = Error()
+    error.Detail <- message
+    error.Code <- string code
+    
+    let errors = [error]
+    
+    let root = DocumentRoot<obj>()
+    root.Errors <- ResizeArray<Error> errors
+    root
+
 let handleErrorJsonAPI = fun (ex: Exception) _ (ctx: HttpContext) ->
     task {
         let (code, message) =
@@ -26,14 +37,7 @@ let handleErrorJsonAPI = fun (ex: Exception) _ (ctx: HttpContext) ->
                 | :? SqlException  -> (StatusCodes.Status409Conflict, ex.Message)
                 | _ -> (StatusCodes.Status500InternalServerError, ex.Message)
         
-        let error = Error()
-        error.Detail <- message
-        error.Code <- string code
-        
-        let errors = [error]
-        
-        let root = DocumentRoot<obj>()
-        root.Errors <- ResizeArray<Error> errors
+        let root = createJsonApiError message code
         
         let result = JsonConvert.SerializeObject(root, JsonApiSerializerSettings())
         ctx.SetStatusCode code

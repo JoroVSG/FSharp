@@ -14,11 +14,11 @@ type OperationStatus = {
 [<CLIMutable>]
 type Application = {
     [<MappedColumn("IdApplication")>]Id: Guid
-    Description: string option
-    Name: string option
-    Code: string option
-    Rating: int option
-    Image: byte[] option
+    Description: string
+    Name: string
+    Code: string
+    Rating: int
+    Image: byte[]
 }
 
 let getAllApplicationsAsync =
