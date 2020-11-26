@@ -29,6 +29,7 @@
     <Compile Include="DbContext.fs" />
     <Compile Include="Data\ApplicationData.fs" />
     <Compile Include="Data\UserData.fs" />
+    <Compile Include="Data\FiData.fs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="SQLProvider" Version="1.1.93" />

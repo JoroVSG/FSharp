@@ -16,7 +16,7 @@
             <e p="ClaimHandler.fs" t="Include" />
             <e p="GreetHandler.fs" t="Include" />
             <e p="Security" t="Include">
-              <e p="ProfitstarsAdmin.fs" t="Include" />
+              <e p="Permissions.fs" t="Include" />
             </e>
             <e p="UserHandler.fs" t="Include" />
           </e>
@@ -42,6 +42,7 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Data" t="Include">
           <e p="ApplicationData.fs" t="Include" />
+          <e p="FiData.fs" t="Include" />
           <e p="UserData.fs" t="Include" />
         </e>
         <e p="DbContext.fs" t="Include" />

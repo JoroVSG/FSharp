@@ -12,13 +12,12 @@ open FSharp.Control.Tasks.V2
 open Giraffe
 
 
-let unAuthorized =
+let unAuthorized: HttpHandler =
     RequestErrors.UNAUTHORIZED
         JwtBearerDefaults.AuthenticationScheme
         ""
         "Unauthorized access"
 
-let authorize: HttpHandler = requiresAuthentication unAuthorized
 
 let getTokenValidationParameters = fun (config: IConfiguration) ->
     let wellKnowEndpoint = config.["AzureAd:Authority"] + ".well-known/openid-configuration"
@@ -82,4 +81,7 @@ let authorize'': HttpHandler =
         }
        
         
-        
+
+
+let authorize: HttpHandler = requiresAuthentication unAuthorized
+//let authorize: HttpHandler = authorize''        
