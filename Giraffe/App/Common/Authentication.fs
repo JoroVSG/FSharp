@@ -62,10 +62,10 @@ let authorize': HttpHandler =
                 let tokens = headerValue.Split " " |> Array.toList
                 match tokens with
                 | (_::token::_) ->
-                    let! (a, _) = validateAuthHeader token settings
-                    ctx.User <- a
+                    let! (user, _) = validateAuthHeader token settings
+                    ctx.User <- user
                     let identity = ctx.User.Identity :?> ClaimsIdentity
-                    identity.AddClaim(Claim("access", token))
+                    identity.AddClaim(Claim("access_token", token))
                     return! next ctx
                 | _ -> return! return401' next ctx
             | Error _ -> return! return401' next ctx
@@ -83,5 +83,5 @@ let authorize'': HttpHandler =
         
 
 
-let authorize: HttpHandler = requiresAuthentication unAuthorized
-//let authorize: HttpHandler = authorize''        
+let authorize''': HttpHandler = requiresAuthentication unAuthorized
+let authorize: HttpHandler = authorize'''  

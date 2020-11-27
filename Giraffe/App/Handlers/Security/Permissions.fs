@@ -69,15 +69,29 @@ let profitStarsErrorHandling = fun (error: HttpHandler) (next: HttpFunc) (ctx: H
     let isProfitStarsAdmin = (tryGetClaim IS_PROFITSTARS_CLAIM_TYPE ctx)
     
     match isProfitStarsAdmin with
-        | Some claim -> if bool claim.Value then error next ctx else next ctx
+        | Some claim -> if bool claim.Value = false then error next ctx else next ctx
         | None -> error next ctx
 
 let fiAdminErrorHandling = fun (error: HttpHandler) (next: HttpFunc) (ctx: HttpContext) ->
     let isFiAdmin = (tryGetClaim IS_FI_ADMIN ctx)
     
+    let isProfitStarsAdmin = (tryGetClaim IS_PROFITSTARS_CLAIM_TYPE ctx)
+    
+    let isProAdmin =
+        match isProfitStarsAdmin with
+        | Some claim -> bool claim.Value
+        | None -> false
+    
     match isFiAdmin with
-        | Some claim -> if bool claim.Value then error next ctx else next ctx
-        | None -> error next ctx
+        | Some claim ->
+            if bool claim.Value = false then
+                if isProAdmin then next ctx
+                else error next ctx
+            else next ctx
+        | None ->
+            if isProAdmin then next ctx
+            else error next ctx
+            
 
 let combinedErrors = fun error1 error2 -> profitStarsErrorHandling error1 >=> fiAdminErrorHandling error2
     
