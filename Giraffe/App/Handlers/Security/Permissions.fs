@@ -43,7 +43,7 @@ let fiAdminCheck = fun iid (next: HttpFunc) (ctx: HttpContext) ->
                 // let! user = getUserByEmailAsync email.Value
                 
                 let identity = ctx.User.Identity :?> ClaimsIdentity
-                let claimValue = string (bool isFiAdmin.Value && (string institution.InstitutionId <> currentUserInstitutionId.Value))
+                let claimValue = string (bool isFiAdmin.Value && (string institution.InstitutionId = currentUserInstitutionId.Value))
                 identity.AddClaim(Claim(IS_FI_ADMIN, claimValue))
                 
                 return! next ctx
@@ -72,8 +72,8 @@ let profitStarsErrorHandling = fun (error: HttpHandler) (next: HttpFunc) (ctx: H
         | Some claim -> if bool claim.Value = false then error next ctx else next ctx
         | None -> error next ctx
 
-let fiAdminErrorHandling = fun (error: HttpHandler) (next: HttpFunc) (ctx: HttpContext) ->
-    let isFiAdmin = (tryGetClaim IS_FI_ADMIN ctx)
+let profitStarsFiAdminErrorHandling = fun (error1: HttpHandler) (error2: HttpHandler) (next: HttpFunc) (ctx: HttpContext) ->
+    let isFiAdminClaim = (tryGetClaim IS_FI_ADMIN ctx)
     
     let isProfitStarsAdmin = (tryGetClaim IS_PROFITSTARS_CLAIM_TYPE ctx)
     
@@ -82,18 +82,17 @@ let fiAdminErrorHandling = fun (error: HttpHandler) (next: HttpFunc) (ctx: HttpC
         | Some claim -> bool claim.Value
         | None -> false
     
-    match isFiAdmin with
-        | Some claim ->
-            if bool claim.Value = false then
-                if isProAdmin then next ctx
-                else error next ctx
-            else next ctx
-        | None ->
-            if isProAdmin then next ctx
-            else error next ctx
+    let isFiAdmin =
+        match isFiAdminClaim with
+        | Some claim -> bool claim.Value
+        | None -> false
+        
+    if isProAdmin || isFiAdmin then next ctx
+    else if isProAdmin = false then error1 next ctx
+    else error2 next ctx
             
 
-let combinedErrors = fun error1 error2 -> profitStarsErrorHandling error1 >=> fiAdminErrorHandling error2
+let combinedErrors = fun error1 error2 -> profitStarsFiAdminErrorHandling error1 error2
     
 let profitStarsFiAdminCombined = fun iid -> profitStarsAdminCheck >=> fiAdminCheck iid
 let profitStarsAdminCheckOny = fun errorHandler -> profitStarsAdminCheck >=> combinedErrors errorHandler errorHandler
