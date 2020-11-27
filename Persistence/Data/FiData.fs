@@ -10,6 +10,7 @@ type FI = {
     Name: string
     ObjectId: Guid
     Description: string
+    InstitutionId: string
     EmailSendingInviteFrom: string
 }
 
@@ -21,7 +22,9 @@ let getFiByInstitutionId = fun iid ->
                 where (fi.InstitutionId = iid)
                 select fi
                
-           } |> Seq.headAsync
-       
-       return res.MapTo<FI>()
+           } |> Seq.tryHeadAsync
+      return
+          match res with
+          | Some ins -> Some (ins.MapTo<FI>())
+          | None -> None
    }

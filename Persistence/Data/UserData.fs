@@ -12,7 +12,7 @@ type CLCSUser = {
     ActivationKey: string
     IdFinancialInstitution: Guid
     Email: string
-    ActivationStatus: bool
+    ActivationStatus: string
 }
 
 let getAllUsersAsync =

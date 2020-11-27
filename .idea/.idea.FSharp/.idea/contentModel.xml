@@ -13,14 +13,14 @@
           </e>
           <e p="Handlers" t="Include">
             <e p="ApplicationHandler.fs" t="Include" />
-            <e p="ClaimHandler.fs" t="Include" />
-            <e p="GreetHandler.fs" t="Include" />
             <e p="Security" t="Include">
               <e p="Permissions.fs" t="Include" />
             </e>
             <e p="UserHandler.fs" t="Include" />
           </e>
           <e p="Helpers" t="Include">
+            <e p="Constants.fs" t="Include" />
+            <e p="HelperFunctions.fs" t="Include" />
             <e p="MSALClient.fs" t="Include" />
           </e>
         </e>

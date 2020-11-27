@@ -15,9 +15,7 @@ open Microsoft.Extensions.Configuration
 open Microsoft.Extensions.Logging
 open Microsoft.Extensions.Hosting
 open Microsoft.Extensions.DependencyInjection
-open App.Handlers.GreetHandler
 open App.Common.Authentication
-open App.Handlers.ClaimHandler
 open App.Handlers.ApplicationHandler
 open App.Common.Exceptions
 open Newtonsoft.Json
@@ -29,11 +27,9 @@ let mutable Configurations: IConfigurationRoot = null
 
 let allGetRoutes: HttpHandler list =
     [ route "/" >=> text "Public endpoint."]
-    @ greetGetRoutes
-    @ claimGetRoutes
     @ applicationsGetRoutes
     @ usersGetRoutes
-let allPostRoutes: HttpHandler list = applicationPostRoutes @ greetPostRoutes
+let allPostRoutes: HttpHandler list = applicationPostRoutes
 let allDeleteRoutes: HttpHandler list = applicationDeleteRoutes
 
 let webApp =

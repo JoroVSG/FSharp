@@ -43,8 +43,8 @@
     <Compile Include="App\Common\Exceptions.fs" />
     <Compile Include="App\Common\Converters.fs" />
     <Compile Include="App\Helpers\MSALClient.fs" />
-    <Compile Include="App\Handlers\GreetHandler.fs" />
-    <Compile Include="App\Handlers\ClaimHandler.fs" />
+    <Compile Include="App\Helpers\HelperFunctions.fs" />
+    <Compile Include="App\Helpers\Constants.fs" />
     <Compile Include="App\Handlers\ApplicationHandler.fs" />
     <Compile Include="App\Handlers\Security\Permissions.fs" />
     <Compile Include="App\Handlers\UserHandler.fs" />
