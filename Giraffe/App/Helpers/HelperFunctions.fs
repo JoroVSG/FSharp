@@ -1,6 +1,7 @@
 module App.Helpers.HelperFunctions
 
 open System
+open System.Security.Claims
 open FSharp.Data
 open Giraffe
 open App.Common.Exceptions
@@ -18,8 +19,22 @@ let bool s =
 let tryGetClaim = fun claimType (ctx: HttpContext) -> ctx.User.Claims |> Seq.tryFind (fun claim -> claim.Type = claimType)
 let getClaim = fun claimType (ctx: HttpContext) -> ctx.User.Claims |> Seq.find (fun claim -> claim.Type = claimType)
 
+let convert<'T> (value: string) : 'T =
+  match box Unchecked.defaultof<'T> with
+  | :? uint32 -> uint32 value |> unbox<'T>
+  | :? uint16 -> uint16 value |> unbox<'T>
+  | :? bool -> bool value |> unbox<'T>
+  | :? string -> string value |> unbox<'T>
+  | _ -> failwith "not convertible"
+
+let getClaimValue<'T> = fun ctx claimName ->
+    let claim = tryGetClaim claimName ctx
+    match claim with
+    | Some claimValue -> convert claimValue.Value
+    | None -> Unchecked.defaultof<'T>
+    
 let createResponse = fun status message ->
-    setStatusCode status >=> json (createJsonApiError message status)
+    setStatusCode status >=> (json <| createJsonApiError message status)
 
 let notFound: (string -> HttpHandler) = createResponse HttpStatusCodes.NotFound
 let forbidden: (string -> HttpHandler) = createResponse HttpStatusCodes.Forbidden

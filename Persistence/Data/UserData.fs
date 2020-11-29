@@ -22,7 +22,7 @@ let getAllUsersAsync =
                for user in CLCSPortalContext.Dbo.User do
                select user
            } |> Seq.executeQueryAsync
-       let mapped = res |> Seq.map(fun app -> app.MapTo<CLCSUser>())
+       let mapped = res |> Seq.map(fun user -> user.MapTo<CLCSUser>())
        return mapped
    }
      
@@ -34,7 +34,7 @@ let getAllUsersByInstitutionIdAsync = fun iid ->
                where (user.IdFinancialInstitution = iid)
                select user
            } |> Seq.executeQueryAsync
-       let mapped = res |> Seq.map(fun app -> app.MapTo<CLCSUser>())
+       let mapped = res |> Seq.map(fun user -> user.MapTo<CLCSUser>())
        return mapped
    }
      

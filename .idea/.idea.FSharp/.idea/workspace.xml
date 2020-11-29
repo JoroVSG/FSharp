@@ -12,6 +12,10 @@
     <list default="true" id="46d54f0c-fb97-4b15-8016-29c67a0ec41f" name="Default Changelist" comment="Intoducing to JSON api error handling">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/Security/Permissions.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/Security/Permissions.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/App/Helpers/MSALClient.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Helpers/MSALClient.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/Program.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/Program.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistence/Data/UserData.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Persistence/Data/UserData.fs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,19 +32,29 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/00/7cd189e8/ErrorConverter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Projects/WebApiFSharp/FSharp/Giraffe/App/Handlers/Security/Permissions.fs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/b5/70c0104d/ResourceObjectConverter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Projects/WebApiFSharp/FSharp/Giraffe/App/Helpers/MSALClient.fs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12891E82-5FCE-44A5-81E5-BBBB579C1D49/55/JsonSerializerProxy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/76/8936de56/JsonApiSerializerSettings.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Projects/WebApiFSharp/FSharp/Giraffe/App/Handlers/Security/Permissions.fs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Projects/WebApiFSharp/FSharp/Giraffe/App/Common/Authentication.fs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6E8577AF-C9C8-478C-958A-8E78C6765091/F/JwtBearerDefaults.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12891E82-5FCE-44A5-81E5-BBBB579C1D49/54/JsonSerializerInternalWriter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8EA671DC-AA55-3F8B-3AE4-5555DE2BBE52/16/486b1580/Seq.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12891E82-5FCE-44A5-81E5-BBBB579C1D49/19/JsonWriter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12891E82-5FCE-44A5-81E5-BBBB579C1D49/38/ThreadSafeStore.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BA72EFE7-DBF2-49AD-BD79-C391E9EA1A4B/6/JwtSecurityTokenHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B8FBDA1D-094A-499E-A0FE-9E6D9A3EC1D7/7/ConcurrentDictionary.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/DD3CEDB4-9263-45AB-B5DB-C8D5193FF049/30/HttpContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Projects/WebApiFSharp/FSharp/Giraffe/App/Helpers/HelperFunctions.fs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12891E82-5FCE-44A5-81E5-BBBB579C1D49/3E/DefaultContractResolver.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/IL/0A06CD3F-C48C-4801-A858-F75C007863D2/c3/58180770/02000027.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B19537B-F065-4C3F-9F78-85C4099CD3AA/14E/ExecutionContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8EA671DC-AA55-3F8B-3AE4-5555DE2BBE52/61/a6c39545/QueryImplementation.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12891E82-5FCE-44A5-81E5-BBBB579C1D49/11/JsonSerializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B19537B-F065-4C3F-9F78-85C4099CD3AA/147/CancellationToken.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B7F86EBA-729B-7611-A87B-A0188AFE11AD/6/ResponseWriters.fs" root0="SKIP_HIGHLIGHTING" />
@@ -49,6 +63,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/IL/0A06CD3F-C48C-4801-A858-F75C007863D2/15/dd318783/02000016.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/A7BD76B1-E4BB-5E55-F477-E28DCB1AC56C/C/async.fs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/ba/e4529ece/Error.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Projects/WebApiFSharp/FSharp/Giraffe/Program.fs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/6b/81b5ba46/DocumentRoot`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B7F86EBA-729B-7611-A87B-A0188AFE11AD/A/ModelBinding.fs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/5b/45f69aac/JsonApiContractResolver.cs" root0="SKIP_HIGHLIGHTING" />
@@ -71,17 +86,17 @@
         <option value="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" />
         <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Common/Exceptions.fs" />
-        <option value="$PROJECT_DIR$/Giraffe/App/Helpers/MSALClient.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Handlers/Security/FiAdmin.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Handlers/Security/ProfitstarsAdmin.fs" />
-        <option value="$PROJECT_DIR$/Persistence/Data/UserData.fs" />
-        <option value="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Helpers/Constants.fs" />
-        <option value="$PROJECT_DIR$/Persistence/Data/FiData.fs" />
         <option value="$PROJECT_DIR$/Giraffe/appsettings.json" />
+        <option value="$PROJECT_DIR$/Persistence/Data/UserData.fs" />
+        <option value="$PROJECT_DIR$/Persistence/Data/FiData.fs" />
         <option value="$PROJECT_DIR$/Giraffe/Program.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Common/Authentication.fs" />
+        <option value="$PROJECT_DIR$/Giraffe/App/Helpers/MSALClient.fs" />
+        <option value="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Handlers/Security/Permissions.fs" />
       </list>
     </option>
@@ -176,7 +191,10 @@
       <workItem from="1606292935159" duration="22750000" />
       <workItem from="1606421911070" duration="34000" />
       <workItem from="1606452828007" duration="9560000" />
-      <workItem from="1606486507630" duration="2992000" />
+      <workItem from="1606486507630" duration="4149000" />
+      <workItem from="1606550452471" duration="2807000" />
+      <workItem from="1606590341529" duration="10491000" />
+      <workItem from="1606676153652" duration="9468000" />
     </task>
     <task id="LOCAL-00001" summary="Clean up on AnimalData.fs">
       <created>1605628859739</created>
@@ -248,7 +266,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606463946764</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Finishing up on permissions part 3">
+      <created>1606497648248</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1606497648248</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,121 +309,145 @@
     <MESSAGE value="Adding Profitstars and FiAdmin checks" />
     <MESSAGE value="Finishing up on permissions" />
     <MESSAGE value="Finishing up on permissions part 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finishing up on permissions part 2" />
+    <MESSAGE value="Finishing up on permissions part 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finishing up on permissions part 3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="766" y="515" width="1208" height="885" key="#xdebugger.evaluate" timestamp="1606453874361">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="449" y="353" width="723" height="607" key="#xdebugger.evaluate" timestamp="1606681876966">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
+    <state x="449" y="353" width="723" height="607" key="#xdebugger.evaluate/0.0.1500.960@0.0.1500.960" timestamp="1606681876966" />
     <state x="766" y="515" width="1208" height="885" key="#xdebugger.evaluate/0.0.2560.1400@0.0.2560.1400" timestamp="1606453874361" />
-    <state width="768" height="659" key="DebuggerActiveHint" timestamp="1606290650749">
+    <state width="597" height="452" key="DebuggerActiveHint" timestamp="1606679023694">
+      <screen x="0" y="0" width="1500" height="960" />
+    </state>
+    <state width="597" height="452" key="DebuggerActiveHint/0.0.1500.960@0.0.1500.960" timestamp="1606679023694" />
+    <state width="1018" height="659" key="DebuggerActiveHint/0.0.2560.1400@0.0.2560.1400" timestamp="1606497203484" />
+    <state x="92" y="92" width="2376" height="1216" key="DiffContextDialog" timestamp="1606643434471">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="768" height="659" key="DebuggerActiveHint/0.0.2560.1400@0.0.2560.1400" timestamp="1606290650749" />
-    <state x="92" y="92" width="2376" height="1216" key="DiffContextDialog" timestamp="1606201863173">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="92" y="92" width="2376" height="1216" key="DiffContextDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1606643434471" />
+    <state width="1434" height="149" key="GridCell.Tab.0.bottom" timestamp="1606687493113">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
-    <state x="92" y="92" width="2376" height="1216" key="DiffContextDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1606201863173" />
-    <state width="2493" height="392" key="GridCell.Tab.0.bottom" timestamp="1606496825611">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
+    <state width="1434" height="149" key="GridCell.Tab.0.bottom/0.0.1500.960@0.0.1500.960" timestamp="1606687493113" />
     <state width="2493" height="392" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1606496825611" />
     <state width="1390" height="197" key="GridCell.Tab.0.bottom/0.23.1440.814@0.23.1440.814" timestamp="1605480649580" />
     <state width="1390" height="197" key="GridCell.Tab.0.bottom/0.23.1440.816@0.23.1440.816" timestamp="1605596577629" />
     <state width="1390" height="197" key="GridCell.Tab.0.bottom/0.23.1440.822@0.23.1440.822" timestamp="1605560906371" />
-    <state width="2493" height="392" key="GridCell.Tab.0.center" timestamp="1606496825610">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1434" height="149" key="GridCell.Tab.0.center" timestamp="1606687493112">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
+    <state width="1434" height="149" key="GridCell.Tab.0.center/0.0.1500.960@0.0.1500.960" timestamp="1606687493112" />
     <state width="2493" height="392" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1606496825610" />
     <state width="1390" height="197" key="GridCell.Tab.0.center/0.23.1440.814@0.23.1440.814" timestamp="1605480649580" />
     <state width="1390" height="197" key="GridCell.Tab.0.center/0.23.1440.816@0.23.1440.816" timestamp="1605596577628" />
     <state width="1390" height="197" key="GridCell.Tab.0.center/0.23.1440.822@0.23.1440.822" timestamp="1605560906370" />
-    <state width="2493" height="392" key="GridCell.Tab.0.left" timestamp="1606496825610">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1434" height="149" key="GridCell.Tab.0.left" timestamp="1606687493112">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
+    <state width="1434" height="149" key="GridCell.Tab.0.left/0.0.1500.960@0.0.1500.960" timestamp="1606687493112" />
     <state width="2493" height="392" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1606496825610" />
     <state width="1390" height="197" key="GridCell.Tab.0.left/0.23.1440.814@0.23.1440.814" timestamp="1605480649579" />
     <state width="1390" height="197" key="GridCell.Tab.0.left/0.23.1440.816@0.23.1440.816" timestamp="1605596577628" />
     <state width="1390" height="197" key="GridCell.Tab.0.left/0.23.1440.822@0.23.1440.822" timestamp="1605560906369" />
-    <state width="2493" height="392" key="GridCell.Tab.0.right" timestamp="1606496825610">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1434" height="149" key="GridCell.Tab.0.right" timestamp="1606687493113">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
+    <state width="1434" height="149" key="GridCell.Tab.0.right/0.0.1500.960@0.0.1500.960" timestamp="1606687493113" />
     <state width="2493" height="392" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1606496825610" />
     <state width="1390" height="197" key="GridCell.Tab.0.right/0.23.1440.814@0.23.1440.814" timestamp="1605480649580" />
     <state width="1390" height="197" key="GridCell.Tab.0.right/0.23.1440.816@0.23.1440.816" timestamp="1605596577629" />
     <state width="1390" height="197" key="GridCell.Tab.0.right/0.23.1440.822@0.23.1440.822" timestamp="1605560906370" />
-    <state width="2493" height="392" key="GridCell.Tab.1.bottom" timestamp="1606496838590">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1434" height="149" key="GridCell.Tab.1.bottom" timestamp="1606687516385">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
+    <state width="1434" height="149" key="GridCell.Tab.1.bottom/0.0.1500.960@0.0.1500.960" timestamp="1606687516385" />
     <state width="2493" height="392" key="GridCell.Tab.1.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1606496838590" />
-    <state width="2493" height="392" key="GridCell.Tab.1.center" timestamp="1606496838590">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1434" height="149" key="GridCell.Tab.1.center" timestamp="1606687516384">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
+    <state width="1434" height="149" key="GridCell.Tab.1.center/0.0.1500.960@0.0.1500.960" timestamp="1606687516384" />
     <state width="2493" height="392" key="GridCell.Tab.1.center/0.0.2560.1400@0.0.2560.1400" timestamp="1606496838590" />
-    <state width="2493" height="392" key="GridCell.Tab.1.left" timestamp="1606496838590">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1434" height="149" key="GridCell.Tab.1.left" timestamp="1606687516384">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
+    <state width="1434" height="149" key="GridCell.Tab.1.left/0.0.1500.960@0.0.1500.960" timestamp="1606687516384" />
     <state width="2493" height="392" key="GridCell.Tab.1.left/0.0.2560.1400@0.0.2560.1400" timestamp="1606496838590" />
-    <state width="2493" height="392" key="GridCell.Tab.1.right" timestamp="1606496838590">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1434" height="149" key="GridCell.Tab.1.right" timestamp="1606687516384">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
+    <state width="1434" height="149" key="GridCell.Tab.1.right/0.0.1500.960@0.0.1500.960" timestamp="1606687516384" />
     <state width="2493" height="392" key="GridCell.Tab.1.right/0.0.2560.1400@0.0.2560.1400" timestamp="1606496838590" />
-    <state width="2493" height="392" key="GridCell.Tab.2.bottom" timestamp="1606496825388">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1434" height="149" key="GridCell.Tab.2.bottom" timestamp="1606687492794">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
+    <state width="1434" height="149" key="GridCell.Tab.2.bottom/0.0.1500.960@0.0.1500.960" timestamp="1606687492794" />
     <state width="2493" height="392" key="GridCell.Tab.2.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1606496825388" />
-    <state width="2493" height="392" key="GridCell.Tab.2.center" timestamp="1606496825388">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1434" height="149" key="GridCell.Tab.2.center" timestamp="1606687492794">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
+    <state width="1434" height="149" key="GridCell.Tab.2.center/0.0.1500.960@0.0.1500.960" timestamp="1606687492794" />
     <state width="2493" height="392" key="GridCell.Tab.2.center/0.0.2560.1400@0.0.2560.1400" timestamp="1606496825388" />
-    <state width="2493" height="392" key="GridCell.Tab.2.left" timestamp="1606496825388">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1434" height="149" key="GridCell.Tab.2.left" timestamp="1606687492794">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
+    <state width="1434" height="149" key="GridCell.Tab.2.left/0.0.1500.960@0.0.1500.960" timestamp="1606687492794" />
     <state width="2493" height="392" key="GridCell.Tab.2.left/0.0.2560.1400@0.0.2560.1400" timestamp="1606496825388" />
-    <state width="2493" height="392" key="GridCell.Tab.2.right" timestamp="1606496825388">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1434" height="149" key="GridCell.Tab.2.right" timestamp="1606687492794">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
+    <state width="1434" height="149" key="GridCell.Tab.2.right/0.0.1500.960@0.0.1500.960" timestamp="1606687492794" />
     <state width="2493" height="392" key="GridCell.Tab.2.right/0.0.2560.1400@0.0.2560.1400" timestamp="1606496825388" />
-    <state width="2493" height="392" key="GridCell.Tab.3.bottom" timestamp="1606496825389">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1434" height="149" key="GridCell.Tab.3.bottom" timestamp="1606687492795">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
+    <state width="1434" height="149" key="GridCell.Tab.3.bottom/0.0.1500.960@0.0.1500.960" timestamp="1606687492795" />
     <state width="2493" height="392" key="GridCell.Tab.3.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1606496825389" />
-    <state width="2493" height="392" key="GridCell.Tab.3.center" timestamp="1606496825389">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1434" height="149" key="GridCell.Tab.3.center" timestamp="1606687492795">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
+    <state width="1434" height="149" key="GridCell.Tab.3.center/0.0.1500.960@0.0.1500.960" timestamp="1606687492795" />
     <state width="2493" height="392" key="GridCell.Tab.3.center/0.0.2560.1400@0.0.2560.1400" timestamp="1606496825389" />
-    <state width="2493" height="392" key="GridCell.Tab.3.left" timestamp="1606496825389">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1434" height="149" key="GridCell.Tab.3.left" timestamp="1606687492795">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
+    <state width="1434" height="149" key="GridCell.Tab.3.left/0.0.1500.960@0.0.1500.960" timestamp="1606687492795" />
     <state width="2493" height="392" key="GridCell.Tab.3.left/0.0.2560.1400@0.0.2560.1400" timestamp="1606496825389" />
-    <state width="2493" height="392" key="GridCell.Tab.3.right" timestamp="1606496825389">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1434" height="149" key="GridCell.Tab.3.right" timestamp="1606687492795">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
+    <state width="1434" height="149" key="GridCell.Tab.3.right/0.0.1500.960@0.0.1500.960" timestamp="1606687492795" />
     <state width="2493" height="392" key="GridCell.Tab.3.right/0.0.2560.1400@0.0.2560.1400" timestamp="1606496825389" />
-    <state width="2493" height="392" key="GridCell.Tab.4.bottom" timestamp="1606496825390">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1434" height="149" key="GridCell.Tab.4.bottom" timestamp="1606687492795">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
+    <state width="1434" height="149" key="GridCell.Tab.4.bottom/0.0.1500.960@0.0.1500.960" timestamp="1606687492795" />
     <state width="2493" height="392" key="GridCell.Tab.4.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1606496825390" />
-    <state width="2493" height="392" key="GridCell.Tab.4.center" timestamp="1606496825390">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1434" height="149" key="GridCell.Tab.4.center" timestamp="1606687492795">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
+    <state width="1434" height="149" key="GridCell.Tab.4.center/0.0.1500.960@0.0.1500.960" timestamp="1606687492795" />
     <state width="2493" height="392" key="GridCell.Tab.4.center/0.0.2560.1400@0.0.2560.1400" timestamp="1606496825390" />
-    <state width="2493" height="392" key="GridCell.Tab.4.left" timestamp="1606496825389">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1434" height="149" key="GridCell.Tab.4.left" timestamp="1606687492795">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
+    <state width="1434" height="149" key="GridCell.Tab.4.left/0.0.1500.960@0.0.1500.960" timestamp="1606687492795" />
     <state width="2493" height="392" key="GridCell.Tab.4.left/0.0.2560.1400@0.0.2560.1400" timestamp="1606496825389" />
-    <state width="2493" height="392" key="GridCell.Tab.4.right" timestamp="1606496825390">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1434" height="149" key="GridCell.Tab.4.right" timestamp="1606687492795">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
+    <state width="1434" height="149" key="GridCell.Tab.4.right/0.0.1500.960@0.0.1500.960" timestamp="1606687492795" />
     <state width="2493" height="392" key="GridCell.Tab.4.right/0.0.2560.1400@0.0.2560.1400" timestamp="1606496825390" />
     <state x="220" y="106" key="Rider.ProjectTemplateDialog.Size" timestamp="1605479519131">
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state x="220" y="106" key="Rider.ProjectTemplateDialog.Size/0.23.1440.814@0.23.1440.814" timestamp="1605479519131" />
-    <state x="1016" y="263" key="RollbackChangesDialog" timestamp="1606119392321">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="595" y="92" key="RollbackChangesDialog" timestamp="1606684690842">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
-    <state x="1016" y="263" key="RollbackChangesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1606119392321" />
+    <state x="595" y="92" key="RollbackChangesDialog/0.0.1500.960@0.0.1500.960" timestamp="1606684690842" />
+    <state x="1016" y="263" key="RollbackChangesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1606589398094" />
     <state x="538" y="169" key="SettingsEditor" timestamp="1605952448938">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -407,13 +456,14 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1041" y="260" key="VCS.ChangeListViewerDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1606201850418" />
-    <state x="672" y="301" key="Vcs.Push.Dialog.v2" timestamp="1606463948466">
+    <state x="672" y="301" key="Vcs.Push.Dialog.v2" timestamp="1606497650056">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="672" y="301" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1606463948466" />
-    <state width="696" height="703" key="XDebugger.FullValuePopup" timestamp="1606453867340">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="672" y="301" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1606497650056" />
+    <state width="408" height="483" key="XDebugger.FullValuePopup" timestamp="1606681672252">
+      <screen x="0" y="0" width="1500" height="960" />
     </state>
+    <state width="408" height="483" key="XDebugger.FullValuePopup/0.0.1500.960@0.0.1500.960" timestamp="1606681672252" />
     <state width="696" height="703" key="XDebugger.FullValuePopup/0.0.2560.1400@0.0.2560.1400" timestamp="1606453867340" />
     <state x="495" y="307" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1605596937632">
       <screen x="0" y="23" width="1440" height="821" />
@@ -461,42 +511,29 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Giraffe/Program.fs</url>
-          <line>42</line>
-          <properties documentPath="C:\Projects\WebApiFSharp\FSharp\Giraffe\Program.fs" initialLine="42">
+          <line>44</line>
+          <properties documentPath="C:\Projects\WebApiFSharp\FSharp\Giraffe\Program.fs" initialLine="44">
             <startOffsets>
-              <option value="1237" />
+              <option value="1266" />
             </startOffsets>
             <endOffsets>
-              <option value="1335" />
+              <option value="1364" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="45" />
+          <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Giraffe/App/Handlers/Security/Permissions.fs</url>
-          <line>89</line>
-          <properties documentPath="C:\Projects\WebApiFSharp\FSharp\Giraffe\App\Handlers\Security\Permissions.fs" initialLine="89">
+          <url>file://$PROJECT_DIR$/Giraffe/App/Common/Exceptions.fs</url>
+          <line>39</line>
+          <properties documentPath="C:\Projects\WebApiFSharp\FSharp\Giraffe\App\Common\Exceptions.fs" initialLine="39">
             <startOffsets>
-              <option value="3414" />
+              <option value="1564" />
             </startOffsets>
             <endOffsets>
-              <option value="3445" />
+              <option value="1606" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Giraffe/App/Handlers/Security/Permissions.fs</url>
-          <line>62</line>
-          <properties documentPath="C:\Projects\WebApiFSharp\FSharp\Giraffe\App\Handlers\Security\Permissions.fs" initialLine="62">
-            <startOffsets>
-              <option value="2437" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2517" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="52" />
+          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -2,6 +2,7 @@ module JwtApp.App
 
 open System
 open System.IO
+open App.Helpers.MSALClient
 open Giraffe
 open Giraffe.Serialization
 open App.Common.Converters
@@ -29,6 +30,7 @@ let allGetRoutes: HttpHandler list =
     [ route "/" >=> text "Public endpoint."]
     @ applicationsGetRoutes
     @ usersGetRoutes
+
 let allPostRoutes: HttpHandler list = applicationPostRoutes
 let allDeleteRoutes: HttpHandler list = applicationDeleteRoutes
 
@@ -71,6 +73,7 @@ let configureServices (services : IServiceCollection) =
     settings.Converters.Add(OptionConverter())
         
     services.AddSingleton<IJsonSerializer>(NewtonsoftJsonSerializer(settings)) |> ignore
+    services.AddSingleton<MSALAccessTokenHolder>({ AccessToken = None }) |> ignore
 
 let configureLogging (builder : ILoggingBuilder) =
     let filter (l : LogLevel) = l.Equals LogLevel.Error

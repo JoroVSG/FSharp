@@ -27,18 +27,17 @@ type B2CGroups = {
 
 let fiAdminCheck = fun iid (next: HttpFunc) (ctx: HttpContext) ->
     task {
-        let isProfitstarsAdmin = getClaim IS_PROFITSTARS_CLAIM_TYPE ctx
+        let isFiAdmin = getClaim FI_ADMIN_CLAIM_TYPE ctx
         
-        if bool isProfitstarsAdmin.Value then
-            return! next ctx
-        else
-            // let email = getClaim EMAIL_CLAIM_TYPE ctx
-            let isFiAdmin = getClaim FI_ADMIN_CLAIM_TYPE ctx
+        let! tryInstitution = getFiByInstitutionId iid
+        
+        match tryInstitution with
+        | Some institution ->
+            let isProAdmin = getClaimValue ctx IS_PROFITSTARS_CLAIM_TYPE
             
-            let! tryInstitution = getFiByInstitutionId iid
-            
-            match tryInstitution with
-            | Some institution ->
+            if isProAdmin then
+                return! next ctx
+            else
                 let currentUserInstitutionId = getClaim INSTITUTION_ID_CLAIM_TYPE ctx
                 // let! user = getUserByEmailAsync email.Value
                 
@@ -47,7 +46,7 @@ let fiAdminCheck = fun iid (next: HttpFunc) (ctx: HttpContext) ->
                 identity.AddClaim(Claim(IS_FI_ADMIN, claimValue))
                 
                 return! next ctx
-            | None -> return! notFound "Financial Institution not found" next ctx
+        | None -> return! notFound "Financial Institution not found" next ctx
     }
 
 let profitStarsAdminCheck = fun (next: HttpFunc) (ctx: HttpContext) ->
@@ -56,7 +55,7 @@ let profitStarsAdminCheck = fun (next: HttpFunc) (ctx: HttpContext) ->
         let objectId = getClaim ClaimTypes.NameIdentifier ctx
         
         let apiUrl = sprintf "%s/users/%s/memberOf?$select=id,displayName" config.["GraphApi:ApiVersion"] objectId.Value
-        let! result = sendGETGraphApiWithConfigRequest<B2CGroups> config apiUrl
+        let! result = sendGETGraphApiWithConfigRequest<B2CGroups> ctx apiUrl
         
         let isInProfitStarsGroup = result.Groups |> List.exists(fun group -> string group.Id = config.["GraphApi:ProfitStarsGroupId"])
         let identity = ctx.User.Identity :?> ClaimsIdentity
@@ -73,20 +72,9 @@ let profitStarsErrorHandling = fun (error: HttpHandler) (next: HttpFunc) (ctx: H
         | None -> error next ctx
 
 let profitStarsFiAdminErrorHandling = fun (error1: HttpHandler) (error2: HttpHandler) (next: HttpFunc) (ctx: HttpContext) ->
-    let isFiAdminClaim = (tryGetClaim IS_FI_ADMIN ctx)
+    let isProAdmin = getClaimValue ctx IS_PROFITSTARS_CLAIM_TYPE
+    let isFiAdmin = getClaimValue ctx IS_FI_ADMIN
     
-    let isProfitStarsAdmin = (tryGetClaim IS_PROFITSTARS_CLAIM_TYPE ctx)
-    
-    let isProAdmin =
-        match isProfitStarsAdmin with
-        | Some claim -> bool claim.Value
-        | None -> false
-    
-    let isFiAdmin =
-        match isFiAdminClaim with
-        | Some claim -> bool claim.Value
-        | None -> false
-        
     if isProAdmin || isFiAdmin then next ctx
     else if isProAdmin = false then error1 next ctx
     else error2 next ctx
