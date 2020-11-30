@@ -69,7 +69,7 @@ let configureServices (services : IServiceCollection) =
         .AddJwtBearer(Action<JwtBearerOptions> jwtBearerOptions) |> ignore
         
     let settings = JsonSerializerSettings()
-    settings.ContractResolver <- DefaultContractResolver()
+    settings.ContractResolver <- CamelCasePropertyNamesContractResolver()
     settings.Converters.Add(OptionConverter())
         
     services.AddSingleton<IJsonSerializer>(NewtonsoftJsonSerializer(settings)) |> ignore

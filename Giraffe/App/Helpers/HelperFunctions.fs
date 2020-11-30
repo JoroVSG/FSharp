@@ -1,20 +1,23 @@
 module App.Helpers.HelperFunctions
 
 open System
-open System.Security.Claims
 open FSharp.Data
 open Giraffe
 open App.Common.Exceptions
 open Microsoft.AspNetCore.Http
 
 let lower (s: string) =
-    s |> Seq.mapi (fun i c -> match i with | 0 -> (Char.ToLower(c)) | _ -> c)  |> String.Concat
+    s
+    |> Seq.mapi (fun i c -> match i with | 0 -> (Char.ToLower(c)) | _ -> c)
+    |> String.Concat
 
-let bool s =
-    match lower s with
+let boolIgnoreCase s =
+    match s with
     | "true" -> true
     | "false" -> false
     | _-> failwith("Error: returns " + s)
+
+let bool = lower >> boolIgnoreCase
     
 let tryGetClaim = fun claimType (ctx: HttpContext) -> ctx.User.Claims |> Seq.tryFind (fun claim -> claim.Type = claimType)
 let getClaim = fun claimType (ctx: HttpContext) -> ctx.User.Claims |> Seq.find (fun claim -> claim.Type = claimType)
@@ -32,7 +35,8 @@ let getClaimValue<'T> = fun ctx claimName ->
     match claim with
     | Some claimValue -> convert claimValue.Value
     | None -> Unchecked.defaultof<'T>
-    
+ 
+   
 let createResponse = fun status message ->
     setStatusCode status >=> (json <| createJsonApiError message status)
 
