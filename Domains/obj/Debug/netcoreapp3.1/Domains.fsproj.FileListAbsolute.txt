@@ -1,8 +1,0 @@
-C:\Projects\WebApiFSharp\FSharp\Domains\bin\Debug\netcoreapp3.1\Domains.deps.json
-C:\Projects\WebApiFSharp\FSharp\Domains\bin\Debug\netcoreapp3.1\Domains.dll
-C:\Projects\WebApiFSharp\FSharp\Domains\bin\Debug\netcoreapp3.1\Domains.pdb
-C:\Projects\WebApiFSharp\FSharp\Domains\obj\Debug\netcoreapp3.1\Domains.fsprojAssemblyReference.cache
-C:\Projects\WebApiFSharp\FSharp\Domains\obj\Debug\netcoreapp3.1\Domains.AssemblyInfoInputs.cache
-C:\Projects\WebApiFSharp\FSharp\Domains\obj\Debug\netcoreapp3.1\Domains.AssemblyInfo.fs
-C:\Projects\WebApiFSharp\FSharp\Domains\obj\Debug\netcoreapp3.1\Domains.dll
-C:\Projects\WebApiFSharp\FSharp\Domains\obj\Debug\netcoreapp3.1\Domains.pdb

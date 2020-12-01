@@ -4,3 +4,5 @@
 
 .fake
 .ionide
+/Domains/obj/
+/Domains/bin/
