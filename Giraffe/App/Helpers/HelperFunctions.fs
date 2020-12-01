@@ -40,5 +40,6 @@ let getClaimValue<'T> = fun ctx claimName ->
 let createResponse = fun status message ->
     setStatusCode status >=> (json <| createJsonApiError message status)
 
-let notFound: (string -> HttpHandler) = createResponse HttpStatusCodes.NotFound
-let forbidden: (string -> HttpHandler) = createResponse HttpStatusCodes.Forbidden
+type ErrorMessage = string
+let notFound: (ErrorMessage -> HttpHandler) = createResponse HttpStatusCodes.NotFound
+let forbidden: (ErrorMessage -> HttpHandler) = createResponse HttpStatusCodes.Forbidden

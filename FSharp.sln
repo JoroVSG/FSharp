@@ -7,6 +7,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Giraffe", "Giraffe\Giraffe.
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Persistence", "Persistence\Persistence.fsproj", "{70C94A3E-0157-4F7C-BE8F-4C945DFEC777}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Domains", "Domains\Domains.fsproj", "{53C7D7FD-13B9-43A3-BF43-B838322D4EF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{70C94A3E-0157-4F7C-BE8F-4C945DFEC777}.Release|x64.Build.0 = Release|Any CPU
 		{70C94A3E-0157-4F7C-BE8F-4C945DFEC777}.Release|x86.ActiveCfg = Release|Any CPU
 		{70C94A3E-0157-4F7C-BE8F-4C945DFEC777}.Release|x86.Build.0 = Release|Any CPU
+		{53C7D7FD-13B9-43A3-BF43-B838322D4EF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53C7D7FD-13B9-43A3-BF43-B838322D4EF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53C7D7FD-13B9-43A3-BF43-B838322D4EF3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{53C7D7FD-13B9-43A3-BF43-B838322D4EF3}.Debug|x64.Build.0 = Debug|Any CPU
+		{53C7D7FD-13B9-43A3-BF43-B838322D4EF3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{53C7D7FD-13B9-43A3-BF43-B838322D4EF3}.Debug|x86.Build.0 = Debug|Any CPU
+		{53C7D7FD-13B9-43A3-BF43-B838322D4EF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53C7D7FD-13B9-43A3-BF43-B838322D4EF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53C7D7FD-13B9-43A3-BF43-B838322D4EF3}.Release|x64.ActiveCfg = Release|Any CPU
+		{53C7D7FD-13B9-43A3-BF43-B838322D4EF3}.Release|x64.Build.0 = Release|Any CPU
+		{53C7D7FD-13B9-43A3-BF43-B838322D4EF3}.Release|x86.ActiveCfg = Release|Any CPU
+		{53C7D7FD-13B9-43A3-BF43-B838322D4EF3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

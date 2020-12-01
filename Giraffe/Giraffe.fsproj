@@ -51,6 +51,7 @@
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Domains\Domains.fsproj" />
     <ProjectReference Include="..\Persistence\Persistence.fsproj" />
   </ItemGroup>
 </Project>
