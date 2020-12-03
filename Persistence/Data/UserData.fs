@@ -12,6 +12,7 @@ type CLCSUser = {
     ActivationKey: string
     IdFinancialInstitution: Guid
     Email: string
+    IsFiAdmin: bool
     ActivationStatus: string
 }
 

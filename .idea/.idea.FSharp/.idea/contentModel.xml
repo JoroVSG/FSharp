@@ -3,11 +3,14 @@
   <component name="ContentModelStore">
     <e p="C:\Projects\WebApiFSharp\FSharp" t="IncludeFlat">
       <e p="Domains" t="IncludeRecursive">
-        <e p="B2CUser.fs" t="Include" />
-        <e p="B2CUserResponse.fs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Domains.fsproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive" />
+        <e p="Users" t="Include">
+          <e p="B2CUser.fs" t="Include" />
+          <e p="B2CUserResponse.fs" t="Include" />
+          <e p="UserDTO.fs" t="Include" />
+        </e>
       </e>
       <e p="FSharp.sln" t="IncludeFlat" />
       <e p="Giraffe" t="IncludeRecursive">
