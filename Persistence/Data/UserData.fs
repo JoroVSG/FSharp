@@ -1,9 +1,11 @@
 module Persistence.Data.UserData
 
 open System
+open System.Linq
 open DataContext
 open FSharp.Data.Sql
 open FSharp.Data.Sql.Common
+open Domains.Users.CommonTypes
 
 [<CLIMutable>]
 type CLCSUser = {
@@ -12,7 +14,6 @@ type CLCSUser = {
     ActivationKey: string
     IdFinancialInstitution: Guid
     Email: string
-    IsFiAdmin: bool
     ActivationStatus: string
 }
 
@@ -39,15 +40,15 @@ let getAllUsersByInstitutionIdAsync = fun iid ->
        return mapped
    }
      
-let getUserByEmailAsync = fun email ->
+let getUsersByEmailAsync = fun (emails: Email seq) ->
      async {
        let! res =
            query {
                 for user in CLCSPortalContext.Dbo.User do
-                where (user.Email = email)
+                where (emails.Contains user.Email)
                 select user
-           } |> Seq.headAsync
-       return res.MapTo<CLCSUser>()
+           } |> Seq.executeQueryAsync
+       return res |> Seq.map(fun user -> user.MapTo<CLCSUser>())
    }
      
      

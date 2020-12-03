@@ -2,7 +2,7 @@ module DataContext
 open FSharp.Data.Sql
 [<Literal>]
 // let ConnectionString = "data source=.;Initial catalog=Rodeo.bgQL;Integrated Security=SSPI;"
-let ConnectionString = "Server=192.168.5.11;Initial Catalog=AUTOTEST_CLCSAPI;Persist Security Info=False;User ID=LVAccount;Password=cluemt**1!;persist security info=False;"
+let ConnectionString = "Server=192.168.5.11;Initial Catalog=CLCSPortal;Persist Security Info=False;User ID=LVAccount;Password=cluemt**1!;persist security info=False;"
 
 //[<Literal>]
 //let ConnectionString = "data source=.;Initial catalog=LoanVantage_Trunk_IBS_1;Integrated Security=SSPI;";

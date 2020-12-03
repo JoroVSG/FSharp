@@ -35,7 +35,7 @@ type UserDTO = {
     UserType: string
     Type: string
     ActivationStatus: string
-    IsFiAdmin: bool
+    // IsFiAdmin: bool
     
 }
   

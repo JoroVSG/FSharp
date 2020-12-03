@@ -9,6 +9,7 @@
         <e p="Users" t="Include">
           <e p="B2CUser.fs" t="Include" />
           <e p="B2CUserResponse.fs" t="Include" />
+          <e p="CommonTypes.fs" t="Include" />
           <e p="UserDTO.fs" t="Include" />
         </e>
       </e>

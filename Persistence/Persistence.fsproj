@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <DotnetFscCompilerPath />
   </PropertyGroup>
   
@@ -34,6 +34,9 @@
   <ItemGroup>
     <PackageReference Include="SQLProvider" Version="1.1.93" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domains\Domains.fsproj" />
   </ItemGroup>
 <!--  <Target Name="PostBuild" AfterTargets="PostBuildEvent">-->
 <!--        <Exec Command="copy ..\..\..\packages\System.Data.SqlClient\runtimes\win\lib\netstandard2.0\System.Data.SqlClient.dll bin\Debug\netcoreapp2.0\" Condition="'$(IsWindows)' == 'true'" />-->

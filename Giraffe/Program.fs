@@ -31,7 +31,7 @@ let allGetRoutes: HttpHandler list =
     @ applicationsGetRoutes
     @ usersGetRoutes
 
-let allPostRoutes: HttpHandler list = applicationPostRoutes
+let allPostRoutes: HttpHandler list = applicationPostRoutes @ usersPostRoutes
 let allDeleteRoutes: HttpHandler list = applicationDeleteRoutes
 
 let webApp =

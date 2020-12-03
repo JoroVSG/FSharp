@@ -39,9 +39,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Compile Include="App\Common\Authentication.fs" />
+    <Compile Include="App\Common\Converters.fs" />
     <Compile Include="App\Common\JsonApiResponse.fs" />
     <Compile Include="App\Common\Exceptions.fs" />
-    <Compile Include="App\Common\Converters.fs" />
     <Compile Include="App\Helpers\MSALClient.fs" />
     <Compile Include="App\Helpers\HelperFunctions.fs" />
     <Compile Include="App\Helpers\Constants.fs" />

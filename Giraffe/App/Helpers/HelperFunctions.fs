@@ -6,18 +6,23 @@ open Giraffe
 open App.Common.Exceptions
 open Microsoft.AspNetCore.Http
 
-let lower (s: string) =
+let lowerFirstChar s =
     s
     |> Seq.mapi (fun i c -> match i with | 0 -> (Char.ToLower(c)) | _ -> c)
     |> String.Concat
+    
+let lower = String.map Char.ToLower
+let upper = String.map Char.ToUpper
 
-let boolIgnoreCase s =
+
+let isEndOfTheList<'a> index (anyList: 'a list) = index = anyList.Length - 1 
+let boolCaseInsensitive s =
     match s with
     | "true" -> true
     | "false" -> false
     | _-> failwith("Error: returns " + s)
 
-let bool = lower >> boolIgnoreCase
+let bool = lower >> boolCaseInsensitive
     
 let tryGetClaim = fun claimType (ctx: HttpContext) -> ctx.User.Claims |> Seq.tryFind (fun claim -> claim.Type = claimType)
 let getClaim = fun claimType (ctx: HttpContext) -> ctx.User.Claims |> Seq.find (fun claim -> claim.Type = claimType)
@@ -27,7 +32,7 @@ let convert<'T> (value: string) : 'T =
   | :? uint32 -> uint32 value |> unbox<'T>
   | :? uint16 -> uint16 value |> unbox<'T>
   | :? bool -> bool value |> unbox<'T>
-  | :? string -> string value |> unbox<'T>
+  | :? string -> value |> unbox<'T>
   | _ -> failwith "not convertible"
 
 let getClaimValue<'T> = fun ctx claimName ->

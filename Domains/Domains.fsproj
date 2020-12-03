@@ -1,13 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>netstandard2.1</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
         <Compile Include="Users\B2CUser.fs" />
         <Compile Include="Users\B2CUserResponse.fs" />
         <Compile Include="Users\UserDTO.fs" />
+        <Compile Include="Users\CommonTypes.fs" />
     </ItemGroup>
 
     <ItemGroup>
