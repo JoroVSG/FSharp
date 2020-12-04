@@ -3,6 +3,9 @@
   <component name="ContentModelStore">
     <e p="C:\Projects\WebApiFSharp\FSharp" t="IncludeFlat">
       <e p="Domains" t="IncludeRecursive">
+        <e p="Applications" t="Include">
+          <e p="Application.fs" t="Include" />
+        </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="Domains.fsproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive" />

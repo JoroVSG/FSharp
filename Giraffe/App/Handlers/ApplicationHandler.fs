@@ -1,6 +1,7 @@
 module App.Handlers.ApplicationHandler
 
 open App.Common
+open Domains.Applications.Application
 open FSharp.Control.Tasks.V2.ContextInsensitive
 open Microsoft.AspNetCore.Http
 open Giraffe

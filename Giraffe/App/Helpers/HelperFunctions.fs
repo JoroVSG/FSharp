@@ -35,6 +35,14 @@ let convert<'T> (value: string) : 'T =
   | :? string -> value |> unbox<'T>
   | _ -> failwith "not convertible"
 
+let optional'<'T> (value: obj) : option<'T> =
+  match box Unchecked.defaultof<'T> with
+  | :? uint32 -> Some (uint32 (string value) |> unbox<'T>)
+  | :? uint16 -> Some (uint16 (string value) |> unbox<'T>)
+  | :? bool -> Some (bool (string value) |> unbox<'T>)
+  | :? string -> Some (value |> unbox<'T>)
+  | _ -> None
+
 let getClaimValue<'T> = fun ctx claimName ->
     let claim = tryGetClaim claimName ctx
     match claim with
