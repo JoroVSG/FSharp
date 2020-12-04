@@ -6,3 +6,6 @@
 .ionide
 /Domains/obj/
 /Domains/bin/
+/Giraffe/bin/Debug/netcoreapp3.1/
+/Persistence/bin/Debug/netstandard2.1/
+/Giraffe/obj/Debug/netcoreapp3.1/

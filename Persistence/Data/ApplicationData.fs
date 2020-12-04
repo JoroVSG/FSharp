@@ -3,7 +3,7 @@ module Persistence.Data.ApplicationData
 open System
 open DataContext
 open FSharp.Data.Sql
-open FSharp.Data.Sql.Common
+open Domains.Applications.Application
 
 type OperationStatus = {
     Id: Guid
@@ -11,21 +11,25 @@ type OperationStatus = {
     Exception: Exception option
 }   
 
-[<CLIMutable>]
-type Application = {
-    [<MappedColumn("IdApplication")>]Id: Guid
-    Description: string
-    Name: string
-    Code: string
-    Rating: int
-    Image: byte[]
-}
-
 let getAllApplicationsAsync =
    async {
        let! res =
            query {
                for application in CLCSPortalContext.Dbo.Application do
+               select application
+           } |> Seq.executeQueryAsync
+       let mapped = res |> Seq.map(fun app -> app.MapTo<Application>())
+       return mapped
+   }
+   
+let getApplicationsByUserId idUser =
+   async {
+       let! res =
+           query {
+               for application in CLCSPortalContext.Dbo.Application do
+               join userApp in CLCSPortalContext.Dbo.UserApplication on (application.IdApplication = userApp.IdApplication)
+               join user in CLCSPortalContext.Dbo.User on (userApp.IdUser = user.IdUser)
+               where (user.IdUser = idUser)         
                select application
            } |> Seq.executeQueryAsync
        let mapped = res |> Seq.map(fun app -> app.MapTo<Application>())

@@ -2,6 +2,8 @@ module Domains.Users.UserDTO
 
 open System
 open Domains.B2CUser
+open Domains.Applications.Application
+open JsonApiSerializer.JsonApi
 
 type UserDTO = {
     Id: Guid
@@ -27,14 +29,15 @@ type UserDTO = {
     PostalCode: string
     SignInNames: SignInNames list
     State: string
-    StreetAddress: string
-    TelephoneNumber: obj
+    StreetAddress: string option
+    TelephoneNumber: obj option
     UsageLocation: string
     UserIdentities: obj list
     UserPrincipalName: string
     UserType: string
     Type: string
     ActivationStatus: string
+    Applications: Relationship<Application list>
     // IsFiAdmin: bool
     
 }

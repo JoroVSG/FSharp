@@ -68,9 +68,8 @@ let configureServices (services : IServiceCollection) =
         .AddAuthentication(authenticationOptions)
         .AddJwtBearer(Action<JwtBearerOptions> jwtBearerOptions) |> ignore
         
-    let settings = JsonSerializerSettings()
-    settings.ContractResolver <- CamelCasePropertyNamesContractResolver()
-    settings.Converters.Add(OptionConverter())
+    let settings = JsonApiSerializerSettings()
+    settings.Converters.Add(IdiomaticDuConverter())
         
     services.AddSingleton<IJsonSerializer>(NewtonsoftJsonSerializer(settings)) |> ignore
     services.AddSingleton<MSALAccessTokenHolder>({ AccessToken = None }) |> ignore
