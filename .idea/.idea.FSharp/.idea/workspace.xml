@@ -10,22 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46d54f0c-fb97-4b15-8016-29c67a0ec41f" name="Default Changelist" comment="Intoducing to JSON api error handling">
-      <change afterPath="$PROJECT_DIR$/Domains/Applications/Application.fs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Giraffe/bin/Debug/netcoreapp3.1/MoreLinq.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domains/Domains.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Domains/Domains.fsproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domains/Users/UserDTO.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Domains/Users/UserDTO.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Common/Converters.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Common/Converters.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Common/JsonApiResponse.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Common/JsonApiResponse.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/Program.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/Program.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/bin/Debug/netcoreapp3.1/Domains.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/bin/Debug/netcoreapp3.1/Domains.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/bin/Debug/netcoreapp3.1/Domains.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/bin/Debug/netcoreapp3.1/Domains.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistence/Data/ApplicationData.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Persistence/Data/ApplicationData.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,6 +107,7 @@
         <option value="$PROJECT_DIR$/Giraffe/Program.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -221,7 +207,7 @@
       <workItem from="1606676153652" duration="19922000" />
       <workItem from="1606807271128" duration="8900000" />
       <workItem from="1606894963183" duration="10187000" />
-      <workItem from="1606982051788" duration="30434000" />
+      <workItem from="1606982051788" duration="30660000" />
     </task>
     <task id="LOCAL-00001" summary="Clean up on AnimalData.fs">
       <created>1605628859739</created>
@@ -335,7 +321,21 @@
       <option name="project" value="LOCAL" />
       <updated>1607034127062</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Adding applications to User">
+      <created>1607073865918</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1607073865918</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Adding applications to User part 2">
+      <created>1607073895762</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1607073895762</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -377,7 +377,9 @@
     <MESSAGE value="Adding Domains and Fetching B2C Users" />
     <MESSAGE value="removing bin/obj folders from Domains" />
     <MESSAGE value="Mapping the B2C and CLC users to UserDTO" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mapping the B2C and CLC users to UserDTO" />
+    <MESSAGE value="Adding applications to User" />
+    <MESSAGE value="Adding applications to User part 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding applications to User part 2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="77" width="723" height="607" key="#xdebugger.evaluate" timestamp="1607017796325">
@@ -550,10 +552,10 @@
       <screen x="0" y="0" width="1500" height="960" />
     </state>
     <state x="93" y="93" width="1313" height="773" key="VCS.FileHistoryDialog/0.0.1500.960/306.-1440.2560.1400@0.0.1500.960" timestamp="1607019932564" />
-    <state x="288" y="164" key="Vcs.Push.Dialog.v2" timestamp="1607034130150">
+    <state x="288" y="164" key="Vcs.Push.Dialog.v2" timestamp="1607073897448">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
-    <state x="288" y="164" key="Vcs.Push.Dialog.v2/0.0.1500.960/306.-1440.2560.1400@0.0.1500.960" timestamp="1607034130150" />
+    <state x="288" y="164" key="Vcs.Push.Dialog.v2/0.0.1500.960/306.-1440.2560.1400@0.0.1500.960" timestamp="1607073897448" />
     <state x="288" y="164" key="Vcs.Push.Dialog.v2/0.0.1500.960@0.0.1500.960" timestamp="1606687728478" />
     <state x="672" y="301" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1606497650056" />
     <state width="408" height="483" key="XDebugger.FullValuePopup" timestamp="1607017671415">
