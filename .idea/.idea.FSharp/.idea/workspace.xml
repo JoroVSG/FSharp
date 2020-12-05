@@ -10,9 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46d54f0c-fb97-4b15-8016-29c67a0ec41f" name="Default Changelist" comment="Intoducing to JSON api error handling">
-      <change afterPath="$PROJECT_DIR$/Domains/Users/B2CGroups.fs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Migrations/Migrate.fs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Migrations/Migrations.fsproj" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Migrations/bin/Debug/netcoreapp3.1/Migrations.deps.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Migrations/bin/Debug/netcoreapp3.1/Migrations.dll" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Migrations/bin/Debug/netcoreapp3.1/Migrations.pdb" afterDir="false" />
@@ -21,14 +18,8 @@
       <change afterPath="$PROJECT_DIR$/Migrations/obj/Debug/netcoreapp3.1/Migrations.fsprojAssemblyReference.cache" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Migrations/obj/Debug/netcoreapp3.1/Migrations.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/riderModule.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domains/Domains.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Domains/Domains.fsproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FSharp.sln" beforeDir="false" afterPath="$PROJECT_DIR$/FSharp.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FSharp.sln.DotSettings" beforeDir="false" afterPath="$PROJECT_DIR$/FSharp.sln.DotSettings" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/Security/Permissions.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/Security/Permissions.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +32,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="SQLClient" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -125,12 +121,12 @@
         <option value="$PROJECT_DIR$/Giraffe/Program.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Persistence/Data/ApplicationData.fs" />
         <option value="$PROJECT_DIR$/Migrations/Migrations.fsproj" />
         <option value="$PROJECT_DIR$/Migrations/Migrate.fs" />
         <option value="$PROJECT_DIR$/Domains/Users/B2CGroups.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Handlers/Security/Permissions.fs" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -230,7 +226,7 @@
       <workItem from="1606676153652" duration="19922000" />
       <workItem from="1606807271128" duration="8900000" />
       <workItem from="1606894963183" duration="10187000" />
-      <workItem from="1606982051788" duration="41018000" />
+      <workItem from="1606982051788" duration="41847000" />
     </task>
     <task id="LOCAL-00001" summary="Clean up on AnimalData.fs">
       <created>1605628859739</created>
@@ -372,7 +368,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607074088924</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Adding Migrations">
+      <created>1607161841489</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1607161841489</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -418,7 +421,8 @@
     <MESSAGE value="Adding applications to User part 2" />
     <MESSAGE value="Fixing gitignore" />
     <MESSAGE value="Fixing gitignore part 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing gitignore part 2" />
+    <MESSAGE value="Adding Migrations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Migrations" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="77" width="723" height="607" key="#xdebugger.evaluate" timestamp="1607017796325">
@@ -575,10 +579,10 @@
     <state x="229" y="98" key="Rider.ProjectTemplateDialog.Size/0.0.1500.960/306.-1440.2560.1400@0.0.1500.960" timestamp="1606808790540" />
     <state x="229" y="98" key="Rider.ProjectTemplateDialog.Size/0.0.1500.960@0.0.1500.960" timestamp="1607150088617" />
     <state x="220" y="106" key="Rider.ProjectTemplateDialog.Size/0.23.1440.814@0.23.1440.814" timestamp="1605479519131" />
-    <state x="595" y="92" key="RollbackChangesDialog" timestamp="1606684690842">
+    <state x="595" y="92" key="RollbackChangesDialog" timestamp="1607161948866">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
-    <state x="595" y="92" key="RollbackChangesDialog/0.0.1500.960@0.0.1500.960" timestamp="1606684690842" />
+    <state x="595" y="92" key="RollbackChangesDialog/0.0.1500.960@0.0.1500.960" timestamp="1607161948866" />
     <state x="1016" y="263" key="RollbackChangesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1606589398094" />
     <state x="538" y="169" key="SettingsEditor" timestamp="1605952448938">
       <screen x="0" y="0" width="2560" height="1400" />
@@ -592,11 +596,11 @@
       <screen x="0" y="0" width="1500" height="960" />
     </state>
     <state x="93" y="93" width="1313" height="773" key="VCS.FileHistoryDialog/0.0.1500.960/306.-1440.2560.1400@0.0.1500.960" timestamp="1607019932564" />
-    <state x="288" y="164" key="Vcs.Push.Dialog.v2" timestamp="1607074090494">
+    <state x="288" y="164" key="Vcs.Push.Dialog.v2" timestamp="1607161843161">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
     <state x="288" y="164" key="Vcs.Push.Dialog.v2/0.0.1500.960/306.-1440.2560.1400@0.0.1500.960" timestamp="1607074090494" />
-    <state x="288" y="164" key="Vcs.Push.Dialog.v2/0.0.1500.960@0.0.1500.960" timestamp="1606687728478" />
+    <state x="288" y="164" key="Vcs.Push.Dialog.v2/0.0.1500.960@0.0.1500.960" timestamp="1607161843161" />
     <state x="672" y="301" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1606497650056" />
     <state width="408" height="483" key="XDebugger.FullValuePopup" timestamp="1607017671415">
       <screen x="0" y="0" width="1500" height="960" />
