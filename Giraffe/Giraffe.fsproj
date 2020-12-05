@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domains\Domains.fsproj" />
+    <ProjectReference Include="..\Migrations\Migrations.fsproj" />
     <ProjectReference Include="..\Persistence\Persistence.fsproj" />
   </ItemGroup>
 </Project>

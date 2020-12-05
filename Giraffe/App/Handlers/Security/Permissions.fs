@@ -1,29 +1,15 @@
 module App.Handlers.Security.Permissions
 
-open System
 open System.Security.Claims
 open Giraffe
 open Microsoft.AspNetCore.Http
 open Microsoft.Extensions.Configuration
-open Newtonsoft.Json
 open FSharp.Control.Tasks.V2.ContextInsensitive
 open App.Helpers.MSALClient
 open App.Helpers.Constants
 open Persistence.Data.FiData
 open App.Helpers.HelperFunctions
-
-[<CLIMutable>]
-type B2CGroup = {
-    [<JsonProperty("id")>]Id: Guid
-    [<JsonProperty("displayName")>]DisplayName: string
-    [<JsonProperty("mailEnabled")>]MailEnabled: bool
-    [<JsonProperty("mailNickname")>]MailNickname: string
-    [<JsonProperty("securityEnabled")>]SecurityEnabled: bool
-}
-
-type B2CGroups = {
-    [<JsonProperty("value")>]Groups: B2CGroup list
-}
+open Domains.Users.B2CGroups
 
 let fiAdminCheck = fun iid (next: HttpFunc) (ctx: HttpContext) ->
     task {

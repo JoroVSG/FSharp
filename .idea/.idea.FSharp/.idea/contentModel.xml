@@ -10,6 +10,7 @@
         <e p="Domains.fsproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="Users" t="Include">
+          <e p="B2CGroups.fs" t="Include" />
           <e p="B2CUser.fs" t="Include" />
           <e p="B2CUserResponse.fs" t="Include" />
           <e p="CommonTypes.fs" t="Include" />
@@ -50,6 +51,13 @@
         <e p="WebRoot" t="Include">
           <e p="main.css" t="Include" />
         </e>
+      </e>
+      <e p="Migrations" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Migrate.fs" t="Include" />
+        <e p="Migrations.fsproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Scripts" t="Include" />
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="Persistence" t="IncludeRecursive">
