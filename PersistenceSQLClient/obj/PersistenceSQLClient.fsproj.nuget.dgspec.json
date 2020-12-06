@@ -1,0 +1,156 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Projects\\WebApiFSharp\\FSharp\\PersistenceSQLClient\\PersistenceSQLClient.fsproj": {}
+  },
+  "projects": {
+    "C:\\Projects\\WebApiFSharp\\FSharp\\Domains\\Domains.fsproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Projects\\WebApiFSharp\\FSharp\\Domains\\Domains.fsproj",
+        "projectName": "Domains",
+        "projectPath": "C:\\Projects\\WebApiFSharp\\FSharp\\Domains\\Domains.fsproj",
+        "packagesPath": "C:\\Users\\Joro\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\WebApiFSharp\\FSharp\\Domains\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Joro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "dependencies": {
+            "Dapper.Contrib": {
+              "target": "Package",
+              "version": "[2.0.78, )",
+              "generatePathProperty": true
+            },
+            "FSharp.Core": {
+              "target": "Package",
+              "version": "[4.7.1, )",
+              "generatePathProperty": true
+            },
+            "JsonApiSerializer": {
+              "target": "Package",
+              "version": "[1.7.4, )",
+              "generatePathProperty": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.2, )",
+              "generatePathProperty": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Projects\\WebApiFSharp\\FSharp\\PersistenceSQLClient\\PersistenceSQLClient.fsproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Projects\\WebApiFSharp\\FSharp\\PersistenceSQLClient\\PersistenceSQLClient.fsproj",
+        "projectName": "PersistenceSQLClient",
+        "projectPath": "C:\\Projects\\WebApiFSharp\\FSharp\\PersistenceSQLClient\\PersistenceSQLClient.fsproj",
+        "packagesPath": "C:\\Users\\Joro\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\WebApiFSharp\\FSharp\\PersistenceSQLClient\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Joro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Projects\\WebApiFSharp\\FSharp\\Domains\\Domains.fsproj": {
+                "projectPath": "C:\\Projects\\WebApiFSharp\\FSharp\\Domains\\Domains.fsproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Dapper.FSharp": {
+              "target": "Package",
+              "version": "[1.15.0, )",
+              "generatePathProperty": true
+            },
+            "FSharp.Core": {
+              "target": "Package",
+              "version": "[4.7.1, )",
+              "generatePathProperty": true
+            },
+            "FSharp.Data.SqlClient": {
+              "target": "Package",
+              "version": "[2.0.7, )",
+              "generatePathProperty": true
+            },
+            "TaskBuilder.fs": {
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "generatePathProperty": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 module Persistence.Data.FiData
 
 open System
-open DataContext
+open Persistence.DataContext
 open FSharp.Data.Sql
 
 [<CLIMutable>]
@@ -19,7 +19,7 @@ let getFiByInstitutionId = fun iid ->
        let! res =
            query {
                for fi in CLCSPortalContext.Dbo.FinancialInstitution do
-                where (fi.InstitutionId = iid)
+                where (fi.InstitutionId.Value = iid)
                 select fi
                
            } |> Seq.tryHeadAsync

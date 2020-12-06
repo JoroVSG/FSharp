@@ -1,15 +1,10 @@
 module Persistence.Data.ApplicationData
 
 open System
-open DataContext
+open Persistence.DataContext
 open FSharp.Data.Sql
 open Domains.Applications.Application
-
-type OperationStatus = {
-    Id: Guid
-    Success: bool
-    Exception: Exception option
-}   
+open Domains.Common.CommonTypes
 
 let getAllApplicationsAsync =
    async {
@@ -27,8 +22,8 @@ let getApplicationsByUserId idUser =
        let! res =
            query {
                for application in CLCSPortalContext.Dbo.Application do
-               join userApp in CLCSPortalContext.Dbo.UserApplication on (application.IdApplication = userApp.IdApplication)
-               join user in CLCSPortalContext.Dbo.User on (userApp.IdUser = user.IdUser)
+               join userApp in CLCSPortalContext.Dbo.UserApplication on (application.IdApplication = userApp.IdApplication.Value)
+               join user in CLCSPortalContext.Dbo.User on (userApp.IdUser.Value = user.IdUser)
                where (user.IdUser = idUser)         
                select application
            } |> Seq.executeQueryAsync

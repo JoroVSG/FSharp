@@ -1,14 +1,18 @@
 module Domains.Applications.Application
 
 open System
-open FSharp.Data.Sql.Common
+open Dapper.Contrib.Extensions
+open Domains.Common.CommonTypes
+//open FSharp.Data.Sql.Common
 
 [<CLIMutable>]
 type Application = {
-    [<MappedColumn("IdApplication")>]Id: Guid
-    Description: string
-    Name: string
-    Code: string
-    Rating: int
-    Image: byte[]
+    // [<MappedColumn("IdApplication")>]Id: Guid
+    [<MapColumn("IdApplication")>][<Computed>]Id: Guid option
+    IdApplication: Guid
+    Description: string option
+    Name: string option
+    Code: string option
+    Rating: int option
+    Image: byte[] option
 }

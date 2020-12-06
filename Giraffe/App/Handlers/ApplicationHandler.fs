@@ -9,6 +9,7 @@ open Authentication
 open Persistence.Data.ApplicationData
 open App.Common.JsonApiResponse
 
+
 let getAllApplications = fun (next: HttpFunc) (ctx: HttpContext) ->
     task {
         let! applications = getAllApplicationsAsync

@@ -7,6 +7,9 @@
           <e p="Application.fs" t="Include" />
         </e>
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Common" t="Include">
+          <e p="CommonTypes.fs" t="Include" />
+        </e>
         <e p="Domains.fsproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="Users" t="Include">
@@ -70,6 +73,13 @@
         <e p="DbContext.fs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="Persistence.fsproj" t="IncludeRecursive" />
+      </e>
+      <e p="PersistenceSQLClient" t="IncludeRecursive">
+        <e p="ApplicationData.fs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="DbConfig.fs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="PersistenceSQLClient.fsproj" t="IncludeRecursive" />
       </e>
     </e>
     <e p="C:\Users\Joro\AppData\local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />

@@ -1,31 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="RIDER_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$/../..">
-      <excludeFolder url="file://$MODULE_DIR$/../../.ionide" />
-      <excludeFolder url="file://$MODULE_DIR$/../../Domains/bin" />
-      <excludeFolder url="file://$MODULE_DIR$/../../Domains/obj" />
-      <excludeFolder url="file://$MODULE_DIR$/../../Giraffe/bin/Debug/netcoreapp3.1/WebRoot" />
-      <excludeFolder url="file://$MODULE_DIR$/../../Giraffe/bin/Debug/netcoreapp3.1/cs" />
-      <excludeFolder url="file://$MODULE_DIR$/../../Giraffe/bin/Debug/netcoreapp3.1/de" />
-      <excludeFolder url="file://$MODULE_DIR$/../../Giraffe/bin/Debug/netcoreapp3.1/es" />
-      <excludeFolder url="file://$MODULE_DIR$/../../Giraffe/bin/Debug/netcoreapp3.1/fr" />
-      <excludeFolder url="file://$MODULE_DIR$/../../Giraffe/bin/Debug/netcoreapp3.1/it" />
-      <excludeFolder url="file://$MODULE_DIR$/../../Giraffe/bin/Debug/netcoreapp3.1/ja" />
-      <excludeFolder url="file://$MODULE_DIR$/../../Giraffe/bin/Debug/netcoreapp3.1/ko" />
-      <excludeFolder url="file://$MODULE_DIR$/../../Giraffe/bin/Debug/netcoreapp3.1/pl" />
-      <excludeFolder url="file://$MODULE_DIR$/../../Giraffe/bin/Debug/netcoreapp3.1/pt-BR" />
-      <excludeFolder url="file://$MODULE_DIR$/../../Giraffe/bin/Debug/netcoreapp3.1/ru" />
-      <excludeFolder url="file://$MODULE_DIR$/../../Giraffe/bin/Debug/netcoreapp3.1/runtimes" />
-      <excludeFolder url="file://$MODULE_DIR$/../../Giraffe/bin/Debug/netcoreapp3.1/tr" />
-      <excludeFolder url="file://$MODULE_DIR$/../../Giraffe/bin/Debug/netcoreapp3.1/zh-Hans" />
-      <excludeFolder url="file://$MODULE_DIR$/../../Giraffe/bin/Debug/netcoreapp3.1/zh-Hant" />
-      <excludeFolder url="file://$MODULE_DIR$/../../Giraffe/obj" />
-      <excludeFolder url="file://$MODULE_DIR$/../../Migrations/bin" />
-      <excludeFolder url="file://$MODULE_DIR$/../../Migrations/obj" />
-      <excludeFolder url="file://$MODULE_DIR$/../../Persistence/bin" />
-      <excludeFolder url="file://$MODULE_DIR$/../../Persistence/obj" />
-    </content>
+    <content url="file://$MODULE_DIR$/../.." />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

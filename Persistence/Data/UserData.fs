@@ -2,7 +2,7 @@ module Persistence.Data.UserData
 
 open System
 open System.Linq
-open DataContext
+open Persistence.DataContext
 open FSharp.Data.Sql
 open FSharp.Data.Sql.Common
 open Domains.Users.CommonTypes

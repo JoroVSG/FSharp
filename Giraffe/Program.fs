@@ -73,6 +73,7 @@ let configureServices (services : IServiceCollection) =
         
     services.AddSingleton<IJsonSerializer>(NewtonsoftJsonSerializer(settings)) |> ignore
     services.AddSingleton<MSALAccessTokenHolder>({ AccessToken = None }) |> ignore
+    Dapper.FSharp.OptionTypes.register() |> ignore
 
 let configureLogging (builder : ILoggingBuilder) =
     let filter (l : LogLevel) = l.Equals LogLevel.Error

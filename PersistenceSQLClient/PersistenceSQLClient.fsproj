@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <DotnetFscCompilerPath />
+        <EnableDefaultContentItems>false</EnableDefaultContentItems>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <IsWindows Condition="'$(OS)' == 'Windows_NT'">true</IsWindows>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(IsWindows)' == 'true'">
+        <!-- Your path of full .NET Framework FSC compiler. -->
+        <FscToolPath>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\FSharp</FscToolPath>
+        <FscToolExe>fsc.exe</FscToolExe>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="DbConfig.fs" />
+        <Compile Include="ApplicationData.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Dapper.FSharp" Version="1.15.0" />
+      <PackageReference Include="FSharp.Data.SqlClient" Version="2.0.7" />
+      <PackageReference Include="TaskBuilder.fs" Version="2.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Domains\Domains.fsproj" />
+    </ItemGroup>
+
+</Project>

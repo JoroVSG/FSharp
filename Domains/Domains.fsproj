@@ -5,6 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="Common\CommonTypes.fs" />
         <Compile Include="Applications\Application.fs" />
         <Compile Include="Users\B2CUser.fs" />
         <Compile Include="Users\B2CUserResponse.fs" />
@@ -14,8 +15,9 @@
     </ItemGroup>
 
     <ItemGroup>
+       <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
        <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-       <PackageReference Include="SQLProvider" Version="1.1.93" />
+<!--       <PackageReference Include="SQLProvider" Version="1.1.93" />-->
        <PackageReference Include="JsonApiSerializer" Version="1.7.4" />
     </ItemGroup>
 
