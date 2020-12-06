@@ -10,39 +10,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46d54f0c-fb97-4b15-8016-29c67a0ec41f" name="Default Changelist" comment="Intoducing to JSON api error handling">
-      <change afterPath="$PROJECT_DIR$/Domains/Common/CommonTypes.fs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersistenceSQLClient/ApplicationData.fs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersistenceSQLClient/DbConfig.fs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersistenceSQLClient/PersistenceSQLClient.fsproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersistenceSQLClient/obj/Debug/netcoreapp3.1/.NETCoreApp,Version=v3.1.AssemblyAttributes.fs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersistenceSQLClient/obj/Debug/netcoreapp3.1/PersistenceSQLClient.AssemblyInfo.fs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersistenceSQLClient/obj/Debug/netcoreapp3.1/PersistenceSQLClient.AssemblyInfoInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersistenceSQLClient/obj/Debug/netcoreapp3.1/PersistenceSQLClient.assets.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersistenceSQLClient/obj/Debug/netcoreapp3.1/PersistenceSQLClient.fsproj.CoreCompileInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersistenceSQLClient/obj/Debug/netcoreapp3.1/PersistenceSQLClient.fsprojAssemblyReference.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersistenceSQLClient/obj/PersistenceSQLClient.fsproj.nuget.dgspec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersistenceSQLClient/obj/PersistenceSQLClient.fsproj.nuget.g.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersistenceSQLClient/obj/PersistenceSQLClient.fsproj.nuget.g.targets" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersistenceSQLClient/obj/project.assets.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersistenceSQLClient/obj/project.nuget.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersistenceSQLClient/obj/project.packagespec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersistenceSQLClient/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Domains/Users/CLCSUser.fs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersistenceSQLClient/Mapping.fs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/riderModule.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domains/Applications/Application.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Domains/Applications/Application.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domains/Domains.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Domains/Domains.fsproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FSharp.sln" beforeDir="false" afterPath="$PROJECT_DIR$/FSharp.sln" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/Program.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/Program.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Giraffe/bin/Debug/netcoreapp3.1/Domains.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/bin/Debug/netcoreapp3.1/Domains.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Giraffe/bin/Debug/netcoreapp3.1/Domains.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/bin/Debug/netcoreapp3.1/Domains.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistence/Data/ApplicationData.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Persistence/Data/ApplicationData.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistence/Data/FiData.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Persistence/Data/FiData.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistence/Data/UserData.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Persistence/Data/UserData.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistence/DbContext.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Persistence/DbContext.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersistenceSQLClient/ApplicationData.fs" beforeDir="false" afterPath="$PROJECT_DIR$/PersistenceSQLClient/ApplicationData.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersistenceSQLClient/PersistenceSQLClient.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/PersistenceSQLClient/PersistenceSQLClient.fsproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersistenceSQLClient/obj/Debug/netcoreapp3.1/PersistenceSQLClient.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PersistenceSQLClient/obj/Debug/netcoreapp3.1/PersistenceSQLClient.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersistenceSQLClient/obj/Debug/netcoreapp3.1/PersistenceSQLClient.fsproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PersistenceSQLClient/obj/Debug/netcoreapp3.1/PersistenceSQLClient.fsproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersistenceSQLClient/obj/Debug/netcoreapp3.1/PersistenceSQLClient.fsprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PersistenceSQLClient/obj/Debug/netcoreapp3.1/PersistenceSQLClient.fsprojAssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,10 +73,12 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/IL/0A06CD3F-C48C-4801-A858-F75C007863D2/15/dd318783/02000016.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/A7BD76B1-E4BB-5E55-F477-E28DCB1AC56C/C/async.fs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/ba/e4529ece/Error.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/PersistenceSQLClient/Mapping.fs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/6b/81b5ba46/DocumentRoot`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B19537B-F065-4C3F-9F78-85C4099CD3AA/168/Future.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B7F86EBA-729B-7611-A87B-A0188AFE11AD/A/ModelBinding.fs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B19537B-F065-4C3F-9F78-85C4099CD3AA/16F/TaskContinuation.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B19537B-F065-4C3F-9F78-85C4099CD3AA/16B/Task.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/5b/45f69aac/JsonApiContractResolver.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5E14A7B8-A4AE-E358-A745-0383B8A7145E/1/Http.fs" root0="SKIP_HIGHLIGHTING" />
@@ -121,27 +106,31 @@
         <option value="$PROJECT_DIR$/Domains/Users/CommonTypes.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Common/JsonApiResponse.fs" />
         <option value="$PROJECT_DIR$/Domains/Users/UserDTO.fs" />
-        <option value="$PROJECT_DIR$/Giraffe/App/Common/Converters.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" />
         <option value="$PROJECT_DIR$/Migrations/Migrations.fsproj" />
         <option value="$PROJECT_DIR$/Migrations/Migrate.fs" />
         <option value="$PROJECT_DIR$/Domains/Users/B2CGroups.fs" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Persistence/Data/UserData.fs" />
-        <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" />
         <option value="$PROJECT_DIR$/Persistence/Data/FiData.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Handlers/Security/Permissions.fs" />
         <option value="$PROJECT_DIR$/Persistence/DbContext.fs" />
         <option value="$PROJECT_DIR$/Persistence/Data/ApplicationData.fs" />
-        <option value="$PROJECT_DIR$/PersistenceSQLClient/PersistenceSQLClient.fsproj" />
         <option value="$PROJECT_DIR$/Domains/Common/CommonTypes.fs" />
         <option value="$PROJECT_DIR$/Domains/Domains.fsproj" />
         <option value="$PROJECT_DIR$/Domains/Applications/Application.fs" />
-        <option value="$PROJECT_DIR$/PersistenceSQLClient/ApplicationData.fs" />
-        <option value="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" />
         <option value="$PROJECT_DIR$/PersistenceSQLClient/DbConfig.fs" />
         <option value="$PROJECT_DIR$/Giraffe/Program.fs" />
+        <option value="$PROJECT_DIR$/Giraffe/App/Common/Converters.fs" />
+        <option value="$PROJECT_DIR$/PersistenceSQLClient/Mapping.fs" />
+        <option value="$PROJECT_DIR$/PersistenceSQLClient/PersistenceSQLClient.fsproj" />
+        <option value="$PROJECT_DIR$/PersistenceSQLClient/ApplicationData.fs" />
+        <option value="$PROJECT_DIR$/Domains/Users/CLCSUser.fs" />
+        <option value="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" />
+        <option value="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" />
+        <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" />
+        <option value="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" />
       </list>
     </option>
   </component>
@@ -246,7 +235,7 @@
       <workItem from="1607191071392" duration="6855000" />
       <workItem from="1607239108471" duration="394000" />
       <workItem from="1607239528328" duration="1282000" />
-      <workItem from="1607257290239" duration="11366000" />
+      <workItem from="1607257290239" duration="19024000" />
     </task>
     <task id="LOCAL-00001" summary="Clean up on AnimalData.fs">
       <created>1605628859739</created>
@@ -395,7 +384,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607161841489</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="SQlClient implementation + FSharp Dapper">
+      <created>1607280003072</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1607280003072</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -442,7 +438,8 @@
     <MESSAGE value="Fixing gitignore" />
     <MESSAGE value="Fixing gitignore part 2" />
     <MESSAGE value="Adding Migrations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding Migrations" />
+    <MESSAGE value="SQlClient implementation + FSharp Dapper" />
+    <option name="LAST_COMMIT_MESSAGE" value="SQlClient implementation + FSharp Dapper" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="77" width="723" height="607" key="#xdebugger.evaluate" timestamp="1607017796325">
@@ -616,11 +613,11 @@
       <screen x="0" y="0" width="1500" height="960" />
     </state>
     <state x="93" y="93" width="1313" height="773" key="VCS.FileHistoryDialog/0.0.1500.960/306.-1440.2560.1400@0.0.1500.960" timestamp="1607019932564" />
-    <state x="288" y="164" key="Vcs.Push.Dialog.v2" timestamp="1607161843161">
+    <state x="288" y="126" key="Vcs.Push.Dialog.v2" timestamp="1607280006765">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
     <state x="288" y="164" key="Vcs.Push.Dialog.v2/0.0.1500.960/306.-1440.2560.1400@0.0.1500.960" timestamp="1607074090494" />
-    <state x="288" y="164" key="Vcs.Push.Dialog.v2/0.0.1500.960@0.0.1500.960" timestamp="1607161843161" />
+    <state x="288" y="126" key="Vcs.Push.Dialog.v2/0.0.1500.960@0.0.1500.960" timestamp="1607280006765" />
     <state x="672" y="301" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1606497650056" />
     <state width="408" height="483" key="XDebugger.FullValuePopup" timestamp="1607017671415">
       <screen x="0" y="0" width="1500" height="960" />
@@ -632,6 +629,10 @@
       <screen x="0" y="0" width="1500" height="960" />
     </state>
     <state x="481" y="354" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1500.960/306.-1440.2560.1400@0.0.1500.960" timestamp="1606994414960" />
+    <state x="550" y="0" width="950" height="960" key="find.popup" timestamp="1607283364083">
+      <screen x="0" y="0" width="1500" height="960" />
+    </state>
+    <state x="550" y="0" width="950" height="960" key="find.popup/0.0.1500.960@0.0.1500.960" timestamp="1607283364083" />
     <state x="495" y="307" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1605596937632">
       <screen x="0" y="23" width="1440" height="821" />
     </state>
@@ -642,11 +643,11 @@
     </state>
     <state x="533" y="287" key="run.anything.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1606279426251" />
     <state x="300" y="190" key="run.anything.popup/0.23.1440.814@0.23.1440.814" timestamp="1605481761604" />
-    <state x="457" y="4" width="1009" height="1008" key="search.everywhere.popup" timestamp="1607239854071">
+    <state x="458" y="5" width="1009" height="1008" key="search.everywhere.popup" timestamp="1607280266451">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
     <state x="455" y="2" width="1009" height="1008" key="search.everywhere.popup/0.0.1500.960/306.-1440.2560.1400@0.0.1500.960" timestamp="1607033699292" />
-    <state x="457" y="4" width="1009" height="1008" key="search.everywhere.popup/0.0.1500.960@0.0.1500.960" timestamp="1607239854071" />
+    <state x="458" y="5" width="1009" height="1008" key="search.everywhere.popup/0.0.1500.960@0.0.1500.960" timestamp="1607280266451" />
     <state x="773" y="0" width="1009" height="1470" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1606459685180" />
   </component>
   <component name="XDebuggerManager">

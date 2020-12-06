@@ -40,9 +40,11 @@
     <Content Include="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    
     <Compile Include="App\Common\Authentication.fs" />
     <Compile Include="App\Common\Converters.fs" />
     <Compile Include="App\Common\JsonApiResponse.fs" />
+    <Compile Include="App\Common\Transaction.fs" />
     <Compile Include="App\Common\Exceptions.fs" />
     <Compile Include="App\Helpers\MSALClient.fs" />
     <Compile Include="App\Helpers\HelperFunctions.fs" />
@@ -55,6 +57,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Domains\Domains.fsproj" />
     <ProjectReference Include="..\Migrations\Migrations.fsproj" />
+<!--    <ProjectReference Include="..\PersistenceSQLClient\PersistenceSQLClient.fsproj" />-->
     <ProjectReference Include="..\Persistence\Persistence.fsproj" />
   </ItemGroup>
 </Project>

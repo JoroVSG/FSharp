@@ -16,6 +16,7 @@
           <e p="B2CGroups.fs" t="Include" />
           <e p="B2CUser.fs" t="Include" />
           <e p="B2CUserResponse.fs" t="Include" />
+          <e p="CLCSUser.fs" t="Include" />
           <e p="CommonTypes.fs" t="Include" />
           <e p="UserDTO.fs" t="Include" />
         </e>
@@ -28,6 +29,7 @@
             <e p="Converters.fs" t="Include" />
             <e p="Exceptions.fs" t="Include" />
             <e p="JsonApiResponse.fs" t="Include" />
+            <e p="Transaction.fs" t="Include" />
           </e>
           <e p="Handlers" t="Include">
             <e p="ApplicationHandler.fs" t="Include" />
@@ -78,8 +80,10 @@
         <e p="ApplicationData.fs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="DbConfig.fs" t="Include" />
+        <e p="Mapping.fs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="PersistenceSQLClient.fsproj" t="IncludeRecursive" />
+        <e p="UserData.fs" t="Include" />
       </e>
     </e>
     <e p="C:\Users\Joro\AppData\local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />

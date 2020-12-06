@@ -17,8 +17,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="Mapping.fs" />
         <Compile Include="DbConfig.fs" />
         <Compile Include="ApplicationData.fs" />
+        <Compile Include="UserData.fs" />
     </ItemGroup>
 
     <ItemGroup>

@@ -2,7 +2,6 @@ module PersistenceSQLClient.ApplicationData
 
 open System
 open System.Data.SqlClient
-open System.Reflection
 open DbConfig
 open FSharp.Data
 open Domains.Applications.Application
@@ -10,42 +9,10 @@ open Domains.Common.CommonTypes
 open Dapper.FSharp
 open Dapper.FSharp.MSSQL
 open FSharp.Control.Tasks.V2
-open Domains.Common.CommonTypes
-open Microsoft.FSharp.Reflection
+open PersistenceSQLClient.Mapping
 
-
-let mapResult<'a> = fun (reader: SqlDataReader) ->
-//    let recFields = typeof<'a>.GetMembers() |> Array.filter (fun (f:MemberInfo) -> f.MemberType.ToString() = "Property")
-//    [while reader.Read() do yield (recFields |> Array.map (fun (f:MemberInfo) ->
-//            let c = f.GetCustomAttributes()
-//            let t = c |> Seq.tryFind(fun cc -> cc.GetType() = typeof<MapColumn>)
-//            match t with
-//            | Some attr ->
-//                let mapTo = attr :?> MapColumn
-//                box (reader.[mapTo.FieldName])
-//            | None -> unbox (reader.[f.Name])    
-//        ))] 
-//        |> List.map (fun oArray -> Activator.CreateInstance(typeof<'a>, oArray))
-//        |> Seq.ofList |> Seq.map (fun o -> o :?> 'a)
-    let recFields = FSharpType.GetRecordFields(typeof<'a>)
-    let fields =
-        [while reader.Read() do yield (recFields |> Array.map (fun f ->
-            let c = f.GetCustomAttributes()
-            let t = c |> Seq.tryFind(fun cc -> cc.GetType() = typeof<MapColumn>)
-            match t with
-            | Some attr ->
-                let mapTo = attr :?> MapColumn
-                box (reader.[mapTo.FieldName])
-            | None -> unbox (reader.[f.Name])    
-        ))]
-        |> List.map(fun props -> FSharpValue.MakeRecord(typeof<'a>, props))
         
-    fields
-        |> Seq.ofList
-        |> Seq.map (fun o -> o :?> 'a)
-    
-        
-let getAllApplications = fun (connectionString: string) ->
+let getAllApplicationsAsync = fun (connectionString: SqlConnection) ->
     async {
         use cmd = new SqlCommandProvider<"""
             SELECT IdApplication, Code, Description, Name, Rating, Image FROM dbo.[Application]"""
@@ -54,9 +21,8 @@ let getAllApplications = fun (connectionString: string) ->
         return reader |> mapResult<Application>
                
     }
-let getAllApplicationsAsync = getAllApplications connectionString
     
-let getAllApplicationById = fun (conn: string) idApplication ->
+let getAllApplicationById = fun (conn: SqlConnection) idApplication ->
    async {
         use cmd =
             new SqlCommandProvider<"""
@@ -77,7 +43,7 @@ let getAllApplicationById = fun (conn: string) idApplication ->
             | None -> None
    }
    
-let getApplicationsByUserId (conn: string) idUser =
+let getApplicationsByUserIdAsync (conn: SqlConnection) idUser =
     async {
         use cmd =
             new SqlCommandProvider<"""
@@ -90,10 +56,10 @@ let getApplicationsByUserId (conn: string) idUser =
         let! reader = cmd.AsyncExecute(idUser = idUser)
         return reader |> mapResult<Application>
     }
-let getApplicationsByUserIdAsync = getApplicationsByUserId connectionString
 
 
-let deleteApplication = fun (conn: string) idApp ->
+
+let deleteApplicationAsync = fun (conn: SqlConnection) idApp ->
     async {
         use cmd =
             new SqlCommandProvider<"""
@@ -104,23 +70,15 @@ let deleteApplication = fun (conn: string) idApp ->
         return { Id = Guid.NewGuid(); Success = true; Exception = None }
     }
 
-let deleteApplicationAsync = deleteApplication connectionString
-
-let createApplication = fun conn app ->
+let createApplicationAsync = fun (conn: SqlConnection) app ->
     task {
-        use cStr = new SqlConnection(conn)
-        do! cStr.OpenAsync()
         let guid = Guid.NewGuid()
-
         let app' = { app with IdApplication = guid }
         let insertCE = insert {
             table "Application"
             value app'
         }
-        let! _ = cStr.InsertAsync insertCE
+        let! _ = conn.InsertAsync insertCE
         
         return { Id = guid; Success = true; Exception = None }
     }
-    
-    
-let createApplicationAsync = createApplication connectionString

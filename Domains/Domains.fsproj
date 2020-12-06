@@ -12,6 +12,7 @@
         <Compile Include="Users\UserDTO.fs" />
         <Compile Include="Users\CommonTypes.fs" />
         <Compile Include="Users\B2CGroups.fs" />
+        <Compile Include="Users\CLCSUser.fs" />
     </ItemGroup>
 
     <ItemGroup>
