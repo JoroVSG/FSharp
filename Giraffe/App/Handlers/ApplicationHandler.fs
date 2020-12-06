@@ -7,60 +7,40 @@ open FSharp.Control.Tasks.V2.ContextInsensitive
 open Microsoft.AspNetCore.Http
 open Giraffe
 open Authentication
-open Persistence.Data.ApplicationData
-open App.Common.JsonApiResponse
+open PersistenceSQLClient.ApplicationData
 open App.Common.Transaction
 
 
-let getAllApplications = fun (next: HttpFunc) (ctx: HttpContext) ->
+let getAllApplications = fun (con: SqlConnection) _ ->
     task {
-        let! applications = getAllApplicationsAsync
-        let res = jsonApiWrap applications
-        return! json res next ctx
+        return! getAllApplicationsAsync con
     }
 
-let getApplicationById = fun guid (next: HttpFunc) (ctx: HttpContext) ->
-    task {
-        let! application = getAllApplicationByIdAsync guid
-        return! json (jsonApiWrap application) next ctx
-    }
-
-let x = fun guid  ->
-     fun (con: SqlConnection) ->
-        task {
-            let! application = getAllApplicationByIdAsync guid
-            return application
-        }
-        
-let y iid (next: HttpFunc) (ctx: HttpContext) =
-    task {
-        let! res = withTransaction (x iid) next ctx   
-        return! res
-    }
-    
+let getApplicationById = fun guid (con: SqlConnection) _ ->
+      task {
+          return! getAllApplicationById con guid
+      }
    
-let createApplication: HttpHandler = fun (next: HttpFunc) (ctx: HttpContext) ->
+    
+let createApp = fun (con: SqlConnection) (ctx: HttpContext) ->
     task {
         let! application = ctx.BindJsonAsync<Application>()
-        let! newApp = createApplication application 
-        return! json (jsonApiWrap newApp) next ctx
-    }
-    
-let deleteApplication = fun guid (next: HttpFunc) (ctx: HttpContext) ->
+        return! createApplicationAsync con application
+    }  
+let deleteApplication = fun guid (con: SqlConnection) (ctx: HttpContext) ->
     task {
-        let! newApp = deleteApplication guid 
-        return! json (jsonApiWrap newApp) next ctx
+        return! deleteApplicationAsync con guid 
     }
     
 let applicationsGetRoutes: HttpHandler list = [
-    route "/applications" >=> authorize >=> getAllApplications
-    routef "/applications/%O" (fun guid -> authorize >=> getApplicationById guid)
+    route "/applications" >=> authorize >=> transaction getAllApplications
+    routef "/applications/%O" (fun guid -> authorize >=> transaction (getApplicationById guid))
 ]
 
 let applicationPostRoutes: HttpHandler list = [
-    route "/applications" >=> authorize >=> createApplication
+    route "/applications" >=> authorize >=> transaction createApp
 ]
 
 let applicationDeleteRoutes: HttpHandler list = [
-    routef "/applications/%O" (fun guid -> authorize >=> y guid)
+    routef "/applications/%O" (fun guid -> authorize >=> transaction (deleteApplication guid))
 ]

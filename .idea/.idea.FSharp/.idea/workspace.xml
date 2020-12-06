@@ -10,22 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46d54f0c-fb97-4b15-8016-29c67a0ec41f" name="Default Changelist" comment="Intoducing to JSON api error handling">
-      <change afterPath="$PROJECT_DIR$/Domains/Users/CLCSUser.fs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersistenceSQLClient/Mapping.fs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domains/Domains.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Domains/Domains.fsproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/bin/Debug/netcoreapp3.1/Domains.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/bin/Debug/netcoreapp3.1/Domains.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/bin/Debug/netcoreapp3.1/Domains.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/bin/Debug/netcoreapp3.1/Domains.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersistenceSQLClient/ApplicationData.fs" beforeDir="false" afterPath="$PROJECT_DIR$/PersistenceSQLClient/ApplicationData.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersistenceSQLClient/PersistenceSQLClient.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/PersistenceSQLClient/PersistenceSQLClient.fsproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersistenceSQLClient/obj/Debug/netcoreapp3.1/PersistenceSQLClient.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PersistenceSQLClient/obj/Debug/netcoreapp3.1/PersistenceSQLClient.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersistenceSQLClient/obj/Debug/netcoreapp3.1/PersistenceSQLClient.fsproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PersistenceSQLClient/obj/Debug/netcoreapp3.1/PersistenceSQLClient.fsproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersistenceSQLClient/obj/Debug/netcoreapp3.1/PersistenceSQLClient.fsprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PersistenceSQLClient/obj/Debug/netcoreapp3.1/PersistenceSQLClient.fsprojAssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,9 +116,9 @@
         <option value="$PROJECT_DIR$/PersistenceSQLClient/ApplicationData.fs" />
         <option value="$PROJECT_DIR$/Domains/Users/CLCSUser.fs" />
         <option value="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" />
+        <option value="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" />
         <option value="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" />
-        <option value="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" />
       </list>
     </option>
   </component>
@@ -235,7 +223,7 @@
       <workItem from="1607191071392" duration="6855000" />
       <workItem from="1607239108471" duration="394000" />
       <workItem from="1607239528328" duration="1282000" />
-      <workItem from="1607257290239" duration="19024000" />
+      <workItem from="1607257290239" duration="22968000" />
     </task>
     <task id="LOCAL-00001" summary="Clean up on AnimalData.fs">
       <created>1605628859739</created>
@@ -391,7 +379,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607280003072</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="SQlClient withTransaction HttpHandler">
+      <created>1607288802662</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1607288802662</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -439,7 +434,8 @@
     <MESSAGE value="Fixing gitignore part 2" />
     <MESSAGE value="Adding Migrations" />
     <MESSAGE value="SQlClient implementation + FSharp Dapper" />
-    <option name="LAST_COMMIT_MESSAGE" value="SQlClient implementation + FSharp Dapper" />
+    <MESSAGE value="SQlClient withTransaction HttpHandler" />
+    <option name="LAST_COMMIT_MESSAGE" value="SQlClient withTransaction HttpHandler" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="77" width="723" height="607" key="#xdebugger.evaluate" timestamp="1607017796325">
@@ -613,11 +609,11 @@
       <screen x="0" y="0" width="1500" height="960" />
     </state>
     <state x="93" y="93" width="1313" height="773" key="VCS.FileHistoryDialog/0.0.1500.960/306.-1440.2560.1400@0.0.1500.960" timestamp="1607019932564" />
-    <state x="288" y="126" key="Vcs.Push.Dialog.v2" timestamp="1607280006765">
+    <state x="288" y="126" key="Vcs.Push.Dialog.v2" timestamp="1607288806480">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
     <state x="288" y="164" key="Vcs.Push.Dialog.v2/0.0.1500.960/306.-1440.2560.1400@0.0.1500.960" timestamp="1607074090494" />
-    <state x="288" y="126" key="Vcs.Push.Dialog.v2/0.0.1500.960@0.0.1500.960" timestamp="1607280006765" />
+    <state x="288" y="126" key="Vcs.Push.Dialog.v2/0.0.1500.960@0.0.1500.960" timestamp="1607288806480" />
     <state x="672" y="301" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1606497650056" />
     <state width="408" height="483" key="XDebugger.FullValuePopup" timestamp="1607017671415">
       <screen x="0" y="0" width="1500" height="960" />

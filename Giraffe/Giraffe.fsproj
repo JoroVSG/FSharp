@@ -57,7 +57,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Domains\Domains.fsproj" />
     <ProjectReference Include="..\Migrations\Migrations.fsproj" />
-<!--    <ProjectReference Include="..\PersistenceSQLClient\PersistenceSQLClient.fsproj" />-->
-    <ProjectReference Include="..\Persistence\Persistence.fsproj" />
+    <ProjectReference Include="..\PersistenceSQLClient\PersistenceSQLClient.fsproj" />
+<!--    <ProjectReference Include="..\Persistence\Persistence.fsproj" />-->
   </ItemGroup>
 </Project>
