@@ -21,6 +21,7 @@
         <Compile Include="DbConfig.fs" />
         <Compile Include="ApplicationData.fs" />
         <Compile Include="UserData.fs" />
+        <Compile Include="FiData.fs" />
     </ItemGroup>
 
     <ItemGroup>

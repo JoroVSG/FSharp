@@ -13,6 +13,7 @@
         <Compile Include="Users\CommonTypes.fs" />
         <Compile Include="Users\B2CGroups.fs" />
         <Compile Include="Users\CLCSUser.fs" />
+        <Compile Include="FIs\FinancialInstitution.fs" />
     </ItemGroup>
 
     <ItemGroup>

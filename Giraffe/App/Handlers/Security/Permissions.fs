@@ -1,5 +1,6 @@
 module App.Handlers.Security.Permissions
 
+open System.Data.SqlClient
 open System.Security.Claims
 open Giraffe
 open Microsoft.AspNetCore.Http
@@ -7,15 +8,26 @@ open Microsoft.Extensions.Configuration
 open FSharp.Control.Tasks.V2.ContextInsensitive
 open App.Helpers.MSALClient
 open App.Helpers.Constants
-open Persistence.Data.FiData
+// open Persistence.Data.FiData
 open App.Helpers.HelperFunctions
 open Domains.Users.B2CGroups
+open Microsoft.Extensions.Configuration
+open PersistenceSQLClient.FiData
 
+
+let getFiByInstitutionIdAsync conStr iid =
+    task {
+        use con = new SqlConnection(conStr)
+        do! con.OpenAsync()
+        return! getFiByInstitutionId con iid
+    }
 let fiAdminCheck = fun iid (next: HttpFunc) (ctx: HttpContext) ->
     task {
         let isFiAdmin = getClaim FI_ADMIN_CLAIM_TYPE ctx
         
-        let! tryInstitution = getFiByInstitutionId iid
+        let config = ctx.GetService<IConfiguration>()
+        
+        let! tryInstitution = getFiByInstitutionIdAsync config.["ConnectionString:DefaultConnectionString"] iid
         
         match tryInstitution with
         | Some institution ->

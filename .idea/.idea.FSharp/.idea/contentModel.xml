@@ -11,6 +11,9 @@
           <e p="CommonTypes.fs" t="Include" />
         </e>
         <e p="Domains.fsproj" t="IncludeRecursive" />
+        <e p="FIs" t="Include">
+          <e p="FinancialInstitution.fs" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive" />
         <e p="Users" t="Include">
           <e p="B2CGroups.fs" t="Include" />
@@ -80,6 +83,7 @@
         <e p="ApplicationData.fs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="DbConfig.fs" t="Include" />
+        <e p="FiData.fs" t="Include" />
         <e p="Mapping.fs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="PersistenceSQLClient.fsproj" t="IncludeRecursive" />

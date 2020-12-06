@@ -1,5 +1,4 @@
 module App.Handlers.ApplicationHandler
-
 open System.Data.SqlClient
 open App.Common
 open Domains.Applications.Application
@@ -10,26 +9,27 @@ open Authentication
 open PersistenceSQLClient.ApplicationData
 open App.Common.Transaction
 
-
-let getAllApplications = fun (con: SqlConnection) _ ->
+let getAllApplications = fun transPayload _ ->
     task {
-        return! getAllApplicationsAsync con
+        return! getAllApplicationsAsync transPayload
     }
 
-let getApplicationById = fun guid (con: SqlConnection) _ ->
+let getApplicationById = fun guid transPayload _ ->
       task {
-          return! getAllApplicationById con guid
+          return! getAllApplicationById transPayload guid
       }
    
     
-let createApp = fun (con: SqlConnection) (ctx: HttpContext) ->
+let createApp = fun transPayload (ctx: HttpContext) ->
     task {
         let! application = ctx.BindJsonAsync<Application>()
-        return! createApplicationAsync con application
+        return! createApplicationAsync transPayload application
     }  
-let deleteApplication = fun guid (con: SqlConnection) (ctx: HttpContext) ->
+let deleteApplication = fun guid transPayload ctx ->
     task {
-        return! deleteApplicationAsync con guid 
+        let! res = deleteApplicationAsync transPayload guid
+        let! _ = createApp transPayload ctx
+        return res
     }
     
 let applicationsGetRoutes: HttpHandler list = [

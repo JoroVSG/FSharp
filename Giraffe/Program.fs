@@ -21,7 +21,7 @@ open App.Handlers.ApplicationHandler
 open App.Common.Exceptions
 open Newtonsoft.Json
 open Newtonsoft.Json.Serialization
-open App.Handlers.UserHandler
+//  App.Handlers.UserHandler
 
 
 let mutable Configurations: IConfigurationRoot = null
@@ -29,9 +29,10 @@ let mutable Configurations: IConfigurationRoot = null
 let allGetRoutes: HttpHandler list =
     [ route "/" >=> text "Public endpoint."]
     @ applicationsGetRoutes
-    @ usersGetRoutes
+    // @ usersGetRoutes
 
-let allPostRoutes: HttpHandler list = applicationPostRoutes @ usersPostRoutes
+let allPostRoutes: HttpHandler list = applicationPostRoutes
+                                      //@ usersPostRoutes
 let allDeleteRoutes: HttpHandler list = applicationDeleteRoutes
 
 let webApp =

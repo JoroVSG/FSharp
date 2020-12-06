@@ -23,7 +23,6 @@ let mapResult<'a> = fun (reader: SqlDataReader) ->
         |> Seq.map (fun o -> o :?> 'a)
 
 
-
 //    let recFields = typeof<'a>.GetMembers() |> Array.filter (fun (f:MemberInfo) -> f.MemberType.ToString() = "Property")
 //    [while reader.Read() do yield (recFields |> Array.map (fun (f:MemberInfo) ->
 //            let c = f.GetCustomAttributes()
