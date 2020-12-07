@@ -1,18 +1,19 @@
 module PersistenceSQLClient.ApplicationData
 
 open System
-open System.Data.Common
-open System.Data.SqlClient
-open System.Data.SqlClient
 open System.Data.SqlClient
 open DbConfig
 open FSharp.Data
+open System.Data
 open Domains.Applications.Application
 open Domains.Common.CommonTypes
 open Dapper.FSharp
 open Dapper.FSharp.MSSQL
 open FSharp.Control.Tasks.V2
-open PersistenceSQLClient.Mapping
+//open Dapper
+//open Dapper.Contrib.Extensions
+//open PersistenceSQLClient.Mapping
+//open Dapper.Transaction
 
         
 let getAllApplicationsAsync = fun (connectionString: SqlConnection, trans) ->
@@ -64,10 +65,12 @@ let getApplicationsByUserIdAsync (conn: SqlConnection, trans) idUser =
                     INNER JOIN dbo.[UserApplication] as ua on ua.IdApplication = a.IdApplication
                     INNER JOIN [User] as u on u.IdUser = ua.IdUser
                     WHERE u.IdUser = @idUser
-            """ , ConnectionString, ResultType = ResultType.DataReader>(conn, transaction = trans)
+            """ , ConnectionString>(conn, transaction = trans)
         
         let! reader = cmd.AsyncExecute(idUser = idUser)
-        return reader |> mapResult<Application>
+        return reader
+            |> Seq.map(fun r -> {| Id = r.IdApplication; Name = r.Name; Code = r.Code |})
+            |> Seq.toList
     }
 
 let deleteApplicationAsync = fun (conn: SqlConnection, trans) idApp ->
@@ -80,6 +83,30 @@ let deleteApplicationAsync = fun (conn: SqlConnection, trans) idApp ->
         let! _ = cmd.AsyncExecute(idApplication = idApp)
         return { Id = Guid.NewGuid(); Success = true; Exception = None }
     }
+    
+//let createApplicationAsync = fun (conn: SqlConnection, trans: SqlTransaction) (app: Application) ->
+////    SqlMapper.AddTypeHandler (OptionHandler<byte[]>())
+////    task {
+////        let guid = Guid.NewGuid()
+////        let! _ = conn.InsertAsync({ app with IdApplication = guid }, trans)
+////        
+////        return { Id = guid; Success = true; Exception = None }
+////    }
+//        let guid = Guid.NewGuid()
+//        use cmd =
+//            new SqlCommandProvider<"""
+//                INSERT INTO dbo.[Application](IdApplication, Name, Code, Image, Description)
+//                VALUES(@idApplication, @name, @code, @image, @description)
+//            """ , ConnectionString, AllParametersOptional = true>(conn, transaction = trans)
+//        let _ = cmd.Execute(
+//                   idApplication = Some guid,
+//                   name = app.Name,
+//                   code = app.Code,
+//                   image = app.Image,
+//                   description = app.Description
+//               )
+//        { Id = guid; Success = true; Exception = None }
+//    
 
 let createApplicationAsync = fun (conn: SqlConnection, trans: SqlTransaction) app ->
     task {
@@ -89,7 +116,10 @@ let createApplicationAsync = fun (conn: SqlConnection, trans: SqlTransaction) ap
             table "Application"
             value app'
         }
-        let! _ = conn.InsertAsync insertCE
+        let! _ = conn.InsertAsync(insertCE, trans)
         
         return { Id = guid; Success = true; Exception = None }
     }
+    
+    
+    

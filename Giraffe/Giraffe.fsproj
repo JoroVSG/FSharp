@@ -18,6 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.78" />
     <PackageReference Include="Dapper.FSharp" Version="1.15.0" />
     <PackageReference Include="FSharp.Data" Version="3.3.3" />
     <PackageReference Include="Giraffe" Version="4.1.*" />

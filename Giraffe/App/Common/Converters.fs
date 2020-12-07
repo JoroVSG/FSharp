@@ -4,6 +4,7 @@ open System
 open Microsoft.FSharp.Reflection
 open Newtonsoft.Json
 open Newtonsoft.Json.Converters
+open Dapper
 
 //type OptionConverter() =
 //    inherit JsonConverter()
@@ -124,4 +125,3 @@ type IdiomaticDuConverter() =
     override __.CanConvert(objectType) =
         let res = FSharpType.IsUnion objectType
         res
-
