@@ -27,7 +27,7 @@ let handleErrorJsonAPI = fun (ex: Exception) _ (ctx: HttpContext) ->
     task {
         let (code, message) =
             match ex with
-                | :? InvalidOperationException -> (StatusCodes.Status404NotFound, "")
+                | :? InvalidOperationException -> (StatusCodes.Status404NotFound, ex.Message)
                 | :? KeyNotFoundException -> (StatusCodes.Status404NotFound, "")
                 | :? UnauthorizedAccessException -> (StatusCodes.Status401Unauthorized, "")
                 // | :? InvalidModelStateException  -> (StatusCodes.Status422UnprocessableEntity, "")

@@ -8,7 +8,7 @@ open Domains.Common.CommonTypes
 [<CLIMutable>]
 type Application = {
     // [<MappedColumn("IdApplication")>]Id: Guid
-    [<MapColumn("IdApplication")>][<Computed>]Id: Guid option
+    [<MapColumn("IdApplication")>][<Computed>]Id: Guid
     IdApplication: Guid
     Description: string option
     Name: string option

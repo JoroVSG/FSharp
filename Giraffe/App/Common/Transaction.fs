@@ -10,7 +10,8 @@ open Microsoft.AspNetCore.Http
 open FSharp.Control.Tasks.V2.ContextInsensitive
 open Microsoft.Extensions.Configuration
 
-type TransactionFunction<'a> = (SqlConnection * SqlTransaction) -> HttpContext -> Task<'a>
+type TransactionPayload = (SqlConnection * SqlTransaction)
+type TransactionFunction<'a> = TransactionPayload -> HttpContext -> Task<'a>
 let withTransaction<'a> = fun (f: TransactionFunction<'a>) (ctx: HttpContext) ->
     task {
         let config = ctx.GetService<IConfiguration>()
