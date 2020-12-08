@@ -27,8 +27,6 @@ let withTransaction<'a> = fun (f: TransactionFunction<'a>) (ctx: HttpContext) ->
         with ex ->
             do! trans.RollbackAsync()
             return raise ex
-                
-        
     }
     
 let transaction<'a> = fun (f: TransactionFunction<'a>) (next: HttpFunc) (ctx: HttpContext) ->

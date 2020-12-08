@@ -10,23 +10,25 @@ open Domains.Common.CommonTypes
 open Dapper.FSharp
 open Dapper.FSharp.MSSQL
 open FSharp.Control.Tasks.V2
+open PersistenceSQLClient.Mapping
 
 let getAllApplicationsAsync = fun (connectionString: SqlConnection, trans) ->
     async {
         use cmd = new SqlCommandProvider<"""
             SELECT IdApplication, Code, Description, Name, Rating, Image FROM dbo.[Application]"""
-        , ConnectionString>(connectionString, transaction = trans)
+        , ConnectionString, ResultType=ResultType.DataReader>(connectionString, transaction = trans)
         let! reader = cmd.AsyncExecute()
-        return reader
-            |> Seq.map(fun a ->
-                {
-                    Code = a.Code
-                    Description = a.Description
-                    Name = a.Name
-                    Rating = a.Rating
-                    IdApplication = a.IdApplication }
-                )
-            |> Seq.toList   
+        let res = mapping<Application> reader
+        return res
+//            |> Seq.map(fun a ->
+//                {
+//                    Code = a.Code
+//                    Description = a.Description
+//                    Name = a.Name
+//                    Rating = a.Rating
+//                    IdApplication = a.IdApplication }
+//                )
+//            |> Seq.toList   
     }
     
 let getAllApplicationById = fun (conn: SqlConnection, trans) idApplication ->

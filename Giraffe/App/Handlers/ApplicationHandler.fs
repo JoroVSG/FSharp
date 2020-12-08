@@ -16,6 +16,7 @@ let getAllApplications = fun transPayload (ctx: HttpContext) ->
         let mapper = ctx.GetService<IMapper>()
         let! models = getAllApplicationsAsync transPayload
         return models
+            |> Seq.toList
             |> List.map (fun app -> mapper.Map<ApplicationDTO>(app))
     }
 
