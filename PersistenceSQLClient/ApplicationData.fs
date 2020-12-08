@@ -24,7 +24,6 @@ let getAllApplicationsAsync = fun (connectionString: SqlConnection, trans) ->
                     Description = a.Description
                     Name = a.Name
                     Rating = a.Rating
-                    Image = a.Image
                     IdApplication = a.IdApplication }
                 )
             |> Seq.toList   
@@ -45,7 +44,6 @@ let getAllApplicationById = fun (conn: SqlConnection, trans) idApplication ->
                     Description = a.Description
                     Name = a.Name
                     Rating = a.Rating
-                    Image = a.Image
                     IdApplication = a.IdApplication }
             | None -> None
    }
@@ -78,28 +76,21 @@ let deleteApplicationAsync = fun (conn: SqlConnection, trans) idApp ->
     }
     
 //let createApplicationAsync = fun (conn: SqlConnection, trans: SqlTransaction) (app: Application) ->
-////    SqlMapper.AddTypeHandler (OptionHandler<byte[]>())
-////    task {
-////        let guid = Guid.NewGuid()
-////        let! _ = conn.InsertAsync({ app with IdApplication = guid }, trans)
-////        
-////        return { Id = guid; Success = true; Exception = None }
-////    }
 //        let guid = Guid.NewGuid()
 //        use cmd =
 //            new SqlCommandProvider<"""
-//                INSERT INTO dbo.[Application](IdApplication, Name, Code, Image, Description)
-//                VALUES(@idApplication, @name, @code, @image, @description)
+//                INSERT INTO dbo.[Application](IdApplication, Name, Code, Description)
+//                VALUES(@idApplication, @name, @code, @description)
 //            """ , ConnectionString, AllParametersOptional = true>(conn, transaction = trans)
 //        let _ = cmd.Execute(
 //                   idApplication = Some guid,
 //                   name = app.Name,
 //                   code = app.Code,
-//                   image = app.Image,
+//                   // image = app.Image,
 //                   description = app.Description
 //               )
 //        { Id = guid; Success = true; Exception = None }
-//    
+    
 
 let createApplicationAsync = fun (conn: SqlConnection, trans: SqlTransaction) app ->
     task {

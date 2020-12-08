@@ -3,6 +3,7 @@ module App.Mapping.ApplicationMapper
 open App.DTOs.ApplicationDTO
 open Domains.Applications.Application
 
+// using Automapper instead of manual mapping
 let modelToDto = fun model ->
    let dto: ApplicationDTO =
       { Id = model.IdApplication
@@ -14,13 +15,13 @@ let modelToDto = fun model ->
         Type = "application" }
    dto
 
+   
 let dtoToModel = fun dto ->
     let model: Application =
         { IdApplication = dto.Id
           Description = dto.Description
           Name = dto.Name
           Code = dto.Code
-          Image = None
           Rating = dto.Rating }
     model    
 

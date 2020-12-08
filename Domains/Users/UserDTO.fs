@@ -39,8 +39,4 @@ type UserDTO = {
     ActivationStatus: string
     Applications: Relationship<Application list>
     // IsFiAdmin: bool
-    
 }
-  
-//public Relationship<List<ApplicationDTO>> Applications { get; set; } = new Relationship<List<ApplicationDTO>>();
-//public Status ActivationStatus { get; set; }

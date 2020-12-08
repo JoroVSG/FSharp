@@ -2,6 +2,8 @@ module App.Handlers.ApplicationHandler
 open App.Common
 open App.DTOs.ApplicationDTO
 open App.Mapping.ApplicationMapper
+open AutoMapper
+open Domains.Applications.Application
 open FSharp.Control.Tasks.V2.ContextInsensitive
 open Microsoft.AspNetCore.Http
 open Giraffe
@@ -9,19 +11,22 @@ open Authentication
 open PersistenceSQLClient.ApplicationData
 open App.Common.Transaction
 
-let getAllApplications = fun transPayload _ ->
+let getAllApplications = fun transPayload (ctx: HttpContext) ->
     task {
+        let mapper = ctx.GetService<IMapper>()
         let! models = getAllApplicationsAsync transPayload
         return models
-            |> List.map (fun app -> modelToDto app)
+            |> List.map (fun app -> mapper.Map<ApplicationDTO>(app))
     }
 
-let getApplicationById = fun guid transPayload _ ->
+let getApplicationById = fun guid transPayload (ctx: HttpContext) ->
       task {
           let! model = getAllApplicationById transPayload guid
           return
             match model with
-                | Some m -> modelToDto m |> Some
+                | Some m ->
+                    let mapper = ctx.GetService<IMapper>()
+                    mapper.Map<ApplicationDTO>(m) |> Some
                 | None -> None
       }
    
@@ -29,13 +34,13 @@ let getApplicationById = fun guid transPayload _ ->
 let createApp = fun transPayload (ctx: HttpContext) ->
     task {
         let! application = ctx.BindJsonAsync<ApplicationDTO>()
-        let model = dtoToModel application
+        let mapper = ctx.GetService<IMapper>()
+        let model = mapper.Map<Application>(application)
         return! createApplicationAsync transPayload model
     }  
-let deleteApplication = fun guid transPayload ctx ->
+let deleteApplication = fun guid transPayload _ ->
     task {
         let! res = deleteApplicationAsync transPayload guid
-        let! _ = createApp transPayload ctx
         return res
     }
     

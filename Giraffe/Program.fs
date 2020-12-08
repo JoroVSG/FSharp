@@ -2,10 +2,14 @@ module JwtApp.App
 
 open System
 open System.IO
+open System.Linq.Expressions
+open App.DTOs.ApplicationDTO
+open Domains.Applications.Application
 open App.Helpers.MSALClient
 open Giraffe
 open Giraffe.Serialization
-open App.Common.Converters
+// open App.Common.Converters
+open Newtonsoft.Json.FSharp
 open JsonApiSerializer
 open AutoMapper
 open JsonApiSerializer.ContractResolvers
@@ -24,6 +28,23 @@ open Newtonsoft.Json
 open Newtonsoft.Json.Serialization
 //  App.Handlers.UserHandler
 
+type AutoMapper.IMappingExpression<'TSource, 'TDestination> with
+    // The overloads in AutoMapper's ForMember method seem to confuse
+    // F#'s type inference, forcing you to supply explicit type annotations
+    // for pretty much everything to get it to compile. By simply supplying
+    // a different name, 
+    member this.ForMemberFs<'TMember>
+            (destGetter:Expression<Func<'TDestination, 'TMember>>,
+             sourceGetter:Action<IMemberConfigurationExpression<'TSource, 'TDestination, 'TMember>>) =
+        this.ForMember(destGetter, sourceGetter)
+
+type OptionExpressions =
+    static member MapFrom<'source, 'destination, 'sourceMember, 'destinationMember> (e: 'source -> 'sourceMember) =
+        System.Action<IMemberConfigurationExpression<'source, 'destination, 'destinationMember>> (fun (opts: IMemberConfigurationExpression<'source, 'destination, 'destinationMember>) -> opts.MapFrom(e))
+    static member UseValue<'source, 'destination, 'value> (e: 'value) =
+        System.Action<IMemberConfigurationExpression<'source, 'destination, 'value>> (fun (opts: IMemberConfigurationExpression<'source, 'destination, 'value>) -> opts.UseValue(e))
+    static member Ignore<'source, 'destination, 'destinationMember> () =
+        System.Action<IMemberConfigurationExpression<'source, 'destination, 'destinationMember>> (fun (opts: IMemberConfigurationExpression<'source, 'destination, 'destinationMember>) -> opts.Ignore())
 
 let mutable Configurations: IConfigurationRoot = null
 
@@ -71,12 +92,28 @@ let configureServices (services : IServiceCollection) =
         .AddJwtBearer(Action<JwtBearerOptions> jwtBearerOptions) |> ignore
         
     let settings = JsonApiSerializerSettings()
-    settings.Converters.Add(IdiomaticDuConverter())
+    settings.Converters.Add(OptionConverter())
+    // settings.Converters.Add(OptionConverter())
         
     services.AddSingleton<IJsonSerializer>(NewtonsoftJsonSerializer(settings)) |> ignore
     services.AddSingleton<MSALAccessTokenHolder>({ AccessToken = None }) |> ignore
     Dapper.FSharp.OptionTypes.register() |> ignore
-    services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()) |> ignore
+    let configuration = MapperConfiguration(fun cfg ->
+        cfg.CreateMap<Application, ApplicationDTO>()
+            .ForMemberFs(
+                (fun d -> d.Id),
+                (fun opts -> opts.MapFrom(fun s -> s.IdApplication))
+            ) |> ignore
+        cfg.CreateMap<ApplicationDTO, Application>()
+            .ForMemberFs(
+                (fun d -> d.IdApplication),
+                (fun opts -> opts.MapFrom(fun s -> s.Id))
+            )|> ignore
+    )
+    
+    let mapper = configuration.CreateMapper()
+    
+    services.AddSingleton<IMapper>(mapper) |> ignore
 
 let configureLogging (builder : ILoggingBuilder) =
     let filter (l : LogLevel) = l.Equals LogLevel.Error

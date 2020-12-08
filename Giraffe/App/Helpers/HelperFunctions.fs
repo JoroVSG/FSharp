@@ -49,7 +49,9 @@ let getClaimValue<'T> = fun ctx claimName ->
     | Some claimValue -> convert claimValue.Value
     | None -> Unchecked.defaultof<'T>
  
-   
+let emptyArray =
+    let array: byte [] = Array.zeroCreate 0
+    array 
 let createResponse = fun status message ->
     setStatusCode status >=> (json <| createJsonApiError message status)
 
