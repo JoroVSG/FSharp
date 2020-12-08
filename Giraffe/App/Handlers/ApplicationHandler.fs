@@ -1,7 +1,7 @@
 module App.Handlers.ApplicationHandler
-open System.Data.SqlClient
 open App.Common
-open Domains.Applications.Application
+open App.DTOs.ApplicationDTO
+open App.Mapping.ApplicationMapper
 open FSharp.Control.Tasks.V2.ContextInsensitive
 open Microsoft.AspNetCore.Http
 open Giraffe
@@ -11,19 +11,26 @@ open App.Common.Transaction
 
 let getAllApplications = fun transPayload _ ->
     task {
-        return! getAllApplicationsAsync transPayload
+        let! models = getAllApplicationsAsync transPayload
+        return models
+            |> List.map (fun app -> modelToDto app)
     }
 
 let getApplicationById = fun guid transPayload _ ->
       task {
-          return! getAllApplicationById transPayload guid
+          let! model = getAllApplicationById transPayload guid
+          return
+            match model with
+                | Some m -> modelToDto m |> Some
+                | None -> None
       }
    
     
 let createApp = fun transPayload (ctx: HttpContext) ->
     task {
-        let! application = ctx.BindJsonAsync<Application>()
-        return! createApplicationAsync transPayload application
+        let! application = ctx.BindJsonAsync<ApplicationDTO>()
+        let model = dtoToModel application
+        return! createApplicationAsync transPayload model
     }  
 let deleteApplication = fun guid transPayload ctx ->
     task {

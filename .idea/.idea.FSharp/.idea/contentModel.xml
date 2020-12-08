@@ -34,6 +34,9 @@
             <e p="JsonApiResponse.fs" t="Include" />
             <e p="Transaction.fs" t="Include" />
           </e>
+          <e p="DTOs" t="Include">
+            <e p="ApplicationDTO.fs" t="Include" />
+          </e>
           <e p="Handlers" t="Include">
             <e p="ApplicationHandler.fs" t="Include" />
             <e p="Security" t="Include">
@@ -45,6 +48,9 @@
             <e p="Constants.fs" t="Include" />
             <e p="HelperFunctions.fs" t="Include" />
             <e p="MSALClient.fs" t="Include" />
+          </e>
+          <e p="Mapping" t="Include">
+            <e p="ApplicationMapper.fs" t="Include" />
           </e>
         </e>
         <e p="appsettings.json" t="Include" />

@@ -1,11 +1,14 @@
-module Domains.Applications.Application
+module App.DTOs.ApplicationDTO
 
 open System
-type Application = {
+
+[<CLIMutable>]
+type ApplicationDTO = {
+    Id: Guid
     IdApplication: Guid
     Description: string option
     Name: string option
     Code: string option
     Rating: int option
-    Image: byte[] option
+    Type: string
 }

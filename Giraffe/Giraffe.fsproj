@@ -18,6 +18,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
     <PackageReference Include="Dapper" Version="2.0.78" />
     <PackageReference Include="Dapper.FSharp" Version="1.15.0" />
     <PackageReference Include="FSharp.Data" Version="3.3.3" />
@@ -42,6 +44,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     
+    <Compile Include="App\DTOs\ApplicationDTO.fs" />
+    <Compile Include="App\Mapping\ApplicationMapper.fs" />
     <Compile Include="App\Common\Authentication.fs" />
     <Compile Include="App\Common\Converters.fs" />
     <Compile Include="App\Common\JsonApiResponse.fs" />

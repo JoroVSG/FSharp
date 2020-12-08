@@ -10,12 +10,7 @@ open Domains.Common.CommonTypes
 open Dapper.FSharp
 open Dapper.FSharp.MSSQL
 open FSharp.Control.Tasks.V2
-//open Dapper
-//open Dapper.Contrib.Extensions
-//open PersistenceSQLClient.Mapping
-//open Dapper.Transaction
 
-        
 let getAllApplicationsAsync = fun (connectionString: SqlConnection, trans) ->
     async {
         use cmd = new SqlCommandProvider<"""
@@ -25,7 +20,6 @@ let getAllApplicationsAsync = fun (connectionString: SqlConnection, trans) ->
         return reader
             |> Seq.map(fun a ->
                 {
-                    Id = a.IdApplication
                     Code = a.Code
                     Description = a.Description
                     Name = a.Name
@@ -47,7 +41,6 @@ let getAllApplicationById = fun (conn: SqlConnection, trans) idApplication ->
         return
             match app with
             | Some a -> Some {
-                    Id = a.IdApplication
                     Code = a.Code
                     Description = a.Description
                     Name = a.Name

@@ -7,6 +7,7 @@ open Giraffe
 open Giraffe.Serialization
 open App.Common.Converters
 open JsonApiSerializer
+open AutoMapper
 open JsonApiSerializer.ContractResolvers
 open Microsoft.AspNetCore.Authentication
 open Microsoft.AspNetCore.Authentication.JwtBearer
@@ -75,6 +76,7 @@ let configureServices (services : IServiceCollection) =
     services.AddSingleton<IJsonSerializer>(NewtonsoftJsonSerializer(settings)) |> ignore
     services.AddSingleton<MSALAccessTokenHolder>({ AccessToken = None }) |> ignore
     Dapper.FSharp.OptionTypes.register() |> ignore
+    services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()) |> ignore
 
 let configureLogging (builder : ILoggingBuilder) =
     let filter (l : LogLevel) = l.Equals LogLevel.Error
