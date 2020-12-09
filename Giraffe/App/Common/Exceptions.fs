@@ -26,7 +26,7 @@ let createJsonApiError = fun message code ->
 let handleErrorJsonAPI = fun (ex: Exception) _ (ctx: HttpContext) ->
     task {
         let (code, message) =
-            match ex with
+             match ex with
                 | :? InvalidOperationException -> (StatusCodes.Status404NotFound, ex.Message)
                 | :? KeyNotFoundException -> (StatusCodes.Status404NotFound, "")
                 | :? UnauthorizedAccessException -> (StatusCodes.Status401Unauthorized, "")

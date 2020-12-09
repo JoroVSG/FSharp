@@ -3,6 +3,7 @@ module JwtApp.App
 open System
 open System.IO
 open System.Linq.Expressions
+open App.Common.Converters
 open App.DTOs.ApplicationDTO
 open Domains.Applications.Application
 open App.Helpers.MSALClient
@@ -92,7 +93,7 @@ let configureServices (services : IServiceCollection) =
         .AddJwtBearer(Action<JwtBearerOptions> jwtBearerOptions) |> ignore
         
     let settings = JsonApiSerializerSettings()
-    settings.Converters.Add(OptionConverter())
+    settings.Converters.Add(IdiomaticDuConverter())
     // settings.Converters.Add(OptionConverter())
         
     services.AddSingleton<IJsonSerializer>(NewtonsoftJsonSerializer(settings)) |> ignore

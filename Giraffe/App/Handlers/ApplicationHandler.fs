@@ -1,7 +1,6 @@
 module App.Handlers.ApplicationHandler
 open App.Common
 open App.DTOs.ApplicationDTO
-open App.Mapping.ApplicationMapper
 open AutoMapper
 open Domains.Applications.Application
 open FSharp.Control.Tasks.V2.ContextInsensitive

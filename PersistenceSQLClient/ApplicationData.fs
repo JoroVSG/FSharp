@@ -4,34 +4,28 @@ open System
 open System.Data.SqlClient
 open DbConfig
 open FSharp.Data
-open System.Data
 open Domains.Applications.Application
 open Domains.Common.CommonTypes
 open Dapper.FSharp
 open Dapper.FSharp.MSSQL
 open FSharp.Control.Tasks.V2
 open PersistenceSQLClient.Mapping
+        
 
 let getAllApplicationsAsync = fun (connectionString: SqlConnection, trans) ->
     async {
         use cmd = new SqlCommandProvider<"""
-            SELECT IdApplication, Code, Description, Name, Rating, Image FROM dbo.[Application]"""
-        , ConnectionString, ResultType=ResultType.DataReader>(connectionString, transaction = trans)
+            SELECT IdApplication, Code, Description, Name FROM dbo.[Application]"""
+        , ConnectionString>(connectionString, transaction = trans)
         let! reader = cmd.AsyncExecute()
-        let res = mapping<Application> reader
+        let res = reader
+                  |> Seq.map(fun app -> mapToRecord<Application> app)
+                  |> Seq.toList
         return res
-//            |> Seq.map(fun a ->
-//                {
-//                    Code = a.Code
-//                    Description = a.Description
-//                    Name = a.Name
-//                    Rating = a.Rating
-//                    IdApplication = a.IdApplication }
-//                )
-//            |> Seq.toList   
     }
     
 let getAllApplicationById = fun (conn: SqlConnection, trans) idApplication ->
+  
    async {
         use cmd =
             new SqlCommandProvider<"""
@@ -39,15 +33,9 @@ let getAllApplicationById = fun (conn: SqlConnection, trans) idApplication ->
             """ , ConnectionString, SingleRow=true>(conn, transaction = trans)
         
         let! app = cmd.AsyncExecute(idApplication = idApplication)
-        return
-            match app with
-            | Some a -> Some {
-                    Code = a.Code
-                    Description = a.Description
-                    Name = a.Name
-                    Rating = a.Rating
-                    IdApplication = a.IdApplication }
-            | None -> None
+        return match app with
+                | Some a -> mapToRecord<Application> a |> Some
+                | None -> None
    }
    
 let getApplicationsByUserIdAsync (conn: SqlConnection, trans) idUser =
@@ -62,8 +50,8 @@ let getApplicationsByUserIdAsync (conn: SqlConnection, trans) idUser =
         
         let! reader = cmd.AsyncExecute(idUser = idUser)
         return reader
-            |> Seq.map(fun r -> {| Id = r.IdApplication; Name = r.Name; Code = r.Code |})
-            |> Seq.toList
+                  |> Seq.map(fun app -> mapToRecord<Application> app)
+                  |> Seq.toList
     }
 
 let deleteApplicationAsync = fun (conn: SqlConnection, trans) idApp ->
