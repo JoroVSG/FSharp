@@ -38,9 +38,10 @@ let createApp = fun transPayload (ctx: HttpContext) ->
         let model = mapper.Map<Application>(application)
         return! createApplicationAsync transPayload model
     }  
-let deleteApplication = fun guid transPayload _ ->
+let deleteApplication = fun guid transPayload ctx ->
     task {
         let! res = deleteApplicationAsync transPayload guid
+        //let! x = createApp transPayload ctx
         return res
     }
     
