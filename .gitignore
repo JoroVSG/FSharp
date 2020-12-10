@@ -13,3 +13,5 @@
 /Migrations/bin/
 /Migrations/obj/
 .idea
+/PersistenceSQLClient/bin/
+/PersistenceSQLClient/obj/
