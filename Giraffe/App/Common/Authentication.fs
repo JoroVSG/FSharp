@@ -11,7 +11,6 @@ open Microsoft.IdentityModel.Tokens
 open FSharp.Control.Tasks.V2
 open Giraffe
 
-
 let unAuthorized: HttpHandler =
     RequestErrors.UNAUTHORIZED
         JwtBearerDefaults.AuthenticationScheme

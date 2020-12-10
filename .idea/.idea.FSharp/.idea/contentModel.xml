@@ -51,6 +51,9 @@
           </e>
           <e p="Mapping" t="Include">
             <e p="ApplicationMapper.fs" t="Include" />
+            <e p="Automapper" t="Include">
+              <e p="MapperConfig.fs" t="Include" />
+            </e>
           </e>
         </e>
         <e p="appsettings.json" t="Include" />

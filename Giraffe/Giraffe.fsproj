@@ -40,6 +40,7 @@
     
     <Compile Include="App\DTOs\UserDTO.fs" />
     <Compile Include="App\Mapping\ApplicationMapper.fs" />
+    <Compile Include="App\Mapping\Automapper\MapperConfig.fs" />
     <Compile Include="App\Common\Authentication.fs" />
     <Compile Include="App\Common\Converters.fs" />
     <Compile Include="App\Common\JsonApiResponse.fs" />
