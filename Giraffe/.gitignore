@@ -108,3 +108,4 @@ bin/Debug/netcoreapp3.1/tr/FSharp.Core.resources.dll
 bin/Debug/netcoreapp3.1/zh-Hans/FSharp.Core.resources.dll
 bin/Debug/netcoreapp3.1/zh-Hant/FSharp.Core.resources.dll
 /bin/
+/.idea/
