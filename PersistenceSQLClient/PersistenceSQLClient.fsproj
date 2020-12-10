@@ -1,19 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+    <Import Project="..\fsc.props" />
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>netstandard2.1</TargetFramework>
         <DotnetFscCompilerPath />
         <EnableDefaultContentItems>false</EnableDefaultContentItems>
-    </PropertyGroup>
-
-    <PropertyGroup>
-        <IsWindows Condition="'$(OS)' == 'Windows_NT'">true</IsWindows>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(IsWindows)' == 'true'">
-        <!-- Your path of full .NET Framework FSC compiler. -->
-        <FscToolPath>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\FSharp</FscToolPath>
-        <FscToolExe>fsc.exe</FscToolExe>
     </PropertyGroup>
 
     <ItemGroup>

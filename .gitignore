@@ -16,3 +16,12 @@
 
 /PersistenceSQLClient/bin/
 /PersistenceSQLClient/obj/
+PersistenceSQLClient/obj/PersistenceSQLClient.fsproj.nuget.dgspec.json
+PersistenceSQLClient/obj/PersistenceSQLClient.fsproj.nuget.g.props
+PersistenceSQLClient/obj/project.assets.json
+PersistenceSQLClient/obj/project.nuget.cache
+PersistenceSQLClient/obj/project.packagespec.json
+PersistenceSQLClient/obj/rider.project.restore.info
+PersistenceSQLClient/obj/Debug/netcoreapp3.1/PersistenceSQLClient.assets.cache
+PersistenceSQLClient/obj/Debug/netcoreapp3.1/PersistenceSQLClient.fsproj.CoreCompileInputs.cache
+PersistenceSQLClient/obj/Debug/netcoreapp3.1/PersistenceSQLClient.fsprojAssemblyReference.cache

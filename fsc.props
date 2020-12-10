@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  
+    <PropertyGroup Condition="'$(MSBuildRuntimeType)' == 'Core'">
+      <IsWindows Condition="'$(OS)' == 'Windows_NT'">true</IsWindows>
+      <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
+      <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(IsWindows)' == 'true'">
+      <!-- Your path of full .NET Framework FSC compiler. -->
+      <FscToolPath>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\FSharp</FscToolPath>
+      <FscToolExe>fsc.exe</FscToolExe>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="'$(IsOSX)' == 'true'">
+      <FscToolPath>/Library/Frameworks/Mono.framework/Versions/Current/Commands</FscToolPath>
+      <FscToolExe>fsharpc</FscToolExe>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(IsLinux)' == 'true'">
+      <FscToolPath>/usr/bin</FscToolPath>
+      <FscToolExe>fsharpc</FscToolExe>
+    </PropertyGroup>
+  </Project>
