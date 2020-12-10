@@ -25,3 +25,5 @@ PersistenceSQLClient/obj/rider.project.restore.info
 PersistenceSQLClient/obj/Debug/netcoreapp3.1/PersistenceSQLClient.assets.cache
 PersistenceSQLClient/obj/Debug/netcoreapp3.1/PersistenceSQLClient.fsproj.CoreCompileInputs.cache
 PersistenceSQLClient/obj/Debug/netcoreapp3.1/PersistenceSQLClient.fsprojAssemblyReference.cache
+PersistenceSQLClient/bin/
+PersistenceSQLClient/obj/

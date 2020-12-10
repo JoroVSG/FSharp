@@ -1,11 +1,10 @@
 module Domains.Users.CLCSUser
 
 open System
-open Domains.Common.CommonTypes
 
 [<CLIMutable>]
 type CLCSUser = {
-    [<MapColumn("IdUser")>]Id: Guid
+    IdUser: Guid
     ObjectId: Guid
     ActivationKey: string
     IdFinancialInstitution: Guid

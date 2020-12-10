@@ -25,6 +25,7 @@ open Microsoft.Extensions.DependencyInjection
 open App.Common.Authentication
 open App.Handlers.ApplicationHandler
 open App.Common.Exceptions
+open App.Handlers.UserHandler
 open Newtonsoft.Json
 open Newtonsoft.Json.Serialization
 //  App.Handlers.UserHandler
@@ -52,10 +53,10 @@ let mutable Configurations: IConfigurationRoot = null
 let allGetRoutes: HttpHandler list =
     [ route "/" >=> text "Public endpoint."]
     @ applicationsGetRoutes
-    // @ usersGetRoutes
+    @ usersGetRoutes
 
 let allPostRoutes: HttpHandler list = applicationPostRoutes
-                                      //@ usersPostRoutes
+                                      @ usersPostRoutes
 let allDeleteRoutes: HttpHandler list = applicationDeleteRoutes
 
 let webApp =

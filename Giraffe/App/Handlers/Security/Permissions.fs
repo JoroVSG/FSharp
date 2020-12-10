@@ -13,21 +13,20 @@ open App.Helpers.HelperFunctions
 open Domains.Users.B2CGroups
 open Microsoft.Extensions.Configuration
 open PersistenceSQLClient.FiData
+open App.Common.Transaction
 
 
-let getFiByInstitutionIdAsync conStr iid =
+let getFiByInstitutionIdAsync iid transPayload _ =
     task {
-        use con = new SqlConnection(conStr)
-        do! con.OpenAsync()
-        return! getFiByInstitutionId con iid
+        return! getFiByInstitutionId transPayload iid
     }
+
+let y iid ctx = withTransaction (getFiByInstitutionIdAsync iid) ctx ;
 let fiAdminCheck = fun iid (next: HttpFunc) (ctx: HttpContext) ->
     task {
         let isFiAdmin = getClaim FI_ADMIN_CLAIM_TYPE ctx
         
-        let config = ctx.GetService<IConfiguration>()
-        
-        let! tryInstitution = getFiByInstitutionIdAsync config.["ConnectionString:DefaultConnectionString"] iid
+        let! tryInstitution = y iid ctx
         
         match tryInstitution with
         | Some institution ->
@@ -40,7 +39,7 @@ let fiAdminCheck = fun iid (next: HttpFunc) (ctx: HttpContext) ->
                 // let! user = getUserByEmailAsync email.Value
                 
                 let identity = ctx.User.Identity :?> ClaimsIdentity
-                let claimValue = string (bool isFiAdmin.Value && (string institution.InstitutionId = currentUserInstitutionId.Value))
+                let claimValue = string (bool isFiAdmin.Value && (string institution.InstitutionId.Value = currentUserInstitutionId.Value))
                 identity.AddClaim(Claim(IS_FI_ADMIN, claimValue))
                 
                 return! next ctx
