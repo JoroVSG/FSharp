@@ -1,6 +1,7 @@
 module PersistenceSQLClient.UserData
 
 open System.Data.SqlClient
+open Domains.Users
 open Domains.Users.CLCSUser
 open Domains.Users.CommonTypes
 open FSharp.Data
@@ -61,5 +62,18 @@ let getUsersByEmailAsync = fun (connectionString: SqlConnection, trans) (emails:
                   |> Seq.map(fun app -> mapToRecord<CLCSUser> app)
                   |> Seq.toList
         return res
+
+//        return reader
+//            |> Seq.map(fun user ->
+//                let u: CLCSUser = { IdUser = user.IdUser
+//                                    ObjectId = user.ObjectId
+//                                    ActivationKey = user.ActivationKey
+//                                    IdFinancialInstitution = user.IdFinancialInstitution
+//                                    Email = user.Email
+//                                    ActivationStatus = user.ActivationStatus
+//                                    IsFiAdmin = user.IsFiAdmin }
+//                u
+//            )
+//            |> Seq.toList
     }
    

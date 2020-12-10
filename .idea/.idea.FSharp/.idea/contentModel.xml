@@ -21,7 +21,6 @@
           <e p="B2CUserResponse.fs" t="Include" />
           <e p="CLCSUser.fs" t="Include" />
           <e p="CommonTypes.fs" t="Include" />
-          <e p="UserDTO.fs" t="Include" />
         </e>
       </e>
       <e p="FSharp.sln" t="IncludeFlat" />
@@ -36,6 +35,7 @@
           </e>
           <e p="DTOs" t="Include">
             <e p="ApplicationDTO.fs" t="Include" />
+            <e p="UserDTO.fs" t="Include" />
           </e>
           <e p="Handlers" t="Include">
             <e p="ApplicationHandler.fs" t="Include" />
