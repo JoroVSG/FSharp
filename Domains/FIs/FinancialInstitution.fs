@@ -5,9 +5,10 @@ open System
 [<CLIMutable>]
 type FI = {
     IdFinancialInstitution: Guid
-    Name: string
-    ObjectId: Guid
-    Description: string
-    InstitutionId: string
-    EmailSendingInviteFrom: string
+    Name: string option
+    ObjectId: Guid option
+    Description: string option
+    InstitutionId: string option
+    EmailSendingInviteFrom: string option
+    RoutingNumber: string option
 }
