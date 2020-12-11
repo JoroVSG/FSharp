@@ -24,8 +24,8 @@ let getAllApplicationsAsync = fun (connectionString: SqlConnection, trans) ->
         return res
     }
     
-let getAllApplicationById = fun (conn: SqlConnection, trans) idApplication ->
-  
+let getAllApplicationById = fun idApplication (tpayload: TransactionPayload) ->
+   let (conn, trans) = tpayload
    async {
         use cmd =
             new SqlCommandProvider<"""
@@ -34,8 +34,8 @@ let getAllApplicationById = fun (conn: SqlConnection, trans) idApplication ->
         
         let! app = cmd.AsyncExecute(idApplication = idApplication)
         return match app with
-                | Some a -> mapToRecord<Application> a |> Some
-                | None -> None
+                | Some a -> mapToRecord<Application> a |> Success
+                | None -> NotFound
    }
    
 let getApplicationsByUserIdAsync (conn: SqlConnection, trans) idUser =

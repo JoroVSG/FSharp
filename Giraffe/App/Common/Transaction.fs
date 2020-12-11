@@ -4,13 +4,15 @@ open System
 open System.Data.Common
 open System.Data.SqlClient
 open System.Threading.Tasks
+open App.Common
 open Giraffe
 open App.Common.JsonApiResponse
 open Microsoft.AspNetCore.Http
 open FSharp.Control.Tasks.V2.ContextInsensitive
 open Microsoft.Extensions.Configuration
+open PersistenceSQLClient.DbConfig
 
-type TransactionPayload = (SqlConnection * SqlTransaction)
+
 type TransactionFunction<'a> = TransactionPayload -> HttpContext -> Task<'a>
 let withTransaction<'a> = fun (f: TransactionFunction<'a>) (ctx: HttpContext) ->
     task {
@@ -34,3 +36,79 @@ let transaction<'a> = fun (f: TransactionFunction<'a>) (next: HttpFunc) (ctx: Ht
         let! res = withTransaction f ctx
         return! json (jsonApiWrap res) next ctx
     }
+
+type TransactionBuilder(connectionString) =
+    let connectionInit = task {
+        let c = new SqlConnection(connectionString)
+        do! c.OpenAsync()
+        let trans = c.BeginTransaction()
+        return (c, trans)
+    }
+    let (c, trans) = connectionInit.Result
+    member this.Bind(func, next) =
+        try
+            let payload: TransactionPayload = (c, trans)
+            let res = func payload |> Async.RunSynchronously
+            
+            match res with
+                | Success a -> next a
+                | Error ex ->
+                    let err = task {
+                        do! this.DisposeAsync()
+                        return ex 
+                    }
+                    Error err.Result
+                // | NotFound -> next () 
+        with ex ->
+            let err = task {
+                do! trans.RollbackAsync()
+                do! this.DisposeAsync()
+                return ex
+            }
+            Error err.Result
+        
+
+    member this.Return(x) =
+        let wrap = task {
+            do! trans.CommitAsync()
+            do! c.CloseAsync()
+            
+            do! this.DisposeAsync()
+            return x
+        }
+        wrap.Result
+    member this.ReturnFrom(x) =
+        try
+            let wrap = task {
+                let payload: TransactionPayload = (c, trans)
+                let res = x payload |> Async.RunSynchronously
+                
+                do! trans.CommitAsync()
+                do! c.CloseAsync()
+                
+                do! this.DisposeAsync()
+                return res
+            }
+            wrap.Result
+        with ex ->
+            let err = task {
+                do! trans.RollbackAsync()
+                do! this.DisposeAsync()
+                return Error ex
+            }
+            err.Result
+    member this.DisposeAsync(): Task<unit> =
+        task {
+            do! c.DisposeAsync()
+            do! trans.DisposeAsync()
+        }
+        
+        
+        
+let transaction' cStr = TransactionBuilder(cStr)
+
+let createTransactionBuild (ctx: HttpContext) =
+    let settings = ctx.GetService<IConfiguration>()
+    let conStr = settings.["ConnectionString:DefaultConnectionString"]
+    transaction' conStr
+    

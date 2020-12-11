@@ -12,6 +12,11 @@ open Microsoft.AspNetCore.Server.IIS
 open Microsoft.Data.SqlClient
 open Newtonsoft.Json
 
+
+type RestException(code, message) =
+    inherit Exception(message)
+    member __.Code = code 
+
 let createJsonApiError = fun message code ->
     let error = Error()
     error.Detail <- message
@@ -29,6 +34,10 @@ let handleErrorJsonAPI = fun (ex: Exception) _ (ctx: HttpContext) ->
              match ex with
                 | :? InvalidOperationException -> (StatusCodes.Status404NotFound, ex.Message)
                 | :? KeyNotFoundException -> (StatusCodes.Status404NotFound, "")
+                | :? RestException ->
+                    let restEx = ex :?> RestException
+                    let  message = if restEx.Code = StatusCodes.Status404NotFound then "The resource you are looking for does not exist." else restEx.Message
+                    (restEx.Code, message)
                 | :? UnauthorizedAccessException -> (StatusCodes.Status401Unauthorized, "")
                 // | :? InvalidModelStateException  -> (StatusCodes.Status422UnprocessableEntity, "")
                 | :? BadHttpRequestException -> (StatusCodes.Status400BadRequest, "")
@@ -45,4 +54,4 @@ let handleErrorJsonAPI = fun (ex: Exception) _ (ctx: HttpContext) ->
         
         return! earlyReturn ctx
     }
-    
+  
