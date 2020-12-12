@@ -19,5 +19,13 @@ type TransactionPayload = (SqlConnection * SqlTransaction)
 type TransactionFunctionTask<'a> = TransactionPayload -> Task<TransactionResult<'a>>
 type TransactionFunctionAsync<'a> = TransactionPayload -> Async<TransactionResult<'a>>
 
-type TransactionFunction<'a> = Async of TransactionFunctionAsync<'a>  | Task of TransactionFunctionTask<'a>
+type TransactionFunction<'a> =
+    | TAsync of TransactionFunctionAsync<'a>
+    | ATIgnore of Async<'a>
+    | TTask of TransactionFunctionTask<'a>
+    | TTIgnore of Task<'a>
+    
+type TransactionException(code, message) =
+    inherit Exception(message)
+    member __.Code = code
 

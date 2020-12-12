@@ -2,6 +2,7 @@ module PersistenceSQLClient.ApplicationData
 
 open System
 open System.Data.SqlClient
+open System.Net
 open DbConfig
 open FSharp.Data
 open Domains.Applications.Application
@@ -12,16 +13,17 @@ open FSharp.Control.Tasks.V2
 open PersistenceSQLClient.Mapping
         
 
-let getAllApplicationsAsync = fun (connectionString: SqlConnection, trans) ->
+let getAllApplicationsAsync = fun (payload: TransactionPayload) ->
+    let (conn, trans) = payload
     async {
         use cmd = new SqlCommandProvider<"""
             SELECT IdApplication, Code, Description, Name FROM dbo.[Application]"""
-        , ConnectionString>(connectionString, transaction = trans)
+        , ConnectionString>(conn, transaction = trans)
         let! reader = cmd.AsyncExecute()
         let res = reader
                   |> Seq.map(fun app -> mapToRecord<Application> app)
                   |> Seq.toList
-        return res
+        return res |> ResultSuccess
     }
     
 let getAllApplicationById = fun idApplication (payload: TransactionPayload) ->
@@ -34,8 +36,8 @@ let getAllApplicationById = fun idApplication (payload: TransactionPayload) ->
         
         let! app = cmd.AsyncExecute(idApplication = idApplication)
         return match app with
-                | Some a -> mapToRecord<Application> a |> Some |> Success 
-                | None -> None |> Success
+                | Some a -> mapToRecord<Application> a |> ResultSuccess
+                | None -> ResultNone
    }
    
 let getApplicationsByUserIdAsync (conn: SqlConnection, trans) idUser =
@@ -98,9 +100,9 @@ let createApplicationAsync = fun app (payload: TransactionPayload) ->
         let! rowAffected = conn.InsertAsync(insertCE, trans)
         
         return
-            if rowAffected > 1
+            if rowAffected = 1
             then ResultSuccess { Id = guid; Success = true; Exception = None }
-            else ResultNone
+            else (TransactionException(HttpStatusCode.BadRequest,"Error occur during creation") :> Exception) |> Error
                 
         //return { Id = guid; Success = true; Exception = None } |> Success
     }

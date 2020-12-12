@@ -11,7 +11,7 @@ open Giraffe
 open Microsoft.AspNetCore.Server.IIS
 open Microsoft.Data.SqlClient
 open Newtonsoft.Json
-
+type TransactionException = PersistenceSQLClient.DbConfig.TransactionException
 
 type RestException(code, message) =
     inherit Exception(message)
@@ -34,9 +34,12 @@ let handleErrorJsonAPI = fun (ex: Exception) _ (ctx: HttpContext) ->
              match ex with
                 | :? InvalidOperationException -> (StatusCodes.Status404NotFound, ex.Message)
                 | :? KeyNotFoundException -> (StatusCodes.Status404NotFound, "")
+                | :? TransactionException ->
+                    let transExp = ex :?> TransactionException
+                    (transExp.Code :?> int, ex.Message)
                 | :? RestException ->
                     let restEx = ex :?> RestException
-                    let  message = if restEx.Code = StatusCodes.Status404NotFound then "The resource you are looking for does not exist." else restEx.Message
+                    let  message = if restEx.Code = StatusCodes.Status404NotFound then "The resource was not found." else restEx.Message
                     (restEx.Code, message)
                 | :? UnauthorizedAccessException -> (StatusCodes.Status401Unauthorized, "")
                 // | :? InvalidModelStateException  -> (StatusCodes.Status422UnprocessableEntity, "")
@@ -44,7 +47,7 @@ let handleErrorJsonAPI = fun (ex: Exception) _ (ctx: HttpContext) ->
                 | :? ArgumentException -> (StatusCodes.Status400BadRequest, ex.Message)
                 | :? DBConcurrencyException -> (StatusCodes.Status409Conflict, "This record has already been updated. Please try again.")
                 | :? SqlException  -> (StatusCodes.Status409Conflict, ex.Message)
-                | _ -> (StatusCodes.Status500InternalServerError, ex.Message)
+                | _ -> (StatusCodes.Status500InternalServerError, "")
         
         let root = createJsonApiError message code
         

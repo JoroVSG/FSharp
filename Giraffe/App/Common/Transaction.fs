@@ -51,10 +51,10 @@ type TransactionBuilder(connectionString) =
             
             let res =
                 match func with
-                | Async f -> f payload |> Async.RunSynchronously
-                | Task f ->
-                    let t = f payload
-                    t.Result
+                    | TAsync f -> f payload |> Async.RunSynchronously
+                    | TTask f -> (f payload).Result
+                    | ATIgnore f -> f |> Async.RunSynchronously |> ResultSuccess
+                    | TTIgnore t ->  t.Result |> ResultSuccess
             
             match res with
                 | Success a -> next a
@@ -89,8 +89,8 @@ type TransactionBuilder(connectionString) =
                 
                 let res =
                     match x with
-                    | Async f -> f payload |> Async.RunSynchronously
-                    | Task f ->
+                    | TAsync f -> f payload |> Async.RunSynchronously
+                    | TTask f ->
                         let t = f payload
                         t.Result
                 
