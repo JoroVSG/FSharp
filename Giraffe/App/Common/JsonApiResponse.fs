@@ -23,6 +23,10 @@ let jsonApiWrap<'a> = fun (data: 'a)  ->
 let jsonApiWrapHandlerWithMapper<'a, 'b> = fun result (mapping: IMapper -> 'a -> 'b) (next: HttpFunc) (ctx: HttpContext) ->
     let mapper = ctx.GetService<IMapper>()
     match result with
-          | Success a -> json (jsonApiWrap (mapping mapper a)) next ctx
+          | Success (a) ->
+              match a with
+              | Some value -> json (jsonApiWrap (mapping mapper value)) next ctx
+              | None ->
+                  let notFound = RestException(StatusCodes.Status404NotFound, "")
+                  handleErrorJsonAPI notFound  next ctx
           | Error ex  -> handleErrorJsonAPI ex next ctx
-          | NotFound  -> raise <| RestException(StatusCodes.Status404NotFound, "")

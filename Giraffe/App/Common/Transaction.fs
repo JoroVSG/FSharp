@@ -48,7 +48,13 @@ type TransactionBuilder(connectionString) =
     member this.Bind(func, next) =
         try
             let payload: TransactionPayload = (c, trans)
-            let res = func payload |> Async.RunSynchronously
+            
+            let res =
+                match func with
+                | Async f -> f payload |> Async.RunSynchronously
+                | Task f ->
+                    let t = f payload
+                    t.Result
             
             match res with
                 | Success a -> next a
@@ -58,7 +64,6 @@ type TransactionBuilder(connectionString) =
                         return ex 
                     }
                     Error err.Result
-                // | NotFound -> next () 
         with ex ->
             let err = task {
                 do! trans.RollbackAsync()
@@ -76,12 +81,18 @@ type TransactionBuilder(connectionString) =
             do! this.DisposeAsync()
             return x
         }
-        wrap.Result
+        Success wrap.Result
     member this.ReturnFrom(x) =
         try
             let wrap = task {
                 let payload: TransactionPayload = (c, trans)
-                let res = x payload |> Async.RunSynchronously
+                
+                let res =
+                    match x with
+                    | Async f -> f payload |> Async.RunSynchronously
+                    | Task f ->
+                        let t = f payload
+                        t.Result
                 
                 do! trans.CommitAsync()
                 do! c.CloseAsync()

@@ -24,8 +24,8 @@ let getAllApplicationsAsync = fun (connectionString: SqlConnection, trans) ->
         return res
     }
     
-let getAllApplicationById = fun idApplication (tpayload: TransactionPayload) ->
-   let (conn, trans) = tpayload
+let getAllApplicationById = fun idApplication (payload: TransactionPayload) ->
+   let (conn, trans) = payload
    async {
         use cmd =
             new SqlCommandProvider<"""
@@ -34,8 +34,8 @@ let getAllApplicationById = fun idApplication (tpayload: TransactionPayload) ->
         
         let! app = cmd.AsyncExecute(idApplication = idApplication)
         return match app with
-                | Some a -> mapToRecord<Application> a |> Success
-                | None -> NotFound
+                | Some a -> mapToRecord<Application> a |> Some |> Success 
+                | None -> None |> Success
    }
    
 let getApplicationsByUserIdAsync (conn: SqlConnection, trans) idUser =
@@ -54,15 +54,19 @@ let getApplicationsByUserIdAsync (conn: SqlConnection, trans) idUser =
                   |> Seq.toList
     }
 
-let deleteApplicationAsync = fun (conn: SqlConnection, trans) idApp ->
+let deleteApplicationAsync = fun idApp (payload: TransactionPayload) ->
+    let (conn, trans) = payload
     async {
         use cmd =
             new SqlCommandProvider<"""
                 DELETE FROM dbo.[Application] where IdApplication = @idApplication
             """ , ConnectionString>(conn, transaction = trans)
         
-        let! _ = cmd.AsyncExecute(idApplication = idApp)
-        return { Id = Guid.NewGuid(); Success = true; Exception = None }
+        let! rowsAffected = cmd.AsyncExecute(idApplication = idApp)
+        return
+            if rowsAffected = 1
+            then ResultSuccess { Id = Guid.NewGuid(); Success = true; Exception = None }
+            else ResultNone
     }
     
 //let createApplicationAsync = fun (conn: SqlConnection, trans: SqlTransaction) (app: Application) ->
@@ -82,7 +86,8 @@ let deleteApplicationAsync = fun (conn: SqlConnection, trans) idApp ->
 //        { Id = guid; Success = true; Exception = None }
     
 
-let createApplicationAsync = fun (conn: SqlConnection, trans: SqlTransaction) app ->
+let createApplicationAsync = fun app (payload: TransactionPayload) ->
+    let (conn, trans) = payload
     task {
         let guid = Guid.NewGuid()
         let app' = { app with IdApplication = guid }
@@ -90,9 +95,14 @@ let createApplicationAsync = fun (conn: SqlConnection, trans: SqlTransaction) ap
             table "Application"
             value app'
         }
-        let! _ = conn.InsertAsync(insertCE, trans)
+        let! rowAffected = conn.InsertAsync(insertCE, trans)
         
-        return { Id = guid; Success = true; Exception = None }
+        return
+            if rowAffected > 1
+            then ResultSuccess { Id = guid; Success = true; Exception = None }
+            else ResultNone
+                
+        //return { Id = guid; Success = true; Exception = None } |> Success
     }
     
     
