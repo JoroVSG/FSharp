@@ -14,6 +14,7 @@ open PersistenceSQLClient.DbConfig
 
 
 type TransactionFunction<'a> = TransactionPayload -> HttpContext -> Task<'a>
+type TransactionFunction'<'a> = PersistenceSQLClient.DbConfig.TransactionFunction<'a>
 let withTransaction<'a> = fun (f: TransactionFunction<'a>) (ctx: HttpContext) ->
     task {
         let config = ctx.GetService<IConfiguration>()
@@ -44,67 +45,47 @@ type TransactionBuilder(connectionString) =
         let trans = c.BeginTransaction()
         return (c, trans)
     }
-    let (c, trans) = connectionInit.Result
+    let payload = connectionInit.Result
+    let (c, trans) = payload
     member this.Bind(func, next) =
-        try
-            let payload: TransactionPayload = (c, trans)
-            
-            let res =
-                match func with
-                    | TAsync f -> f payload |> Async.RunSynchronously
-                    | TTask f -> (f payload).Result
-                    | ATIgnore f -> f |> Async.RunSynchronously |> ResultSuccess
-                    | TTIgnore t ->  t.Result |> ResultSuccess
-            
-            match res with
-                | Success a -> next a
-                | Error ex ->
-                    let err = task {
-                        do! this.DisposeAsync()
-                        return ex 
-                    }
-                    Error err.Result
-        with ex ->
-            let err = task {
-                do! trans.RollbackAsync()
-                do! this.DisposeAsync()
-                return ex
-            }
-            Error err.Result
+        try this.HandleNext(func, next)
+        with ex -> this.HandleError(ex)
         
 
-    member this.Return(x) =
+    member this.Return(finalValue) =
         let wrap = task {
             do! trans.CommitAsync()
             do! c.CloseAsync()
             
             do! this.DisposeAsync()
-            return x
+            return finalValue
         }
         Success wrap.Result
-    member this.ReturnFrom(x) =
+    member this.ReturnFrom(finalValueAsync) =
         try
             let wrap = task {
-                let payload: TransactionPayload = (c, trans)
-                
                 let res =
-                    match x with
+                    match finalValueAsync with
                     | TAsync f -> f payload |> Async.RunSynchronously
                     | TTask f ->
                         let t = f payload
                         t.Result
+                    | ATIgnore f -> f |> Async.RunSynchronously |> ResultSuccess
+                    | TTIgnore t ->  t.Result |> ResultSuccess
                 
-                do! trans.CommitAsync()
-                do! c.CloseAsync()
-                
-                do! this.DisposeAsync()
-                return res
+                match res with
+                | Success a ->
+                    do! trans.CommitAsync()
+                    do! c.CloseAsync()
+                    
+                    do! this.DisposeAsync()
+                    return Success a
+                | Error ex -> return this.HandleError(ex)
             }
             wrap.Result
         with ex ->
             let err = task {
-                do! trans.RollbackAsync()
-                do! this.DisposeAsync()
+                do! this.RollBackAndDispose()
                 return Error ex
             }
             err.Result
@@ -113,6 +94,31 @@ type TransactionBuilder(connectionString) =
             do! c.DisposeAsync()
             do! trans.DisposeAsync()
         }
+    member this.RollBackAndDispose(): Task<unit> =
+        task {
+            do! trans.RollbackAsync()
+            do! this.DisposeAsync()
+        }
+    member this.HandleNext(resultValue, next) =
+        let res =
+            match resultValue with
+            | TAsync f -> f payload |> Async.RunSynchronously
+            | TTask f ->
+                let t = f payload
+                t.Result
+            | ATIgnore f -> f |> Async.RunSynchronously |> ResultSuccess
+            | TTIgnore t ->  t.Result |> ResultSuccess
+        
+        match res with
+            | Success a -> next a
+            | Error ex -> this.HandleError(ex)
+        member this.HandleError(ex: Exception) =
+            let err = task {
+                do! this.RollBackAndDispose()
+                return ex 
+            }
+            Error err.Result
+            
         
         
         

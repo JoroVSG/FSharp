@@ -104,7 +104,6 @@ let createApplicationAsync = fun app (payload: TransactionPayload) ->
             then ResultSuccess { Id = guid; Success = true; Exception = None }
             else (TransactionException(HttpStatusCode.BadRequest,"Error occur during creation") :> Exception) |> Error
                 
-        //return { Id = guid; Success = true; Exception = None } |> Success
     }
     
     
