@@ -9,7 +9,6 @@ open Domains.Users.CLCSUser
 open Domains.Users.CommonTypes
 open Giraffe
 open JsonApiSerializer.JsonApi
-open Microsoft.AspNetCore.Http
 open FSharp.Control.Tasks.V2.ContextInsensitive
 open Microsoft.Extensions.Configuration
 open Newtonsoft.Json
@@ -23,13 +22,18 @@ open App.Helpers.MSALClient
 open App.DTOs.UserDTO
 open System.Threading.Tasks
 open App.Common.Transaction
+open PersistenceSQLClient.DbConfig
+open App.Common.JsonApiResponse
 // open Persistence.Data.ApplicationData
 
 let orEmptyString = fun endOfList -> if endOfList then "" else "or "
+
 let getOperand = fun index -> isEndOfTheList index >> orEmptyString
+
 let getInstitutionFilter = fun iid (clientId: string) ->
     let adminFilter = sprintf "$filter=extension_%s_InstitutionId eq '%s'"
     adminFilter (clientId.Replace("-", "")) (upper iid)
+
 let createMsalFilter = fun iidFilter (objectIds: CLCSUser list) ->
     let userIdsMapped = objectIds |> Seq.mapi(fun index user -> sprintf "id eq '%s' %s" (string user.ObjectId.Value) (getOperand index objectIds) )
     let userIdToString = userIdsMapped |> String.concat(" ")
@@ -38,8 +42,6 @@ let createMsalFilter = fun iidFilter (objectIds: CLCSUser list) ->
 let msalFilter = fun iid -> getInstitutionFilter iid >> createMsalFilter
 
 let mapToUserDTO = fun apps (b2cUser:B2CUser) (clcsUser: CLCSUser) ->
-    
-        
     let relationshipApps = Relationship<ApplicationDTO list>()
     relationshipApps.Data <- apps
     let dto = {
@@ -77,16 +79,15 @@ let mapToUserDTO = fun apps (b2cUser:B2CUser) (clcsUser: CLCSUser) ->
         Applications = relationshipApps
     }
     dto
-        
 
-let getAllUsersByFi = fun iid transPayload (ctx: HttpContext) ->
-    task {
-        let! emailsBody = ctx.ReadBodyFromRequestAsync()
-        let clcsUsers = JsonConvert.DeserializeObject<Email seq>(emailsBody)
-        let! usersByListOfEmails = getUsersByEmailAsync transPayload clcsUsers
+let getAllUsersByFi = fun iid next ctx ->
+    let transaction = createTransactionBuild ctx
+    let tres = transaction {
+        let! emailsBody = ctx.ReadBodyFromRequestAsync() |> TTIgnore
+        let clcsUsers = JsonConvert.DeserializeObject<Email seq>(emailsBody.Value)
+        let! usersByListOfEmails = getUsersByEmailAsync clcsUsers |> TAsync
         let config = ctx.GetService<IConfiguration>()
-        let localUsers = usersByListOfEmails |> Seq.filter(fun us -> us.ObjectId.IsSome) |> Seq.toList
-        
+        let localUsers = usersByListOfEmails.Value |> Seq.filter(fun us -> us.ObjectId.IsSome) |> Seq.toList
         let partitioned = localUsers.Batch(9)
         
         let! userMergedTasks =
@@ -100,9 +101,9 @@ let getAllUsersByFi = fun iid transPayload (ctx: HttpContext) ->
                     return b2cUsers.B2CGraphUsers
                 })
             |> Task.WhenAll
+            |> TTIgnore
             
-            
-        let userMerged = userMergedTasks |> Array.toList |> List.concat
+        let userMerged = userMergedTasks.Value |> Array.toList |> List.concat
         let mapper = ctx.GetService<IMapper>()
         
         let! users =
@@ -110,16 +111,22 @@ let getAllUsersByFi = fun iid transPayload (ctx: HttpContext) ->
             |> Seq.map (fun user ->
                 task {
                     let matchFound = userMerged |> Seq.find (fun u -> user.ObjectId.Value = u.Id)
-                    let! apps = getApplicationsByUserIdAsync transPayload user.IdUser
-                    let appMapped = apps |> Seq.map(fun a -> mapper.Map<ApplicationDTO>(a)) |> Seq.toList
-                    return mapToUserDTO appMapped matchFound user
+                    let! apps = getApplicationsByUserIdAsync user.IdUser transaction.Payload
+                    match apps with
+                        | Success apps -> 
+                            let appMapped = apps.Value |> Seq.map(fun a -> mapper.Map<ApplicationDTO>(a)) |> Seq.toList
+                            return mapToUserDTO appMapped matchFound user
+                        | Error ex -> return raise ex
                 }
             )
             |> Task.WhenAll
+            |> TTIgnore  
         
-        return
-            users |> Array.toList
+        return users.Value |> Array.toList |> Some
+        
     }
+    
+    jsonApiWrapHandler tres next ctx
 
 let fiAdminErrorHandler = forbidden "Cannot query users from a different financial institution"
 let profitStarsErrorHandler = forbidden "Only Profitstars or Financial Institution admins are allowed to retrieve users for that financial institution"
@@ -127,8 +134,8 @@ let profitStarsErrorHandler = forbidden "Only Profitstars or Financial Instituti
 let usersPermissionCheck = fun iid -> profitStarsFiAdminCombined iid >=> profitStarsFiAdminErrorHandling profitStarsErrorHandler fiAdminErrorHandler
 let usersGetRoutes: HttpHandler list = [
     // route "/users" >=> authorize >=> profitStarsAdminCheckOny profitStarsErrorHandler >=> getAllUsers
-    routef "/%s/relationship/users" (fun iid -> authorize >=> usersPermissionCheck iid >=> transaction (getAllUsersByFi iid))
+    routef "/%s/relationship/users" (fun iid -> authorize >=> usersPermissionCheck iid >=> getAllUsersByFi iid)
 ]
 let usersPostRoutes: HttpHandler list  = [
-     routef "/%s/relationship/users" (fun iid -> authorize >=> usersPermissionCheck iid >=> transaction (getAllUsersByFi iid))
+     routef "/%s/relationship/users" (fun iid -> authorize >=> usersPermissionCheck iid >=> getAllUsersByFi iid)
 ]

@@ -1,10 +1,8 @@
 module App.Common.Transaction
 
 open System
-open System.Data.Common
 open System.Data.SqlClient
 open System.Threading.Tasks
-open App.Common
 open Giraffe
 open App.Common.JsonApiResponse
 open Microsoft.AspNetCore.Http
@@ -47,11 +45,13 @@ type TransactionBuilder(connectionString) =
     }
     let payload = connectionInit.Result
     let (c, trans) = payload
+
+    member __.Payload = payload
+    
     member this.Bind(func, next) =
         try this.HandleNext(func, next)
         with ex -> this.HandleError(ex)
-        
-
+    
     member this.Return(finalValue) =
         let wrap = task {
             do! trans.CommitAsync()
@@ -89,16 +89,18 @@ type TransactionBuilder(connectionString) =
                 return Error ex
             }
             err.Result
-    member this.DisposeAsync(): Task<unit> =
+    member __.DisposeAsync(): Task<unit> =
         task {
             do! c.DisposeAsync()
             do! trans.DisposeAsync()
         }
+
     member this.RollBackAndDispose(): Task<unit> =
         task {
             do! trans.RollbackAsync()
             do! this.DisposeAsync()
         }
+
     member this.HandleNext(resultValue, next) =
         let res =
             match resultValue with
@@ -112,7 +114,8 @@ type TransactionBuilder(connectionString) =
         match res with
             | Success a -> next a
             | Error ex -> this.HandleError(ex)
-        member this.HandleError(ex: Exception) =
+    
+    member this.HandleError(ex: Exception) =
             let err = task {
                 do! this.RollBackAndDispose()
                 return ex 

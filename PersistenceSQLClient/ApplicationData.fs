@@ -40,7 +40,8 @@ let getAllApplicationById = fun idApplication (payload: TransactionPayload) ->
                 | None -> ResultNone
    }
    
-let getApplicationsByUserIdAsync (conn: SqlConnection, trans) idUser =
+let getApplicationsByUserIdAsync idUser (payload: TransactionPayload) =
+    let (conn, trans) = payload
     async {
         use cmd =
             new SqlCommandProvider<"""
@@ -54,6 +55,7 @@ let getApplicationsByUserIdAsync (conn: SqlConnection, trans) idUser =
         return reader
                   |> Seq.map(fun app -> mapToRecord<Application> app)
                   |> Seq.toList
+                  |> ResultSuccess
     }
 
 let deleteApplicationAsync = fun idApp (payload: TransactionPayload) ->

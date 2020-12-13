@@ -32,7 +32,8 @@ let getAllUsersByInstitutionIdAsync = fun (connectionString: SqlConnection, tran
                   |> Seq.toList
         return res
     }
-let getUsersByEmailAsync = fun (connectionString: SqlConnection, trans) (emails: Email seq) ->
+let getUsersByEmailAsync = fun (emails: Email seq) (payload: TransactionPayload) ->
+     let (connectionString, trans) = payload
      async {
         let inClause = emails |> String.concat " ,"
         use cmd = new SqlCommandProvider<"""
@@ -61,19 +62,7 @@ let getUsersByEmailAsync = fun (connectionString: SqlConnection, trans) (emails:
         let res = reader
                   |> Seq.map(fun app -> mapToRecord<CLCSUser> app)
                   |> Seq.toList
-        return res
-
-//        return reader
-//            |> Seq.map(fun user ->
-//                let u: CLCSUser = { IdUser = user.IdUser
-//                                    ObjectId = user.ObjectId
-//                                    ActivationKey = user.ActivationKey
-//                                    IdFinancialInstitution = user.IdFinancialInstitution
-//                                    Email = user.Email
-//                                    ActivationStatus = user.ActivationStatus
-//                                    IsFiAdmin = user.IsFiAdmin }
-//                u
-//            )
-//            |> Seq.toList
+        
+        return res |> ResultSuccess
     }
    
