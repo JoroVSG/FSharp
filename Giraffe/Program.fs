@@ -21,6 +21,7 @@ open App.Handlers.ApplicationHandler
 open App.Common.Exceptions
 open App.Handlers.UserHandler
 open App.Mapping.Automapper.MapperConfig
+open App.Handlers.FIHandler
 
 let mutable Configurations: IConfigurationRoot = null
 
@@ -28,13 +29,14 @@ let allGetRoutes: HttpHandler list =
     [ route "/" >=> text "Public endpoint."]
     @ applicationsGetRoutes
     @ usersGetRoutes
+    @ fiGetRoutes
 
 let allPostRoutes: HttpHandler list = applicationPostRoutes
                                       @ usersPostRoutes
 let allDeleteRoutes: HttpHandler list = applicationDeleteRoutes
 
 let webApp =
-     choose [
+    choose [
         GET >=> choose allGetRoutes
         POST >=> choose allPostRoutes
         DELETE >=> choose allDeleteRoutes

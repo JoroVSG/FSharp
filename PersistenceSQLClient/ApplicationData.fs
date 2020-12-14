@@ -1,7 +1,6 @@
 module PersistenceSQLClient.ApplicationData
 
 open System
-open System.Data.SqlClient
 open System.Net
 open DbConfig
 open FSharp.Data
@@ -13,7 +12,7 @@ open FSharp.Control.Tasks.V2
 open PersistenceSQLClient.Mapping
         
 
-let getAllApplicationsAsync = fun (payload: TransactionPayload) ->
+let getAllApplicationsAsync = fun payload ->
     let (conn, trans) = payload
     async {
         use cmd = new SqlCommandProvider<"""
@@ -26,7 +25,7 @@ let getAllApplicationsAsync = fun (payload: TransactionPayload) ->
         return res |> ResultSuccess
     }
     
-let getAllApplicationById = fun idApplication (payload: TransactionPayload) ->
+let getAllApplicationById = fun idApplication payload ->
    let (conn, trans) = payload
    async {
         use cmd =
@@ -40,7 +39,7 @@ let getAllApplicationById = fun idApplication (payload: TransactionPayload) ->
                 | None -> ResultNone
    }
    
-let getApplicationsByUserIdAsync idUser (payload: TransactionPayload) =
+let getApplicationsByUserIdAsync idUser payload =
     let (conn, trans) = payload
     async {
         use cmd =
@@ -58,7 +57,7 @@ let getApplicationsByUserIdAsync idUser (payload: TransactionPayload) =
                   |> ResultSuccess
     }
 
-let deleteApplicationAsync = fun idApp (payload: TransactionPayload) ->
+let deleteApplicationAsync = fun idApp payload ->
     let (conn, trans) = payload
     async {
         use cmd =

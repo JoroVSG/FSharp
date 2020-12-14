@@ -4,16 +4,26 @@
     <projectFile>Giraffe/Giraffe.fsproj</projectFile>
     <projectFile>Persistence/Persistence.fsproj</projectFile>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand />
     <select />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46d54f0c-fb97-4b15-8016-29c67a0ec41f" name="Default Changelist" comment="Adding again user routes">
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Giraffe/App/Mapping/UserMapper.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/Security/Permissions.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/Security/Permissions.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/Program.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/Program.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PersistenceSQLClient/ApplicationData.fs" beforeDir="false" afterPath="$PROJECT_DIR$/PersistenceSQLClient/ApplicationData.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" beforeDir="false" afterPath="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersistenceSQLClient/FiData.fs" beforeDir="false" afterPath="$PROJECT_DIR$/PersistenceSQLClient/FiData.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersistenceSQLClient/PersistenceSQLClient.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/PersistenceSQLClient/PersistenceSQLClient.fsproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,14 +47,15 @@
     <setting file="file://$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6E8577AF-C9C8-478C-958A-8E78C6765091/F/JwtBearerDefaults.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PersistenceSQLClient/FiData.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/a1398/Projects/CLCSPortalFSharp/Giraffe/App/Common/Transaction.fs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/a1398/Projects/CLCSPortalFSharp/Giraffe/App/Handlers/UserHandler.fs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PersistenceSQLClient/Mapping.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/CDCCF319-ADEC-8BDF-2295-52FABDB408CF/1/prim-types.fs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Persistence/Library.fs" />
-        <option value="$PROJECT_DIR$/Persistence/Data/AnimalData.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ClaimHandler.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Handlers/GreetHandler.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Handlers/Security/FiAdmin.fs" />
@@ -74,7 +85,6 @@
         <option value="$PROJECT_DIR$/PersistenceSQLClient/PersistenceSQLClient.fsproj" />
         <option value="$PROJECT_DIR$/Persistence/Data/UserData.fs" />
         <option value="$PROJECT_DIR$/PersistenceSQLClient/FiData.fs" />
-        <option value="$PROJECT_DIR$/Giraffe/App/Handlers/Security/Permissions.fs" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Domains/FIs/FinancialInstitution.fs" />
         <option value="$PROJECT_DIR$/Domains/Users/CLCSUser.fs" />
@@ -84,16 +94,19 @@
         <option value="$PROJECT_DIR$/Giraffe/appsettings.json" />
         <option value="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Common/Authentication.fs" />
-        <option value="$PROJECT_DIR$/Giraffe/Program.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Mapping/Automapper/MapperConfig.fs" />
-        <option value="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" />
         <option value="$PROJECT_DIR$/Giraffe/App/Common/JsonApiResponse.fs" />
         <option value="$PROJECT_DIR$/PersistenceSQLClient/DbConfig.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Common/Exceptions.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" />
         <option value="$PROJECT_DIR$/PersistenceSQLClient/ApplicationData.fs" />
+        <option value="$PROJECT_DIR$/Giraffe/App/Mapping/UserMapper.fs" />
+        <option value="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" />
+        <option value="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" />
+        <option value="$PROJECT_DIR$/Giraffe/App/Handlers/Security/Permissions.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" />
+        <option value="$PROJECT_DIR$/Giraffe/Program.fs" />
       </list>
     </option>
   </component>
@@ -119,7 +132,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="RiderNuGetOptionsPageId" />
+    <property name="settings.editor.selected.configurable" value="SolutionBuilderGeneralOptionsPageId" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Giraffe: Run">
@@ -232,7 +245,7 @@
       <workItem from="1607669125681" duration="20211000" />
       <workItem from="1607773254094" duration="157000" />
       <workItem from="1607773724336" duration="20177000" />
-      <workItem from="1607895054990" duration="1549000" />
+      <workItem from="1607895054990" duration="5254000" />
     </task>
     <task id="LOCAL-00001" summary="Clean up on AnimalData.fs">
       <created>1605628859739</created>
@@ -514,7 +527,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607815781794</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="TransactionBuilder part 4">
+      <created>1607899889991</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1607899889991</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -550,7 +570,6 @@
       <path value="$PROJECT_DIR$/Giraffe" />
     </ignored-roots>
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="removing bin/obj folders from Domains" />
     <MESSAGE value="Mapping the B2C and CLC users to UserDTO" />
     <MESSAGE value="Adding applications to User" />
     <MESSAGE value="Adding applications to User part 2" />
@@ -575,7 +594,8 @@
     <MESSAGE value="Moving Automapper configurations in separate file" />
     <MESSAGE value="TransactionBuilder part 2 handling Task and Async functions" />
     <MESSAGE value="TransactionBuilder part 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="TransactionBuilder part 3" />
+    <MESSAGE value="TransactionBuilder part 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="TransactionBuilder part 4" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1342" y="438" key="#Notifications" timestamp="1607598579731">
@@ -789,11 +809,12 @@
     </state>
     <state x="595" y="92" key="RollbackChangesDialog/0.0.1500.960@0.0.1500.960" timestamp="1607161948866" />
     <state x="1016" y="263" key="RollbackChangesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1606589398094" />
-    <state x="723" y="169" key="SettingsEditor" timestamp="1607596314640">
-      <screen x="0" y="0" width="3440" height="1400" />
+    <state x="723" y="184" key="SettingsEditor" timestamp="1607900711840">
+      <screen x="0" y="23" width="3440" height="1333" />
     </state>
     <state x="538" y="169" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1605952448938" />
     <state x="723" y="169" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1607596314640" />
+    <state x="723" y="184" key="SettingsEditor/0.23.3440.1333@0.23.3440.1333" timestamp="1607900711840" />
     <state x="1041" y="260" key="VCS.ChangeListViewerDialog" timestamp="1606201850418">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -803,13 +824,14 @@
     </state>
     <state x="93" y="93" width="1313" height="773" key="VCS.FileHistoryDialog/0.0.1500.960/306.-1440.2560.1400@0.0.1500.960" timestamp="1607426239067" />
     <state x="213" y="136" width="3012" height="1128" key="VCS.FileHistoryDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1607720964499" />
-    <state x="288" y="126" key="Vcs.Push.Dialog.v2" timestamp="1607815784315">
-      <screen x="0" y="0" width="1500" height="960" />
+    <state x="660" y="198" key="Vcs.Push.Dialog.v2" timestamp="1607899891983">
+      <screen x="0" y="23" width="3440" height="1333" />
     </state>
     <state x="288" y="126" key="Vcs.Push.Dialog.v2/0.0.1500.960/306.-1440.2560.1400@0.0.1500.960" timestamp="1607429359449" />
     <state x="288" y="126" key="Vcs.Push.Dialog.v2/0.0.1500.960@0.0.1500.960" timestamp="1607815784315" />
     <state x="672" y="301" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1606497650056" />
     <state x="660" y="184" key="Vcs.Push.Dialog.v2/0.0.3440.1400@0.0.3440.1400" timestamp="1607640691823" />
+    <state x="660" y="198" key="Vcs.Push.Dialog.v2/0.23.3440.1333@0.23.3440.1333" timestamp="1607899891983" />
     <state width="408" height="483" key="XDebugger.FullValuePopup" timestamp="1607785308114">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
@@ -839,13 +861,14 @@
     <state x="533" y="287" key="run.anything.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1606279426251" />
     <state x="718" y="289" key="run.anything.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1607636291037" />
     <state x="300" y="190" key="run.anything.popup/0.23.1440.814@0.23.1440.814" timestamp="1605481761604" />
-    <state x="1057" y="12" width="2314" height="1470" key="search.everywhere.popup" timestamp="1607669161596">
-      <screen x="0" y="0" width="3440" height="1400" />
+    <state x="1057" y="34" width="2314" height="1400" key="search.everywhere.popup" timestamp="1607902956666">
+      <screen x="0" y="23" width="3440" height="1333" />
     </state>
     <state x="459" y="6" width="1009" height="1008" key="search.everywhere.popup/0.0.1500.960/306.-1440.2560.1400@0.0.1500.960" timestamp="1607422630560" />
     <state x="461" y="8" width="1009" height="1008" key="search.everywhere.popup/0.0.1500.960@0.0.1500.960" timestamp="1607541137035" />
     <state x="773" y="0" width="1009" height="1470" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1606459685180" />
     <state x="1057" y="12" width="2314" height="1470" key="search.everywhere.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1607669161596" />
+    <state x="1057" y="34" width="2314" height="1400" key="search.everywhere.popup/0.23.3440.1333@0.23.3440.1333" timestamp="1607902956666" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

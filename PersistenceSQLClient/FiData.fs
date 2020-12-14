@@ -1,12 +1,12 @@
 module PersistenceSQLClient.FiData
 
-open System.Data.SqlClient
 open Domains.FIs.FinancialInstitution
 open PersistenceSQLClient.DbConfig
 open FSharp.Data
 open PersistenceSQLClient.Mapping
 
-let getFiByInstitutionId = fun (con: SqlConnection, trans) iid ->
+let getFiByInstitutionId = fun iid payload ->
+    let (con, trans) = payload
     async {
         use cmd =
             new SqlCommandProvider<"""
@@ -16,6 +16,22 @@ let getFiByInstitutionId = fun (con: SqlConnection, trans) iid ->
         let! fi = cmd.AsyncExecute(iid = iid)
         return
             match fi with
-                | Some f -> mapToRecord<FI> f |> Some
-                | None -> None
-    }    
+                | Some f -> mapToRecord<FI> f |> ResultSuccess
+                | None -> ResultNone
+    }
+
+
+let getFis = fun payload ->
+    let (con, trans) = payload
+    async {
+        use cmd =
+            new SqlCommandProvider<"""
+                select * from dbo.[FinancialInstitution]
+            """ , ConnectionString>(con, transaction=trans)
+        
+        let! fi = cmd.AsyncExecute()
+        let res = fi
+                  |> Seq.map(fun app -> mapToRecord<FI> app)
+                  |> Seq.toList
+        return res |> ResultSuccess
+    }

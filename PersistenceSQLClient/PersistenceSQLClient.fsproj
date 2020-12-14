@@ -1,28 +1,21 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="..\fsc.props" />
-    <PropertyGroup>
-        <TargetFramework>netstandard2.1</TargetFramework>
-        <DotnetFscCompilerPath />
-        <EnableDefaultContentItems>false</EnableDefaultContentItems>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <Compile Include="Mapping.fs" />
-        <Compile Include="DbConfig.fs" />
-        <Compile Include="ApplicationData.fs" />
-        <Compile Include="UserData.fs" />
-        <Compile Include="FiData.fs" />
-    </ItemGroup>
-
-    <ItemGroup>
-      
-      <PackageReference Include="Dapper.FSharp" Version="1.15.0" />
-      <PackageReference Include="FSharp.Data.SqlClient" Version="2.0.7" />
-      <PackageReference Include="TaskBuilder.fs" Version="2.1.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\Domains\Domains.fsproj" />
-    </ItemGroup>
-
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domains\Domains.fsproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Mapping.fs" />
+    <Compile Include="DbConfig.fs" />
+    <Compile Include="ApplicationData.fs" />
+    <Compile Include="UserData.fs" />
+    <Compile Include="FiData.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Dapper.FSharp" Version="1.15.0" />
+    <PackageReference Include="FSharp.Data.SqlClient" Version="2.0.7" />
+    <PackageReference Include="TaskBuilder.fs" Version="2.1.0" />
+  </ItemGroup>
+  <Import Project="..\fsc.props" />
 </Project>

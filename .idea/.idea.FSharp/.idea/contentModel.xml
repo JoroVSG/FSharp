@@ -41,6 +41,7 @@
           </e>
           <e p="Handlers" t="Include">
             <e p="ApplicationHandler.fs" t="Include" />
+            <e p="FIHandler.fs" t="Include" />
             <e p="Security" t="Include">
               <e p="Permissions.fs" t="Include" />
             </e>
@@ -56,6 +57,7 @@
             <e p="Automapper" t="Include">
               <e p="MapperConfig.fs" t="Include" />
             </e>
+            <e p="UserMapper.fs" t="Include" />
           </e>
         </e>
         <e p="appsettings.json" t="Include" />

@@ -1,6 +1,5 @@
 module App.Handlers.Security.Permissions
 
-open System.Data.SqlClient
 open System.Security.Claims
 open Giraffe
 open Microsoft.AspNetCore.Http
@@ -11,22 +10,25 @@ open App.Helpers.Constants
 // open Persistence.Data.FiData
 open App.Helpers.HelperFunctions
 open Domains.Users.B2CGroups
-open Microsoft.Extensions.Configuration
 open PersistenceSQLClient.FiData
 open App.Common.Transaction
+open PersistenceSQLClient.DbConfig
 
 
 let getFiByInstitutionIdAsync iid transPayload _ =
     task {
-        return! getFiByInstitutionId transPayload iid
+        let! res = getFiByInstitutionId iid transPayload
+        match res with
+            | Success id -> return id
+            | Error ex -> return raise ex
     }
 
-let y iid ctx = withTransaction (getFiByInstitutionIdAsync iid) ctx ;
+let getFi iid ctx = withTransaction (getFiByInstitutionIdAsync iid) ctx
 let fiAdminCheck = fun iid (next: HttpFunc) (ctx: HttpContext) ->
     task {
         let isFiAdmin = getClaim FI_ADMIN_CLAIM_TYPE ctx
         
-        let! tryInstitution = y iid ctx
+        let! tryInstitution = getFi iid ctx
         
         match tryInstitution with
         | Some institution ->

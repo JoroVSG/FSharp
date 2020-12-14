@@ -1,6 +1,5 @@
 module App.Handlers.UserHandler
 
-
 open App.DTOs.ApplicationDTO
 open AutoMapper
 open Domains.B2CUser
@@ -8,7 +7,6 @@ open Domains.B2CUserResponse
 open Domains.Users.CLCSUser
 open Domains.Users.CommonTypes
 open Giraffe
-open JsonApiSerializer.JsonApi
 open FSharp.Control.Tasks.V2.ContextInsensitive
 open Microsoft.Extensions.Configuration
 open Newtonsoft.Json
@@ -19,12 +17,11 @@ open App.Common.Authentication
 open App.Handlers.Security.Permissions
 open App.Helpers.HelperFunctions
 open App.Helpers.MSALClient
-open App.DTOs.UserDTO
 open System.Threading.Tasks
 open App.Common.Transaction
 open PersistenceSQLClient.DbConfig
 open App.Common.JsonApiResponse
-// open Persistence.Data.ApplicationData
+open App.Mapping.UserMapper
 
 let orEmptyString = fun endOfList -> if endOfList then "" else "or "
 
@@ -40,45 +37,6 @@ let createMsalFilter = fun iidFilter (objectIds: CLCSUser list) ->
     sprintf "%s and (%s)" iidFilter userIdToString
 
 let msalFilter = fun iid -> getInstitutionFilter iid >> createMsalFilter
-
-let mapToUserDTO = fun apps (b2cUser:B2CUser) (clcsUser: CLCSUser) ->
-    let relationshipApps = Relationship<ApplicationDTO list>()
-    relationshipApps.Data <- apps
-    let dto = {
-        ObjectId = clcsUser.ObjectId
-        Id = clcsUser.IdUser
-        IdUser = clcsUser.IdUser
-        Email = clcsUser.Email
-        ActivationStatus = clcsUser.ActivationStatus
-        DeletionTimestamp = b2cUser.DeletionTimestamp
-        AccountEnabled = b2cUser.AccountEnabled
-        City = b2cUser.City
-        CompanyName = b2cUser.CompanyName
-        Country = b2cUser.Country
-        CreationType = b2cUser.CreationType
-        Department = b2cUser.Department
-        DisplayName = b2cUser.DisplayName
-        EmployeeId = b2cUser.EmployeeId
-        FirstName = b2cUser.GivenName
-        LastName = b2cUser.Surname
-        JobTitle = b2cUser.JobTitle
-        Mobile = b2cUser.Mobile
-        OtherMails = b2cUser.OtherMails
-        PasswordPolicies = b2cUser.PasswordPolicies
-        PasswordProfile = b2cUser.B2CPasswordProfile
-        PostalCode = b2cUser.PostalCode
-        SignInNames = b2cUser.SignInNames
-        State = b2cUser.State
-        StreetAddress = optional' b2cUser.StreetAddress
-        TelephoneNumber = optional' b2cUser.TelephoneNumber
-        UsageLocation = b2cUser.UsageLocation
-        UserIdentities = b2cUser.UserIdentities
-        UserPrincipalName = b2cUser.UserPrincipalName
-        UserType = b2cUser.UserType
-        Type = "user"
-        Applications = relationshipApps
-    }
-    dto
 
 let getAllUsersByFi = fun iid next ctx ->
     let transaction = createTransactionBuild ctx
