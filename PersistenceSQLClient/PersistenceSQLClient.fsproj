@@ -1,5 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\fsc.props" />
   <PropertyGroup>
+    <DisableAutoSetFscCompilerPath>true</DisableAutoSetFscCompilerPath>
+    <DotnetFscCompilerPath />
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
@@ -17,5 +20,4 @@
     <PackageReference Include="FSharp.Data.SqlClient" Version="2.0.7" />
     <PackageReference Include="TaskBuilder.fs" Version="2.1.0" />
   </ItemGroup>
-  <Import Project="..\fsc.props" />
 </Project>

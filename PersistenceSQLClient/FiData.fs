@@ -14,8 +14,21 @@ let getFiByInstitutionId = fun iid payload ->
             """ , ConnectionString, SingleRow=true>(con, transaction=trans)
         
         let! fi = cmd.AsyncExecute(iid = iid)
-        return
-            match fi with
+        return match fi with
+                | Some f -> mapToRecord<FI> f |> ResultSuccess
+                | None -> ResultNone
+    }
+    
+let getFiById = fun iid payload ->
+    let (con, trans) = payload
+    async {
+        use cmd =
+            new SqlCommandProvider<"""
+                select * from dbo.[FinancialInstitution] where IdFinancialInstitution  = @id
+            """ , ConnectionString, SingleRow=true>(con, transaction=trans)
+        
+        let! fi = cmd.AsyncExecute(id = iid)
+        return match fi with
                 | Some f -> mapToRecord<FI> f |> ResultSuccess
                 | None -> ResultNone
     }
@@ -24,14 +37,12 @@ let getFiByInstitutionId = fun iid payload ->
 let getFis = fun payload ->
     let (con, trans) = payload
     async {
-        use cmd =
-            new SqlCommandProvider<"""
-                select * from dbo.[FinancialInstitution]
-            """ , ConnectionString>(con, transaction=trans)
+        use cmd = new SqlCommandProvider<"select * from dbo.[FinancialInstitution]" , ConnectionString>(con, transaction=trans)
         
         let! fi = cmd.AsyncExecute()
         let res = fi
                   |> Seq.map(fun app -> mapToRecord<FI> app)
                   |> Seq.toList
+        
         return res |> ResultSuccess
     }

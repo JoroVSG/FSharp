@@ -4,7 +4,7 @@ open App.Common
 open App.DTOs.ApplicationDTO
 open AutoMapper
 open Domains.Applications.Application
-open Microsoft.AspNetCore.Http
+open App.Helpers.HelperFunctions
 open Giraffe
 open Authentication
 open PersistenceSQLClient.ApplicationData
@@ -30,12 +30,7 @@ let getApplicationById = fun guid next ctx ->
       let tres =
           transaction {
               let! app = getAllApplicationById guid |> TAsync
-              match app with
-                | Some a ->
-                  let mapper = ctx.GetService<IMapper>()
-                  let dto = mapper.Map<ApplicationDTO>(a)
-                  return Some dto
-                | None -> return None
+              return mapOption<Application, ApplicationDTO> app ctx
           }
       jsonApiWrapHandler tres next ctx
           

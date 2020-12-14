@@ -40,6 +40,8 @@
     
     <Compile Include="App\DTOs\UserDTO.fs" />
     
+    <Compile Include="App\DTOs\FiDTO.fs" />
+    
     <Compile Include="App\Common\Authentication.fs" />
     <Compile Include="App\Common\Converters.fs" />
     <Compile Include="App\Common\Exceptions.fs" />

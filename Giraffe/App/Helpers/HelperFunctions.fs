@@ -1,6 +1,7 @@
 module App.Helpers.HelperFunctions
 
 open System
+open AutoMapper
 open FSharp.Data
 open Giraffe
 open App.Common.Exceptions
@@ -26,6 +27,12 @@ let bool = lower >> boolCaseInsensitive
     
 let tryGetClaim = fun claimType (ctx: HttpContext) -> ctx.User.Claims |> Seq.tryFind (fun claim -> claim.Type = claimType)
 let getClaim = fun claimType (ctx: HttpContext) -> ctx.User.Claims |> Seq.find (fun claim -> claim.Type = claimType)
+
+let mapOption<'a, 'b> = fun (a: Option<'a>) (ctx: HttpContext) ->
+    let mapper = ctx.GetService<IMapper>()
+    match a with
+         | Some v -> mapper.Map<'b>(v) |> Some
+         | None -> None
 
 let convert<'T> (value: string) : 'T =
   match box Unchecked.defaultof<'T> with

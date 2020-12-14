@@ -1,9 +1,13 @@
 module App.Handlers.FIHandler
 
+open App.DTOs.FiDTO
+open AutoMapper
+open Domains.FIs.FinancialInstitution
 open Giraffe
 open App.Common.Authentication
 open App.Common.JsonApiResponse
 open App.Common.Transaction
+open Microsoft.AspNetCore.Http
 open PersistenceSQLClient.DbConfig
 open PersistenceSQLClient.FiData
 open App.Handlers.Security.Permissions
@@ -12,22 +16,26 @@ open App.Helpers.HelperFunctions
 let getFiById = fun iid next ctx ->
     let transaction = createTransactionBuild ctx
     let tres = transaction {
-        let! fi = getFiByInstitutionId iid |> TAsync
-        return fi
+        let! tryFi = getFiById iid |> TAsync
+        return mapOption<FI, FiDTO> tryFi ctx
     }
     jsonApiWrapHandler tres next ctx
 
-
+    
 let getFs = fun next ctx ->
     let transaction = createTransactionBuild ctx
     let tres = transaction {
-        return! getFis |> TAsync
+        let! res = getFis |> TAsync
+        
+        let mapper = ctx.GetService<IMapper>()
+        return res.Value
+               |> List.map(fun r -> mapper.Map<FiDTO>(r))
+               |> Some
     }
     jsonApiWrapHandler tres next ctx
 
 
 let profitStarsErrorHandler = forbidden "Only Profitstars or Financial Institution admins are allowed to retrieve users for that financial institution"
-
 
 let fiGetRoutes: HttpHandler list = [
     route "/fi" >=> authorize >=> profitStarsAdminCheckOny profitStarsErrorHandler >=> getFs

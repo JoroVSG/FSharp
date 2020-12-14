@@ -3,8 +3,10 @@ module App.Mapping.Automapper.MapperConfig
 open System
 open System.Linq.Expressions
 open App.DTOs.ApplicationDTO
+open App.DTOs.FiDTO
 open AutoMapper
 open Domains.Applications.Application
+open Domains.FIs.FinancialInstitution
 
 type AutoMapper.IMappingExpression<'TSource, 'TDestination> with
     member this.ForMemberFs<'TMember>
@@ -33,6 +35,13 @@ let createMapper =
                 .ForMemberFs(
                     (fun d -> d.IdApplication),
                     (fun opts -> opts.MapFrom(fun s -> s.Id))
+                )
+                |> ignore
+                
+            cfg.CreateMap<FI, FiDTO>()
+                .ForMemberFs(
+                    (fun d -> d.Id),
+                    (fun opts -> opts.MapFrom(fun s -> s.IdFinancialInstitution))
                 )
                 |> ignore
             )
