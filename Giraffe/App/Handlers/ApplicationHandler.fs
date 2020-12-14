@@ -12,7 +12,7 @@ open App.Common.Transaction
 open PersistenceSQLClient.DbConfig
 open App.Common.JsonApiResponse
 
-let getAllApplications = fun (next: HttpFunc) (ctx: HttpContext) ->
+let getAllApplications = fun next ctx ->
     let transaction = createTransactionBuild ctx
     let tres =
         transaction {
@@ -25,7 +25,7 @@ let getAllApplications = fun (next: HttpFunc) (ctx: HttpContext) ->
         }
     jsonApiWrapHandler tres next ctx
 
-let getApplicationById = fun (guid: Guid) (next: HttpFunc) (ctx: HttpContext) ->
+let getApplicationById = fun guid next ctx ->
       let transaction = createTransactionBuild ctx
       let tres =
           transaction {
@@ -39,7 +39,7 @@ let getApplicationById = fun (guid: Guid) (next: HttpFunc) (ctx: HttpContext) ->
           }
       jsonApiWrapHandler tres next ctx
           
-let createApp = fun (next: HttpFunc) (ctx: HttpContext) ->
+let createApp = fun next ctx ->
     let transaction = createTransactionBuild ctx
     let tres =
         transaction {
@@ -50,7 +50,7 @@ let createApp = fun (next: HttpFunc) (ctx: HttpContext) ->
         }
     jsonApiWrapHandler tres next ctx
 
-let deleteApplication = fun guid (next: HttpFunc) (ctx: HttpContext)   ->
+let deleteApplication = fun guid next ctx   ->
     let transaction = createTransactionBuild ctx
     let res = transaction {
         let! res = deleteApplicationAsync guid |> TAsync
