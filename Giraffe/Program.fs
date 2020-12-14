@@ -27,8 +27,8 @@ let mutable Configurations: IConfigurationRoot = null
 
 let allGetRoutes: HttpHandler list =
     [ route "/" >=> text "Public endpoint."]
-    // @ applicationsGetRoutes
-    // @ usersGetRoutes
+    @ applicationsGetRoutes
+    @ usersGetRoutes
     @ fiGetRoutes
 
 let allPostRoutes: HttpHandler list = applicationPostRoutes
