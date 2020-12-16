@@ -23,10 +23,13 @@ open App.Common.Transaction
 open App.Mapping.UserMapper
 
 let orEmptyString = fun endOfList -> if endOfList then "" else "or "
+
 let getOperand = fun index -> isEndOfTheList index >> orEmptyString
+
 let getInstitutionFilter = fun iid (clientId: string) ->
     let adminFilter = sprintf "$filter=extension_%s_InstitutionId eq '%s'"
     adminFilter (clientId.Replace("-", "")) (upper iid)
+
 let createMsalFilter = fun iidFilter (objectIds: CLCSUser list) ->
     let userIdsMapped = objectIds |> Seq.mapi(fun index user -> sprintf "id eq '%s' %s" (string user.ObjectId.Value) (getOperand index objectIds) )
     let userIdToString = userIdsMapped |> String.concat(" ")
@@ -83,8 +86,7 @@ let profitStarsErrorHandler = forbidden "Only Profitstars or Financial Instituti
 
 let usersPermissionCheck = fun iid -> profitStarsFiAdminCombined iid >=> profitStarsFiAdminErrorHandling profitStarsErrorHandler fiAdminErrorHandler
 let usersGetRoutes: HttpHandler list = [
-    // route "/users" >=> authorize >=> profitStarsAdminCheckOny profitStarsErrorHandler >=> getAllUsers
-    routef "/%s/relationship/users" (fun iid -> authorize >=> usersPermissionCheck iid >=> transaction (getAllUsersByFi iid))
+     routef "/%s/relationship/users" (fun iid -> authorize >=> usersPermissionCheck iid >=> transaction (getAllUsersByFi iid))
 ]
 let usersPostRoutes: HttpHandler list  = [
      routef "/%s/relationship/users" (fun iid -> authorize >=> usersPermissionCheck iid >=> transaction (getAllUsersByFi iid))

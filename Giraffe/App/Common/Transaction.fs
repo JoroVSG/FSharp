@@ -30,7 +30,7 @@ let withTransaction<'a> = fun (f: TransactionFunction<'a, 'b>) (ctx: HttpContext
             return raise ex
     }
     
-let transaction<'a> = fun (f: TransactionFunction<'a, 'b>) (next: HttpFunc) (ctx: HttpContext) ->
+let transaction = fun f next ctx ->
     task {
         let! res = withTransaction f ctx
         return! jsonApiWrapHandler' res next ctx

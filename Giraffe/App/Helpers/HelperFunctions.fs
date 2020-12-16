@@ -6,6 +6,7 @@ open FSharp.Data
 open Giraffe
 open App.Common.Exceptions
 open Microsoft.AspNetCore.Http
+open FSharp.Control.Tasks.V2.ContextInsensitive
 
 let lowerFirstChar s =
     s
@@ -24,6 +25,8 @@ let boolCaseInsensitive s =
     | _-> failwith("Error: returns " + s)
 
 let bool = lower >> boolCaseInsensitive
+
+let wrap (a: Async<'a>) = task { return! a }
     
 let tryGetClaim = fun claimType (ctx: HttpContext) -> ctx.User.Claims |> Seq.tryFind (fun claim -> claim.Type = claimType)
 let getClaim = fun claimType (ctx: HttpContext) -> ctx.User.Claims |> Seq.find (fun claim -> claim.Type = claimType)
