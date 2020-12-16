@@ -22,7 +22,8 @@ let getAllApplicationsAsync = fun payload ->
         let res = reader
                   |> Seq.map(fun app -> mapToRecord<Application> app)
                   |> Seq.toList
-        return res |> ResultSuccess
+        return res
+        //|> ResultSuccess
     }
     
 let getAllApplicationById = fun idApplication payload ->
@@ -35,8 +36,8 @@ let getAllApplicationById = fun idApplication payload ->
         
         let! app = cmd.AsyncExecute(idApplication = idApplication)
         return match app with
-                | Some a -> mapToRecord<Application> a |> ResultSuccess
-                | None -> ResultNone
+                | Some a -> mapToRecord<Application> a |> Some
+                | None -> None
    }
    
 let getApplicationsByUserIdAsync idUser payload =
@@ -54,7 +55,7 @@ let getApplicationsByUserIdAsync idUser payload =
         return reader
                   |> Seq.map(fun app -> mapToRecord<Application> app)
                   |> Seq.toList
-                  |> ResultSuccess
+                  //|> ResultSuccess
     }
 
 let deleteApplicationAsync = fun idApp payload ->
@@ -68,8 +69,8 @@ let deleteApplicationAsync = fun idApp payload ->
         let! rowsAffected = cmd.AsyncExecute(idApplication = idApp)
         return
             if rowsAffected = 1
-            then ResultSuccess { Id = Guid.NewGuid(); Success = true; Exception = None }
-            else ResultNone
+            then Some { Id = Guid.NewGuid(); Success = true; Exception = None }
+            else None
     }
     
 //let createApplicationAsync = fun (conn: SqlConnection, trans: SqlTransaction) (app: Application) ->
@@ -102,8 +103,10 @@ let createApplicationAsync = fun app (payload: TransactionPayload) ->
         
         return
             if rowAffected = 1
-            then ResultSuccess { Id = guid; Success = true; Exception = None }
-            else (TransactionException(HttpStatusCode.BadRequest,"Error occur during creation") :> Exception) |> Error
+            then  { Id = guid; Success = true; Exception = None } |> Ok
+            else
+                let ex = TransactionException(HttpStatusCode.BadRequest, "Error occur during creation") :> Exception
+                ex |> Result.Error
                 
     }
     

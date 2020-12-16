@@ -15,8 +15,8 @@ let getFiByInstitutionId = fun iid payload ->
         
         let! fi = cmd.AsyncExecute(iid = iid)
         return match fi with
-                | Some f -> mapToRecord<FI> f |> ResultSuccess
-                | None -> ResultNone
+                | Some f -> mapToRecord<FI> f |> Some
+                | None -> None
     }
     
 let getFiById = fun iid payload ->
@@ -29,8 +29,8 @@ let getFiById = fun iid payload ->
         
         let! fi = cmd.AsyncExecute(id = iid)
         return match fi with
-                | Some f -> mapToRecord<FI> f |> ResultSuccess
-                | None -> ResultNone
+                | Some f -> mapToRecord<FI> f |> Some
+                | None -> None
     }
 
 
@@ -44,5 +44,6 @@ let getFis = fun payload ->
                   |> Seq.map(fun app -> mapToRecord<FI> app)
                   |> Seq.toList
         
-        return res |> ResultSuccess
+        return res 
+        // |> ResultSuccess
     }

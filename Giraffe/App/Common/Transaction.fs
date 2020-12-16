@@ -11,9 +11,9 @@ open Microsoft.Extensions.Configuration
 open PersistenceSQLClient.DbConfig
 
 
-type TransactionFunction<'a> = TransactionPayload -> HttpContext -> Task<'a>
+type TransactionFunction<'a, 'b> =  TransactionPayload -> HttpContext -> Task<Result<'a, 'b>>
 type TransactionFunction'<'a> = PersistenceSQLClient.DbConfig.TransactionFunction<'a>
-let withTransaction<'a> = fun (f: TransactionFunction<'a>) (ctx: HttpContext) ->
+let withTransaction<'a> = fun (f: TransactionFunction<'a, 'b>) (ctx: HttpContext) ->
     task {
         let config = ctx.GetService<IConfiguration>()
         let connectionStringFromConfig = config.["ConnectionString:DefaultConnectionString"]
@@ -30,10 +30,10 @@ let withTransaction<'a> = fun (f: TransactionFunction<'a>) (ctx: HttpContext) ->
             return raise ex
     }
     
-let transaction<'a> = fun (f: TransactionFunction<'a>) (next: HttpFunc) (ctx: HttpContext) ->
+let transaction<'a> = fun (f: TransactionFunction<'a, 'b>) (next: HttpFunc) (ctx: HttpContext) ->
     task {
         let! res = withTransaction f ctx
-        return! json (jsonApiWrap res) next ctx
+        return! jsonApiWrapHandler' res next ctx
     }
 
 type TransactionBuilder(connectionString) =
@@ -80,13 +80,13 @@ type TransactionBuilder(connectionString) =
                     
                     do! this.DisposeAsync()
                     return Success a
-                | Error ex -> return this.HandleError(ex)
+                | Error' ex -> return this.HandleError(ex)
             }
             wrap.Result
         with ex ->
             let err = task {
                 do! this.RollBackAndDispose()
-                return Error ex
+                return Error' ex
             }
             err.Result
     member __.DisposeAsync(): Task<unit> =
@@ -113,14 +113,14 @@ type TransactionBuilder(connectionString) =
         
         match res with
             | Success a -> next a
-            | Error ex -> this.HandleError(ex)
+            | Error' ex -> this.HandleError(ex)
     
     member this.HandleError(ex: Exception) =
             let err = task {
                 do! this.RollBackAndDispose()
                 return ex 
             }
-            Error err.Result
+            Error' err.Result
             
         
         

@@ -63,6 +63,7 @@ let getUsersByEmailAsync = fun (emails: Email seq) (payload: TransactionPayload)
                   |> Seq.map(fun app -> mapToRecord<CLCSUser> app)
                   |> Seq.toList
         
-        return res |> ResultSuccess
+        return res 
+        //|> ResultSuccess
     }
    

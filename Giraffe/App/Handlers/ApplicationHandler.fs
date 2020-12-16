@@ -1,72 +1,58 @@
 module App.Handlers.ApplicationHandler
-open System
 open App.Common
 open App.DTOs.ApplicationDTO
 open AutoMapper
 open Domains.Applications.Application
-open App.Helpers.HelperFunctions
 open Giraffe
 open Authentication
+open Microsoft.AspNetCore.Http
 open PersistenceSQLClient.ApplicationData
 open App.Common.Transaction
-open PersistenceSQLClient.DbConfig
 open App.Common.JsonApiResponse
+open FSharp.Control.Tasks.V2.ContextInsensitive
 
-let getAllApplications = fun next ctx ->
-    let transaction = createTransactionBuild ctx
-    let tres =
-        transaction {
-            let mapper = ctx.GetService<IMapper>()
-            let! models = getAllApplicationsAsync |> TAsync
-            return models.Value
-                |> Seq.toList
-                |> List.map (fun app -> mapper.Map<ApplicationDTO>(app))
-                |> Some
-        }
-    jsonApiWrapHandler tres next ctx
+let getAllApplications = fun transPayload (ctx: HttpContext) ->
+    task {
+        let mapper = ctx.GetService<IMapper>()
+        let! models = getAllApplicationsAsync transPayload
+        return models
+            |> Seq.toList
+            |> List.map (fun app -> mapper.Map<ApplicationDTO>(app))
+            |> Ok
+    }
 
-let getApplicationById = fun guid next ctx ->
-      let transaction = createTransactionBuild ctx
-      let tres =
-          transaction {
-              let! app = getAllApplicationById guid |> TAsync
-              return mapOption<Application, ApplicationDTO> app ctx
-          }
-      jsonApiWrapHandler tres next ctx
-          
-let createApp = fun next ctx ->
-    let transaction = createTransactionBuild ctx
-    let tres =
-        transaction {
-            let! application = ctx.BindJsonAsync<ApplicationDTO>() |> TTIgnore
-            let mapper = ctx.GetService<IMapper>()
-            let model = mapper.Map<Application>(application.Value)
-            return! createApplicationAsync model |> TTask
-        }
-    jsonApiWrapHandler tres next ctx
+let getApplicationById = fun guid transPayload (ctx: HttpContext) ->
+      task {
+          let! model = getAllApplicationById guid transPayload
+          let mapper = ctx.GetService<IMapper>()
+          return mapResultOrNotFound model (fun m -> mapper.Map<ApplicationDTO>(m))
+      }
 
-let deleteApplication = fun guid next ctx   ->
-    let transaction = createTransactionBuild ctx
-    let res = transaction {
-        let! res = deleteApplicationAsync guid |> TAsync
-//        let mapper = ctx.GetService<IMapper>()
-//        let! application = ctx.BindJsonAsync<ApplicationDTO>() |> TTIgnore
-//        let model = mapper.Map<Application>(application.Value)
-//        let! _ = createApplicationAsync model |> TTask
-        return res
+
+let createApp = fun transPayload (ctx: HttpContext) ->
+    task {
+        let! application = ctx.BindJsonAsync<ApplicationDTO>()
+        let mapper = ctx.GetService<IMapper>()
+        let model = mapper.Map<Application>(application)
+        let! result = createApplicationAsync model transPayload
+        return result
+    }  
+let deleteApplication = fun guid transPayload ctx ->
+    task {
+        let! res = deleteApplicationAsync guid transPayload
+        let! x = createApp transPayload ctx
+        return res |> resultOrNotFound
     }
     
-    jsonApiWrapHandler res next ctx
-
-    
 let applicationsGetRoutes: HttpHandler list = [
-    route "/applications" >=> authorize >=> getAllApplications
-    routef "/applications/%O" (fun guid -> authorize >=> getApplicationById guid)
-    ]
+    route "/applications" >=> authorize >=> transaction getAllApplications
+    routef "/applications/%O" (fun guid -> authorize >=> transaction (getApplicationById guid))
+]
 
 let applicationPostRoutes: HttpHandler list = [
-    route "/applications" >=> authorize >=> createApp
+    route "/applications" >=> authorize >=> transaction createApp
 ]
+
 let applicationDeleteRoutes: HttpHandler list = [
-    routef "/applications/%O" (fun guid -> authorize >=> (deleteApplication guid))
+    routef "/applications/%O" (fun guid -> authorize >=> transaction (deleteApplication guid))
 ]

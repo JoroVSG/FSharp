@@ -2,42 +2,35 @@ module App.Handlers.FIHandler
 
 open App.DTOs.FiDTO
 open AutoMapper
-open Domains.FIs.FinancialInstitution
 open Giraffe
 open App.Common.Authentication
 open App.Common.JsonApiResponse
 open App.Common.Transaction
 open Microsoft.AspNetCore.Http
-open PersistenceSQLClient.DbConfig
 open PersistenceSQLClient.FiData
 open App.Handlers.Security.Permissions
 open App.Helpers.HelperFunctions
+open FSharp.Control.Tasks.V2.ContextInsensitive
 
-let getFiById = fun iid next ctx ->
-    let transaction = createTransactionBuild ctx
-    let tres = transaction {
-        let! tryFi = getFiById iid |> TAsync
-        return mapOption<FI, FiDTO> tryFi ctx
-    }
-    jsonApiWrapHandler tres next ctx
-
-    
-let getFs = fun next ctx ->
-    let transaction = createTransactionBuild ctx
-    let tres = transaction {
-        let! res = getFis |> TAsync
-        
+let getFs = fun payload (ctx: HttpContext) ->
+    task {
         let mapper = ctx.GetService<IMapper>()
-        return res.Value
-               |> List.map(fun r -> mapper.Map<FiDTO>(r))
-               |> Some
+        let! res = getFis payload
+        return res
+            |> List.map(fun r -> mapper.Map<FiDTO>(r))
+            |> Ok
     }
-    jsonApiWrapHandler tres next ctx
+
+let getFiById = fun iid payload _ ->
+    task {
+        let! fi = getFiById iid payload
+        return fi |> resultOrNotFound
+    }
 
 
 let profitStarsErrorHandler = forbidden "Only Profitstars or Financial Institution admins are allowed to retrieve users for that financial institution"
 
 let fiGetRoutes: HttpHandler list = [
-    route "/fi" >=> authorize >=> profitStarsAdminCheckOny profitStarsErrorHandler >=> getFs
-    routef "/fi/%O" (fun guid -> authorize >=> profitStarsAdminCheckOny profitStarsErrorHandler >=> getFiById guid)
+    route "/fi" >=> authorize >=> profitStarsAdminCheckOny profitStarsErrorHandler >=> transaction getFs
+    routef "/fi/%O" (fun guid -> authorize >=> profitStarsAdminCheckOny profitStarsErrorHandler >=> transaction (getFiById guid))
 ]

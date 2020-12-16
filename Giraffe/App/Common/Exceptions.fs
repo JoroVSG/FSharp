@@ -47,7 +47,7 @@ let handleErrorJsonAPI = fun (ex: Exception) _ (ctx: HttpContext) ->
                 | :? ArgumentException -> (StatusCodes.Status400BadRequest, ex.Message)
                 | :? DBConcurrencyException -> (StatusCodes.Status409Conflict, "This record has already been updated. Please try again.")
                 | :? SqlException  -> (StatusCodes.Status409Conflict, ex.Message)
-                | _ -> (StatusCodes.Status500InternalServerError, "")
+                | _ -> (StatusCodes.Status500InternalServerError, "Internal server error")
         
         let root = createJsonApiError message code
         

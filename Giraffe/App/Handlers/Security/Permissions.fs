@@ -12,15 +12,13 @@ open App.Helpers.HelperFunctions
 open Domains.Users.B2CGroups
 open PersistenceSQLClient.FiData
 open App.Common.Transaction
-open PersistenceSQLClient.DbConfig
+open App.Common.JsonApiResponse
 
 
 let getFiByInstitutionIdAsync iid transPayload _ =
     task {
         let! res = getFiByInstitutionId iid transPayload
-        match res with
-            | Success id -> return id
-            | Error ex -> return raise ex
+        return res |> resultOrNotFound
     }
 
 let getFi iid ctx = withTransaction (getFiByInstitutionIdAsync iid) ctx
@@ -31,7 +29,7 @@ let fiAdminCheck = fun iid (next: HttpFunc) (ctx: HttpContext) ->
         let! tryInstitution = getFi iid ctx
         
         match tryInstitution with
-        | Some institution ->
+        | Ok institution ->
             let isProAdmin = getClaimValue ctx IS_PROFITSTARS_CLAIM_TYPE
             
             if isProAdmin then
@@ -45,7 +43,7 @@ let fiAdminCheck = fun iid (next: HttpFunc) (ctx: HttpContext) ->
                 identity.AddClaim(Claim(IS_FI_ADMIN, claimValue))
                 
                 return! next ctx
-        | None -> return! notFound "Financial Institution not found" next ctx
+        | _ -> return! notFound "Financial Institution not found" next ctx
     }
 
 let profitStarsAdminCheck = fun (next: HttpFunc) (ctx: HttpContext) ->
