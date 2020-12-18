@@ -9,6 +9,8 @@ open Microsoft.AspNetCore.Http
 open FSharp.Control.Tasks.V2.ContextInsensitive
 open Microsoft.Extensions.Configuration
 open PersistenceSQLClient.DbConfig
+open FsToolkit.ErrorHandling.AsyncResultCE
+open App.Helpers.HelperFunctions
 
 
 type TransactionFunction<'a, 'b> =  TransactionPayload -> HttpContext -> Task<Result<'a, 'b>>
@@ -131,4 +133,26 @@ let createTransactionBuild (ctx: HttpContext) =
     let settings = ctx.GetService<IConfiguration>()
     let conStr = settings.["ConnectionString:DefaultConnectionString"]
     transaction' conStr
+
+let transactionFunctionCompose = fun (f1: TransactionFunction<'a, 'b>) (f2: TransactionFunction<'c, 'b>) ->
+    fun (payload: TransactionPayload) (ctx: HttpContext) ->
+        asyncResult{
+            let! res1 = f1 payload ctx
+            let! res2 = f2 payload ctx
+            return (res1, res2)
+        }
+        |> wrap
+
+let transactionFunctionCompose'= fun (f1: TransactionFunction<'a, 'b>) (f2: 'a -> TransactionFunction<'c, 'b>) ->
+    fun (payload: TransactionPayload) (ctx: HttpContext) ->
+        asyncResult {
+            let! res1 = f1 payload ctx
+            let! res2 = f2 res1 payload ctx
+            return res2
+        }
+        |> wrap
+
+ 
+let (=>) = transactionFunctionCompose
+let (>>>) = transactionFunctionCompose'
     

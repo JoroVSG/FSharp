@@ -12,6 +12,9 @@ open App.Common.JsonApiResponse
 open FSharp.Control.Tasks.V2.ContextInsensitive
 open FsToolkit.ErrorHandling
 open App.Helpers.HelperFunctions
+open PersistenceSQLClient.DbConfig
+open System.Threading.Tasks
+open Domains.Common.CommonTypes
 
 let getAllApplications = fun payload (ctx: HttpContext) ->
     task {
@@ -45,25 +48,43 @@ let deleteApplication = fun guid payload _ ->
         return res |> resultOrNotFound
     }
 
-let deleteApplicationWithError = fun guid payload (ctx: HttpContext) ->
+// let deleteApplicationWithError = fun guid payload (ctx: HttpContext) ->
+//     asyncResult {
+//       let! model = getApplicationById guid payload ctx
+//       let! _ = deleteApplication guid payload ctx
+//       let! x = createApp payload ctx
+//       return x
+//     }
+//     |> wrap
+
+let deleteApplication' = fun (op: OperationStatus) payload _ ->
+    task {
+        let! res = deleteApplicationAsync op.Id payload
+        return res |> resultOrNotFound
+    }
+ 
+
+let createAndDelete<'a> = createApp >>> deleteApplication'
+
+let deleteApplicationWithError guid = deleteApplication guid => createApp => getApplicationById guid
+
+let deleteApplicationHandler guid payload ctx =
     asyncResult {
-      let! model = getApplicationById guid payload ctx
-      let! _ = deleteApplication guid payload ctx
-      let! x = createApp payload ctx
-      return x
+        let! res = deleteApplicationWithError guid payload ctx
+        let (_, r3) = res
+        return r3
     }
     |> wrap
     
-
 let applicationsGetRoutes: HttpHandler list = [
     route "/applications" >=> authorize >=> transaction getAllApplications
     routef "/applications/%O" (fun guid -> authorize >=> transaction (getApplicationById guid))
 ]
 
 let applicationPostRoutes: HttpHandler list = [
-    route "/applications" >=> authorize >=> transaction createApp
+    route "/applications" >=> authorize >=> transaction createAndDelete
 ]
 
 let applicationDeleteRoutes: HttpHandler list = [
-    routef "/applications/%O" (fun guid -> authorize >=> transaction (deleteApplicationWithError guid))
+    routef "/applications/%O" (fun guid -> authorize >=> transaction (deleteApplication guid))
 ]
