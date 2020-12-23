@@ -2,6 +2,18 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Projects\FSharp" t="IncludeFlat">
+      <e p="Crypto" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Crypto.csproj" t="IncludeRecursive" />
+        <e p="CryptoService.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.1" t="Include">
+              <e p="Crypto.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
       <e p="Domains" t="IncludeRecursive">
         <e p="Applications" t="Include">
           <e p="Application.fs" t="Include" />
@@ -31,12 +43,14 @@
             <e p="Converters.fs" t="Include" />
             <e p="Exceptions.fs" t="Include" />
             <e p="JsonApiResponse.fs" t="Include" />
+            <e p="Messages.fs" t="Include" />
             <e p="Transaction.fs" t="Include" />
           </e>
           <e p="DTOs" t="Include">
             <e p="ApplicationDTO.fs" t="Include" />
             <e p="FiDTO.fs" t="Include" />
             <e p="UserDTO.fs" t="Include" />
+            <e p="UserInviteDTO.fs" t="Include" />
           </e>
           <e p="Handlers" t="Include">
             <e p="ApplicationHandler.fs" t="Include" />

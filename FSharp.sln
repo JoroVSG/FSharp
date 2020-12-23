@@ -13,6 +13,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Migrations", "Migrations\Mi
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "PersistenceSQLClient", "PersistenceSQLClient\PersistenceSQLClient.fsproj", "{3E3FFEC7-FD97-49D8-96CE-1DFCC1229D32}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crypto", "Crypto\Crypto.csproj", "{1CD8670B-DB57-41E7-8257-DD297994FE70}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,5 +88,17 @@ Global
 		{3E3FFEC7-FD97-49D8-96CE-1DFCC1229D32}.Release|x64.Build.0 = Release|Any CPU
 		{3E3FFEC7-FD97-49D8-96CE-1DFCC1229D32}.Release|x86.ActiveCfg = Release|Any CPU
 		{3E3FFEC7-FD97-49D8-96CE-1DFCC1229D32}.Release|x86.Build.0 = Release|Any CPU
+		{1CD8670B-DB57-41E7-8257-DD297994FE70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CD8670B-DB57-41E7-8257-DD297994FE70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CD8670B-DB57-41E7-8257-DD297994FE70}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1CD8670B-DB57-41E7-8257-DD297994FE70}.Debug|x64.Build.0 = Debug|Any CPU
+		{1CD8670B-DB57-41E7-8257-DD297994FE70}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1CD8670B-DB57-41E7-8257-DD297994FE70}.Debug|x86.Build.0 = Debug|Any CPU
+		{1CD8670B-DB57-41E7-8257-DD297994FE70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CD8670B-DB57-41E7-8257-DD297994FE70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CD8670B-DB57-41E7-8257-DD297994FE70}.Release|x64.ActiveCfg = Release|Any CPU
+		{1CD8670B-DB57-41E7-8257-DD297994FE70}.Release|x64.Build.0 = Release|Any CPU
+		{1CD8670B-DB57-41E7-8257-DD297994FE70}.Release|x86.ActiveCfg = Release|Any CPU
+		{1CD8670B-DB57-41E7-8257-DD297994FE70}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

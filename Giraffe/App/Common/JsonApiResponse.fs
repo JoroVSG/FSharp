@@ -1,8 +1,6 @@
 module App.Common.JsonApiResponse
 
-open System.Collections.Generic
 open System.Reflection
-open AutoMapper
 open JsonApiSerializer.JsonApi
 open Microsoft.AspNetCore.Http
 open Giraffe

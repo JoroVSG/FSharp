@@ -12,13 +12,38 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46d54f0c-fb97-4b15-8016-29c67a0ec41f" name="Default Changelist" comment="Adding again user routes">
+    <list default="true" id="46d54f0c-fb97-4b15-8016-29c67a0ec41f" name="Default Changelist" comment="Adding Fluent library">
+      <change afterPath="$PROJECT_DIR$/Crypto/Crypto.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Crypto/CryptoService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Crypto/bin/Debug/netstandard2.1/Crypto.deps.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Crypto/bin/Debug/netstandard2.1/Crypto.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Crypto/bin/Debug/netstandard2.1/Crypto.pdb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Crypto/obj/Crypto.csproj.nuget.dgspec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Crypto/obj/Crypto.csproj.nuget.g.props" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Crypto/obj/Crypto.csproj.nuget.g.targets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Crypto/obj/Debug/netstandard2.1/.NETStandard,Version=v2.1.AssemblyAttributes.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Crypto/obj/Debug/netstandard2.1/Crypto.AssemblyInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Crypto/obj/Debug/netstandard2.1/Crypto.AssemblyInfoInputs.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Crypto/obj/Debug/netstandard2.1/Crypto.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Crypto/obj/Debug/netstandard2.1/Crypto.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Crypto/obj/Debug/netstandard2.1/Crypto.csprojAssemblyReference.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Crypto/obj/Debug/netstandard2.1/Crypto.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Crypto/obj/Debug/netstandard2.1/Crypto.pdb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Crypto/obj/project.assets.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Crypto/obj/project.nuget.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Crypto/obj/project.packagespec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Giraffe/App/Common/Messages.fs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Giraffe/App/DTOs/UserInviteDTO.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FSharp.sln" beforeDir="false" afterPath="$PROJECT_DIR$/FSharp.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/App/Common/JsonApiResponse.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Common/JsonApiResponse.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/Program.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/Program.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" beforeDir="false" afterPath="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +69,8 @@
     <setting file="file://$PROJECT_DIR$/PersistenceSQLClient/Mapping.fs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/CDCCF319-ADEC-8BDF-2295-52FABDB408CF/1/prim-types.fs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B7F86EBA-729B-7611-A87B-A0188AFE11AD/D/Core.fs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/CDCCF319-ADEC-8BDF-2295-52FABDB408CF/19/list.fs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Crypto/obj/Debug/netstandard2.1/.NETStandard,Version=v2.1.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -54,6 +81,15 @@
         <option value="$PROJECT_DIR$/PersistenceSQLClient/ApplicationData.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" />
         <option value="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" />
+        <option value="$PROJECT_DIR$/Giraffe/App/Common/JsonApiResponse.fs" />
+        <option value="$PROJECT_DIR$/Giraffe/App/Common/Messages.fs" />
+        <option value="$PROJECT_DIR$/Giraffe/App/DTOs/UserInviteDTO.fs" />
+        <option value="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" />
+        <option value="$PROJECT_DIR$/Crypto/Class1.cs" />
+        <option value="$PROJECT_DIR$/Crypto/CryptoService.cs" />
+        <option value="$PROJECT_DIR$/Giraffe/Program.fs" />
+        <option value="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -200,6 +236,8 @@
       <workItem from="1608109647635" duration="187000" />
       <workItem from="1608109866452" duration="8275000" />
       <workItem from="1608158007817" duration="1215000" />
+      <workItem from="1608740614338" duration="642000" />
+      <workItem from="1608741567579" duration="706000" />
     </task>
     <task id="LOCAL-00001" summary="Clean up on AnimalData.fs">
       <created>1605628859739</created>
@@ -495,7 +533,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608132796512</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Adding Fluent library">
+      <created>1608731458675</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1608731458675</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -531,7 +576,6 @@
       <path value="$PROJECT_DIR$/Giraffe" />
     </ignored-roots>
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Adding applications to User" />
     <MESSAGE value="Adding applications to User part 2" />
     <MESSAGE value="Fixing gitignore" />
     <MESSAGE value="Fixing gitignore part 2" />
@@ -556,7 +600,30 @@
     <MESSAGE value="TransactionBuilder part 3" />
     <MESSAGE value="TransactionBuilder part 4" />
     <MESSAGE value="Returning to withTransaction approach" />
-    <option name="LAST_COMMIT_MESSAGE" value="Returning to withTransaction approach" />
+    <MESSAGE value="Adding Fluent library" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Fluent library" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="672" y="300" key="Rider.ProjectTemplateDialog.Size" timestamp="1608741831883">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="672" y="300" key="Rider.ProjectTemplateDialog.Size/0.0.2560.1400@0.0.2560.1400" timestamp="1608741831883" />
+    <state x="92" y="92" width="2376" height="1216" key="VCS.FileHistoryDialog" timestamp="1608740755430">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="92" y="92" width="2376" height="1216" key="VCS.FileHistoryDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1608740755430" />
+    <state x="672" y="282" key="Vcs.Push.Dialog.v2" timestamp="1608731460950">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="672" y="282" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1608731460950" />
+    <state x="802" y="294" width="955" height="812" key="find.popup" timestamp="1608735036714">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="802" y="294" width="955" height="812" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1608735036714" />
+    <state x="773" y="0" width="1009" height="1470" key="search.everywhere.popup" timestamp="1608734924823">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="773" y="0" width="1009" height="1470" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1608734924823" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

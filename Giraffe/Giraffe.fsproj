@@ -45,6 +45,8 @@
     
     <Compile Include="App\DTOs\FiDTO.fs" />
     
+    <Compile Include="App\DTOs\UserInviteDTO.fs" />
+    
     <Compile Include="App\Common\Authentication.fs" />
     <Compile Include="App\Common\Converters.fs" />
     <Compile Include="App\Common\Exceptions.fs" />
@@ -52,6 +54,7 @@
     <Compile Include="App\Helpers\MSALClient.fs" />
     <Compile Include="App\Helpers\HelperFunctions.fs" />
     <Compile Include="App\Common\Transaction.fs" />
+    <Compile Include="App\Common\Messages.fs" />
     <Compile Include="App\Helpers\Constants.fs" />
     <Compile Include="App\Mapping\UserMapper.fs" />
     <Compile Include="App\Mapping\ApplicationMapper.fs" />
@@ -63,6 +66,7 @@
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Crypto\Crypto.csproj" />
     <ProjectReference Include="..\Domains\Domains.fsproj" />
     <ProjectReference Include="..\Migrations\Migrations.fsproj" />
     <ProjectReference Include="..\PersistenceSQLClient\PersistenceSQLClient.fsproj" />

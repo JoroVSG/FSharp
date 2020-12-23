@@ -4,6 +4,7 @@ open System
 open System.IO
 open App.Common.Converters
 open App.Helpers.MSALClient
+open Crypto
 open Giraffe
 open Giraffe.Serialization
 open JsonApiSerializer
@@ -22,6 +23,7 @@ open App.Common.Exceptions
 open App.Handlers.UserHandler
 open App.Mapping.Automapper.MapperConfig
 open App.Handlers.FIHandler
+
 
 let mutable Configurations: IConfigurationRoot = null
 
@@ -74,6 +76,7 @@ let configureServices (services : IServiceCollection) =
     // settings.Converters.Add(OptionConverter())
         
     services.AddSingleton<IJsonSerializer>(NewtonsoftJsonSerializer(settings)) |> ignore
+    services.AddSingleton<ICryptoService>(CLCSCrypto()) |> ignore
     services.AddSingleton<MSALAccessTokenHolder>({ AccessToken = None }) |> ignore
     Dapper.FSharp.OptionTypes.register() |> ignore
     

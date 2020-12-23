@@ -20,6 +20,17 @@ let getAllUsersAsync = fun (connectionString: SqlConnection, trans) ->
                   |> Seq.toList
         return res
     }
+let getUserByEmailAsync = fun email (connectionString: SqlConnection, trans) ->
+     async {
+        use cmd = new SqlCommandProvider<"""
+            SELECT * FROM dbo.[User] where email = @email"""
+        , ConnectionString, SingleRow=true>(connectionString, transaction = trans)
+        let! user = cmd.AsyncExecute(email = email)
+        return match user with
+                | Some a -> mapToRecord<CLCSUser> a |> Some
+                | None -> None
+        
+    }
      
 let getAllUsersByInstitutionIdAsync = fun (connectionString: SqlConnection, trans) iid ->
      async {
