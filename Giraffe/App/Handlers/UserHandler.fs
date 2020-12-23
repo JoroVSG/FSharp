@@ -21,6 +21,7 @@ open App.Helpers.MSALClient
 open System.Threading.Tasks
 open App.Common.Transaction
 open App.Mapping.UserMapper
+open FSharp.Core.Fluent
 
 let orEmptyString = fun endOfList -> if endOfList then "" else "or "
 
@@ -30,8 +31,11 @@ let getInstitutionFilter = fun iid (clientId: string) ->
     let adminFilter = sprintf "$filter=extension_%s_InstitutionId eq '%s'"
     adminFilter (clientId.Replace("-", "")) (upper iid)
 
+
+let getObjectId = fun u -> string <| getValue u.ObjectId
 let createMsalFilter = fun iidFilter (objectIds: CLCSUser list) ->
-    let userIdsMapped = objectIds |> Seq.mapi(fun index user -> sprintf "id eq '%s' %s" (string user.ObjectId.Value) (getOperand index objectIds) )
+    //let userIdsMapped = objectIds |> Seq.mapi(fun index user -> sprintf "id eq '%s' %s" (string user.ObjectId.Value) (getOperand index objectIds) )
+    let userIdsMapped = objectIds.mapi(fun index user -> sprintf "id eq '%s' %s" (getObjectId user) (getOperand index objectIds) )
     let userIdToString = userIdsMapped |> String.concat(" ")
     sprintf "%s and (%s)" iidFilter userIdToString
 
@@ -43,13 +47,13 @@ let getAllUsersByFi = fun iid transPayload (ctx: HttpContext) ->
         let clcsUsers = JsonConvert.DeserializeObject<Email seq>(emailsBody)
         let! usersByListOfEmails = getUsersByEmailAsync clcsUsers transPayload
         let config = ctx.GetService<IConfiguration>()
-        let localUsers = usersByListOfEmails |> Seq.filter(fun us -> us.ObjectId.IsSome) |> Seq.toList
+        let localUsers = usersByListOfEmails.filter(fun us -> us.ObjectId.IsSome) |> Seq.toList
         
         let partitioned = localUsers.Batch(9)
         
         let! userMergedTasks =
             partitioned
-            |> Seq.map(fun chunk ->
+                .map(fun chunk ->
                 task {
                     let graphApiUserFilter = msalFilter iid config.["GraphApi:ClientId"] (chunk |> Seq.toList)
                     let api = sprintf "%s/users?%s" config.["GraphApi:ApiVersion"] graphApiUserFilter
@@ -67,9 +71,9 @@ let getAllUsersByFi = fun iid transPayload (ctx: HttpContext) ->
             localUsers
             |> Seq.map (fun user ->
                 task {
-                    let matchFound = userMerged |> Seq.find (fun u -> user.ObjectId.Value = u.Id)
+                    let matchFound = userMerged.find(fun u -> user.ObjectId.Value = u.Id)
                     let! apps = getApplicationsByUserIdAsync user.IdUser transPayload
-                    let appMapped = apps |> Seq.map(fun a -> mapper.Map<ApplicationDTO>(a)) |> Seq.toList
+                    let appMapped = apps.map(fun a -> mapper.Map<ApplicationDTO>(a)) |> Seq.toList
                     return mapToUserDTO appMapped matchFound user
                 }
             )

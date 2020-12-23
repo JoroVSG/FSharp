@@ -14,7 +14,7 @@ open App.Helpers.HelperFunctions
 
 
 type TransactionFunction<'a, 'b> =  TransactionPayload -> HttpContext -> Task<Result<'a, 'b>>
-type TransactionFunction'<'a> = PersistenceSQLClient.DbConfig.TransactionFunction<'a>
+type TransactionFunction'<'a> = TransactionFunction<'a>
 let withTransaction<'a> = fun (f: TransactionFunction<'a, 'b>) (ctx: HttpContext) ->
     task {
         let config = ctx.GetService<IConfiguration>()

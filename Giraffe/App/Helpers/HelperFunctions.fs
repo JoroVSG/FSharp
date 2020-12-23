@@ -58,6 +58,11 @@ let getClaimValue<'T> = fun ctx claimName ->
     match claim with
     | Some claimValue -> convert claimValue.Value
     | None -> Unchecked.defaultof<'T>
+    
+let getValue = fun value ->
+    match value with
+    | Some v -> v
+    | None -> Unchecked.defaultof<'a>
  
 let emptyArray =
     let array: byte [] = Array.zeroCreate 0

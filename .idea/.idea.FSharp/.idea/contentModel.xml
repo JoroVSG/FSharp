@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Projects\WebApiFSharp\FSharp" t="IncludeFlat">
+    <e p="C:\Projects\FSharp" t="IncludeFlat">
       <e p="Domains" t="IncludeRecursive">
         <e p="Applications" t="Include">
           <e p="Application.fs" t="Include" />
@@ -102,7 +102,9 @@
         <e p="UserData.fs" t="Include" />
       </e>
     </e>
-    <e p="C:\Users\Joro\AppData\local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Joro\AppData\local\JetBrains\Rider2020.3\resharper-host\local\Transient\Rider\v203\SolutionCaches\_FSharp.-35932639.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Joro.VSG\AppData\local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Joro.VSG\AppData\local\JetBrains\Rider2020.2\resharper-host\local\Transient\Rider\v202\SolutionCaches\_FSharp.1683680211.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Joro.VSG\AppData\Roaming\JetBrains\Rider2020.2\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\Joro.VSG\AppData\Roaming\JetBrains\Rider2020.2\extensions" t="IncludeRecursive" />
   </component>
 </project>

@@ -13,6 +13,7 @@
 <!--    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />-->
     <PackageReference Include="Dapper" Version="2.0.78" />
     <PackageReference Include="Dapper.FSharp" Version="1.15.0" />
+    <PackageReference Include="FSharp.Core.Fluent-4.0" Version="1.0.0.6" />
     <PackageReference Include="FSharp.Data" Version="3.3.3" />
     <PackageReference Include="Giraffe" Version="4.1.*" />
     <PackageReference Include="FsToolkit.ErrorHandling" Version="2.0.0" />
