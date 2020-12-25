@@ -22,7 +22,7 @@ let getAllApplications = fun payload (ctx: HttpContext) ->
         let! models = getAllApplicationsAsync payload
         return models
             |> Seq.toList
-            |> List.map (fun app -> mapper.Map<ApplicationDTO>(app))
+            |> List.map mapper.Map<ApplicationDTO>
             |> Ok
     }
 
@@ -30,7 +30,7 @@ let getApplicationById = fun guid payload (ctx: HttpContext) ->
       task {
           let! model = getAllApplicationById guid payload
           let mapper = ctx.GetService<IMapper>()
-          return mapResultOrNotFound model (fun m -> mapper.Map<ApplicationDTO>(m))
+          return mapResultOrNotFound model mapper.Map<ApplicationDTO>
       }
 
 
@@ -38,7 +38,7 @@ let createApp = fun payload (ctx: HttpContext) ->
     task {
         let! application = ctx.BindJsonAsync<ApplicationDTO>()
         let mapper = ctx.GetService<IMapper>()
-        let model = mapper.Map<Application>(application)
+        let model = mapper.Map<Application> application
         let! result = createApplicationAsync model payload
         return result
     }  
@@ -48,15 +48,6 @@ let deleteApplication = fun guid payload _ ->
         return res |> resultOrNotFound
     }
 
-// let deleteApplicationWithError = fun guid payload (ctx: HttpContext) ->
-//     asyncResult {
-//       let! model = getApplicationById guid payload ctx
-//       let! _ = deleteApplication guid payload ctx
-//       let! x = createApp payload ctx
-//       return x
-//     }
-//     |> wrap
-
 let deleteApplication' = fun (op: OperationStatus) payload _ ->
     task {
         let! res = deleteApplicationAsync op.Id payload
@@ -64,7 +55,7 @@ let deleteApplication' = fun (op: OperationStatus) payload _ ->
     }
  
 
-let createAndDelete<'a> = createApp >>> deleteApplication'
+let createAndDelete = createApp >>> deleteApplication'
 
 let deleteApplicationWithError guid = deleteApplication guid => createApp => getApplicationById guid
 

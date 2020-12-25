@@ -47,6 +47,8 @@
     
     <Compile Include="App\DTOs\UserInviteDTO.fs" />
     
+    <Compile Include="App\DTOs\ActivationKey.fs" />
+    
     <Compile Include="App\Common\Authentication.fs" />
     <Compile Include="App\Common\Converters.fs" />
     <Compile Include="App\Common\Exceptions.fs" />

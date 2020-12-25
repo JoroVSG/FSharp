@@ -1,12 +1,16 @@
 module PersistenceSQLClient.UserData
 
+open System
 open System.Data.SqlClient
-open Domains.Users
+open type Domains.Common.CommonTypes.OperationStatus
 open Domains.Users.CLCSUser
 open Domains.Users.CommonTypes
 open FSharp.Data
 open DbConfig
 open PersistenceSQLClient.Mapping
+open FSharp.Control.Tasks.V2.ContextInsensitive
+open Dapper.FSharp
+open Dapper.FSharp.MSSQL
 
 
 let getAllUsersAsync = fun (connectionString: SqlConnection, trans) ->
@@ -76,5 +80,28 @@ let getUsersByEmailAsync = fun (emails: Email seq) (payload: TransactionPayload)
         
         return res 
         //|> ResultSuccess
+    }
+let createUserAsync = fun (user: CLCSUser) (payload: TransactionPayload) ->
+    let (conn, trans) = payload
+    task {
+        let insertCE = insert {
+            table "User"
+            value user
+        }
+        let! _ = conn.InsertAsync(insertCE, trans)
+        return { Id = user.IdUser; Success = true; Exception = None } |> Ok
+            
+    }
+let updateUserAsync = fun (user: CLCSUser) (payload: TransactionPayload) ->
+    let (conn, trans) = payload
+    task {
+        let updateCE = update {
+            table "User"
+            set user
+            where (eq "IdUser" user.IdUser)
+        }
+        let! _ = conn.UpdateAsync(updateCE, trans)
+        return { Id = user.IdUser; Success = true; Exception = None } |> Ok
+            
     }
    

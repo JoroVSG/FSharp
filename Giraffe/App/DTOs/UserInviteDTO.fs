@@ -11,6 +11,13 @@ type UserInviteDTO = {
     LastName: string 
     Phone: string 
     InstitutionId: string
+    RoutingNumber: string
     IsFiAdmin: bool
     Applications: ApplicationDTO list
 }
+with member this.HasErrors() =
+        if      this.FirstName.Length < 3  then Some "First name is too short."
+        else if this.FirstName.Length > 50 then Some "First name is too long."
+        else if this.LastName.Length  < 3  then Some "Last name is too short."
+        else if this.LastName.Length  > 50 then Some "Last name is too long."
+        else None

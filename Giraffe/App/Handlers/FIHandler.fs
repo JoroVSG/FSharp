@@ -1,6 +1,7 @@
 module App.Handlers.FIHandler
 
-open App.DTOs
+open System
+open App.DTOs.ActivationKey
 open App.DTOs.FiDTO
 open AutoMapper
 open Crypto
@@ -9,21 +10,22 @@ open App.Common.Authentication
 open App.Common.JsonApiResponse
 open App.Common.Transaction
 open Microsoft.AspNetCore.Http
+open Microsoft.Extensions.Configuration
 open PersistenceSQLClient.FiData
 open App.Handlers.Security.Permissions
 open App.Helpers.HelperFunctions
 open FSharp.Control.Tasks.V2.ContextInsensitive
 open App.Common.Messages
-open Newtonsoft.Json
 open App.DTOs.UserInviteDTO
 open PersistenceSQLClient.UserData
+
 
 let getFs = fun payload (ctx: HttpContext) ->
     task {
         let mapper = ctx.GetService<IMapper>()
         let! res = getFis payload
         return res
-            |> List.map(fun r -> mapper.Map<FiDTO>(r))
+            |> List.map(mapper.Map<FiDTO>)
             |> Ok
     }
 
@@ -35,16 +37,47 @@ let getFiById = fun iid payload _ ->
     
 let inviteUser = fun iid payload (ctx: HttpContext) ->    
     task {
-        let! body = ctx.ReadBodyFromRequestAsync()
-        let inviteDto = JsonConvert.DeserializeObject<UserInviteDTO>(body)
+        let! inviteDto = ctx.BindJsonAsync<UserInviteDTO>()
+        let settings = ctx.GetService<IConfiguration>()
         
         let! institution = getFiByInstitutionId iid payload
         
         let! user = getUserByEmailAsync inviteDto.Email payload
         
+        let apps = inviteDto.Applications
+                       |> Seq.filter(fun a -> a.Code.IsSome)
+                       |> Seq.map(fun a -> a.Code.Value)
+                       |> String.concat(",")
+                       
         let crypto = ctx.GetService<ICryptoService>()
         
-        return iid |> Ok
+        let key: ActivationKey = {
+            Email = inviteDto.Email
+            InstitutionId = inviteDto.InstitutionId
+            IsFiAdmin = inviteDto.IsFiAdmin
+            RoutingNumber = inviteDto.RoutingNumber
+            Apps = apps }
+        
+        let keyToString = string key        
+        
+        let encrypted = crypto.Encrypt(keyToString, settings.["SecretPassPhrase"])
+
+        match user with
+            | Some usr ->
+                let! _ = updateUserAsync { usr with ActivationKey = Some keyToString } payload
+                return encrypted |> Ok
+            | None ->
+                let! _ =
+                    createUserAsync {
+                        Email = inviteDto.Email
+                        ActivationKey = Some keyToString
+                        IsFiAdmin = Some inviteDto.IsFiAdmin
+                        IdFinancialInstitution = Some institution.Value.IdFinancialInstitution
+                        IdUser = Guid.NewGuid()
+                        ObjectId = None
+                        ActivationStatus = Some "0"
+                    } payload
+                return encrypted |> Ok
     }
 
 

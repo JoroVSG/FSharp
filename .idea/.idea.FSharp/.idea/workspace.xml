@@ -13,36 +13,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46d54f0c-fb97-4b15-8016-29c67a0ec41f" name="Default Changelist" comment="Adding Fluent library">
-      <change afterPath="$PROJECT_DIR$/Crypto/Crypto.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Crypto/CryptoService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Crypto/bin/Debug/netstandard2.1/Crypto.deps.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Crypto/bin/Debug/netstandard2.1/Crypto.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Crypto/bin/Debug/netstandard2.1/Crypto.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Crypto/obj/Crypto.csproj.nuget.dgspec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Crypto/obj/Crypto.csproj.nuget.g.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Crypto/obj/Crypto.csproj.nuget.g.targets" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Crypto/obj/Debug/netstandard2.1/.NETStandard,Version=v2.1.AssemblyAttributes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Crypto/obj/Debug/netstandard2.1/Crypto.AssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Crypto/obj/Debug/netstandard2.1/Crypto.AssemblyInfoInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Crypto/obj/Debug/netstandard2.1/Crypto.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Crypto/obj/Debug/netstandard2.1/Crypto.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Crypto/obj/Debug/netstandard2.1/Crypto.csprojAssemblyReference.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Crypto/obj/Debug/netstandard2.1/Crypto.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Crypto/obj/Debug/netstandard2.1/Crypto.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Crypto/obj/project.assets.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Crypto/obj/project.nuget.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Crypto/obj/project.packagespec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Giraffe/App/Common/Messages.fs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Giraffe/App/DTOs/UserInviteDTO.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Giraffe/App/DTOs/ActivationKey.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FSharp.sln" beforeDir="false" afterPath="$PROJECT_DIR$/FSharp.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Common/JsonApiResponse.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Common/JsonApiResponse.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/App/DTOs/UserInviteDTO.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/DTOs/UserInviteDTO.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/Program.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/Program.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/appsettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" beforeDir="false" afterPath="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,34 +43,71 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/PersistenceSQLClient/FiData.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/A7BD76B1-E4BB-5E55-F477-E28DCB1AC56C/2/seqcore.fs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/IL/0A06CD3F-C48C-4801-A858-F75C007863D2/c3/58180770/02000027.il" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B19537B-F065-4C3F-9F78-85C4099CD3AA/2E/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/A7BD76B1-E4BB-5E55-F477-E28DCB1AC56C/1/prim-types.fs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D981D24B-B6B1-9202-EED1-7C868C6B94CD/45/167c8471/MSSQL.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8EA671DC-AA55-3F8B-3AE4-5555DE2BBE52/61/a6c39545/QueryImplementation.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F2B9B829-D955-4367-82F8-CEC710ADA7F3/0/IMapper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B19537B-F065-4C3F-9F78-85C4099CD3AA/14E/ExecutionContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PersistenceSQLClient/Mapping.fs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/CDCCF319-ADEC-8BDF-2295-52FABDB408CF/1/prim-types.fs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12891E82-5FCE-44A5-81E5-BBBB579C1D49/11/JsonSerializer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B7F86EBA-729B-7611-A87B-A0188AFE11AD/6/ResponseWriters.fs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8EA671DC-AA55-3F8B-3AE4-5555DE2BBE52/6f/87b694d9/SqlEntity.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B7F86EBA-729B-7611-A87B-A0188AFE11AD/D/Core.fs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/CDCCF319-ADEC-8BDF-2295-52FABDB408CF/19/list.fs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Crypto/obj/Debug/netstandard2.1/.NETStandard,Version=v2.1.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8EA671DC-AA55-3F8B-3AE4-5555DE2BBE52/fd/2714731e/AsyncOperations.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/A7BD76B1-E4BB-5E55-F477-E28DCB1AC56C/C/async.fs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/ba/e4529ece/Error.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/PersistenceSQLClient/FiData.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Giraffe/App/DTOs/ActivationKey.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B19537B-F065-4C3F-9F78-85C4099CD3AA/168/Future.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8EA671DC-AA55-3F8B-3AE4-5555DE2BBE52/16/486b1580/Seq.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B19537B-F065-4C3F-9F78-85C4099CD3AA/16F/TaskContinuation.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B19537B-F065-4C3F-9F78-85C4099CD3AA/147/CancellationToken.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/IL/0A06CD3F-C48C-4801-A858-F75C007863D2/15/dd318783/02000016.il" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/6b/81b5ba46/DocumentRoot`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B19537B-F065-4C3F-9F78-85C4099CD3AA/16B/Task.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B19537B-F065-4C3F-9F78-85C4099CD3AA/25F/AsyncMethodBuilder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B7F86EBA-729B-7611-A87B-A0188AFE11AD/A/ModelBinding.fs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/5b/45f69aac/JsonApiContractResolver.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/A7BD76B1-E4BB-5E55-F477-E28DCB1AC56C/3/seq.fs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/CDCCF319-ADEC-8BDF-2295-52FABDB408CF/C/async.fs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/55262BA1-466F-AA20-A745-0383A12B2655/97/aa71afbe/OptionConverter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B19537B-F065-4C3F-9F78-85C4099CD3AA/149/CancellationTokenSource.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/e4/bd94abbc/Relationship`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5B9EE785-6983-06F6-A745-038385E79E5B/1/TaskBuilder.fs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5E14A7B8-A4AE-E358-A745-0383B8A7145E/1/Http.fs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/00/7cd189e8/ErrorConverter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/b5/70c0104d/ResourceObjectConverter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12891E82-5FCE-44A5-81E5-BBBB579C1D49/55/JsonSerializerProxy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/76/8936de56/JsonApiSerializerSettings.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B19537B-F065-4C3F-9F78-85C4099CD3AA/13E/ThreadPool.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B7F86EBA-729B-7611-A87B-A0188AFE11AD/2/HttpStatusCodeHandlers.fs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6E8577AF-C9C8-478C-958A-8E78C6765091/F/JwtBearerDefaults.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12891E82-5FCE-44A5-81E5-BBBB579C1D49/54/JsonSerializerInternalWriter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12891E82-5FCE-44A5-81E5-BBBB579C1D49/19/JsonWriter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12891E82-5FCE-44A5-81E5-BBBB579C1D49/38/ThreadSafeStore.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BA72EFE7-DBF2-49AD-BD79-C391E9EA1A4B/6/JwtSecurityTokenHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/473E6D84-B149-42D3-B722-AA3394DCC97D/86/7818cb7c/DatabaseUpgradeResult.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B8FBDA1D-094A-499E-A0FE-9E6D9A3EC1D7/7/ConcurrentDictionary.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B19537B-F065-4C3F-9F78-85C4099CD3AA/26A/ConditionalWeakTable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/DD3CEDB4-9263-45AB-B5DB-C8D5193FF049/30/HttpContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12891E82-5FCE-44A5-81E5-BBBB579C1D49/3E/DefaultContractResolver.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/PersistenceSQLClient/FiData.fs" />
-        <option value="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" />
-        <option value="$PROJECT_DIR$/PersistenceSQLClient/ApplicationData.fs" />
-        <option value="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" />
-        <option value="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" />
-        <option value="$PROJECT_DIR$/Giraffe/App/Common/JsonApiResponse.fs" />
-        <option value="$PROJECT_DIR$/Giraffe/App/Common/Messages.fs" />
-        <option value="$PROJECT_DIR$/Giraffe/App/DTOs/UserInviteDTO.fs" />
-        <option value="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" />
-        <option value="$PROJECT_DIR$/Crypto/Class1.cs" />
-        <option value="$PROJECT_DIR$/Crypto/CryptoService.cs" />
-        <option value="$PROJECT_DIR$/Giraffe/Program.fs" />
-        <option value="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-      </list>
-    </option>
+    <changedPaths>
+      <option value="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" />
+      <option value="$PROJECT_DIR$/Giraffe/App/DTOs/ActivationKey.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/appsettings.json" />
+      <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" />
+      <option value="$PROJECT_DIR$/PersistenceSQLClient/FiData.fs" />
+      <option value="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/App/DTOs/UserInviteDTO.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" />
+    </changedPaths>
   </component>
   <component name="ProjectId" id="1kLQBBDfi4aavyj6sU3WXmRSSxU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -115,7 +131,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="settings.editor.selected.configurable" value="SolutionBuilderGeneralOptionsPageId" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Giraffe: Run">
@@ -238,6 +254,8 @@
       <workItem from="1608158007817" duration="1215000" />
       <workItem from="1608740614338" duration="642000" />
       <workItem from="1608741567579" duration="706000" />
+      <workItem from="1608912740755" duration="6538000" />
+      <workItem from="1608925104590" duration="6198000" />
     </task>
     <task id="LOCAL-00001" summary="Clean up on AnimalData.fs">
       <created>1605628859739</created>
@@ -603,29 +621,25 @@
     <MESSAGE value="Adding Fluent library" />
     <option name="LAST_COMMIT_MESSAGE" value="Adding Fluent library" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="672" y="300" key="Rider.ProjectTemplateDialog.Size" timestamp="1608741831883">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="672" y="300" key="Rider.ProjectTemplateDialog.Size/0.0.2560.1400@0.0.2560.1400" timestamp="1608741831883" />
-    <state x="92" y="92" width="2376" height="1216" key="VCS.FileHistoryDialog" timestamp="1608740755430">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="92" y="92" width="2376" height="1216" key="VCS.FileHistoryDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1608740755430" />
-    <state x="672" y="282" key="Vcs.Push.Dialog.v2" timestamp="1608731460950">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="672" y="282" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1608731460950" />
-    <state x="802" y="294" width="955" height="812" key="find.popup" timestamp="1608735036714">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="802" y="294" width="955" height="812" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1608735036714" />
-    <state x="773" y="0" width="1009" height="1470" key="search.everywhere.popup" timestamp="1608734924823">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="773" y="0" width="1009" height="1470" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1608734924823" />
-  </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/PersistenceSQLClient/FiData.fs</url>
+          <line>43</line>
+          <properties documentPath="C:\Projects\WebApiFSharp\FSharp\PersistenceSQLClient\FiData.fs" initialLine="43" isMultiMethodBreakpoint="true">
+            <option name="multiMethodBreakpoint" value="true" />
+            <startOffsets>
+              <option value="1434" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1453" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Type#Domains.Applications.Application+Application" memberName="Image" />
