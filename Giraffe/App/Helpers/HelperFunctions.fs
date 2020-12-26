@@ -4,7 +4,6 @@ open System
 open AutoMapper
 open FSharp.Data
 open Giraffe
-open App.Common.Exceptions
 open Microsoft.AspNetCore.Http
 open FSharp.Control.Tasks.V2.ContextInsensitive
 
@@ -43,6 +42,8 @@ let convert<'T> (value: string) : 'T =
   | :? uint16 -> uint16 value |> unbox<'T>
   | :? bool -> bool value |> unbox<'T>
   | :? string -> value |> unbox<'T>
+  | :? int32 -> int value |> unbox<'T>
+  | :? int64 -> int value |> unbox<'T>
   | _ -> failwith "not convertible"
 
 let optional'<'T> (value: obj) : option<'T> =
@@ -66,10 +67,8 @@ let getValue = fun value ->
  
 let emptyArray =
     let array: byte [] = Array.zeroCreate 0
-    array 
-let createResponse = fun status message ->
-    setStatusCode status >=> (json <| createJsonApiError message status)
+    array
 
-type ErrorMessage = string
-let notFound: (ErrorMessage -> HttpHandler) = createResponse HttpStatusCodes.NotFound
-let forbidden: (ErrorMessage -> HttpHandler) = createResponse HttpStatusCodes.Forbidden
+let encodeBase64 (str: string) =
+    let plainTextBytes = Text.Encoding.UTF8.GetBytes(str);
+    Convert.ToBase64String(plainTextBytes);

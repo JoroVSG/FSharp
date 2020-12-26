@@ -7,12 +7,12 @@ open Microsoft.Extensions.Configuration
 open FSharp.Control.Tasks.V2.ContextInsensitive
 open App.Helpers.MSALClient
 open App.Helpers.Constants
-// open Persistence.Data.FiData
 open App.Helpers.HelperFunctions
 open Domains.Users.B2CGroups
 open PersistenceSQLClient.FiData
 open App.Common.Transaction
 open App.Common.JsonApiResponse
+open App.Common.Exceptions
 
 
 let getFiByInstitutionIdAsync iid transPayload _ =

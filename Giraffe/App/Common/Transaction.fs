@@ -12,7 +12,6 @@ open PersistenceSQLClient.DbConfig
 open FsToolkit.ErrorHandling.AsyncResultCE
 open App.Helpers.HelperFunctions
 
-
 type TransactionFunction<'a, 'b> =  TransactionPayload -> HttpContext -> Task<Result<'a, 'b>>
 type TransactionFunction'<'a> = TransactionFunction<'a>
 let withTransaction<'a> = fun (f: TransactionFunction<'a, 'b>) (ctx: HttpContext) ->

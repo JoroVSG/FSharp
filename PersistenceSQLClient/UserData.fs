@@ -2,7 +2,7 @@ module PersistenceSQLClient.UserData
 
 open System
 open System.Data.SqlClient
-open type Domains.Common.CommonTypes.OperationStatus
+open Domains.Common.CommonTypes
 open Domains.Users.CLCSUser
 open Domains.Users.CommonTypes
 open FSharp.Data
@@ -103,5 +103,22 @@ let updateUserAsync = fun (user: CLCSUser) (payload: TransactionPayload) ->
         let! _ = conn.UpdateAsync(updateCE, trans)
         return { Id = user.IdUser; Success = true; Exception = None } |> Ok
             
+    }
+
+let insertUserApplication = fun idApplication idUser payload ->
+    async {
+        let id = Guid.NewGuid();
+        let (conn, trans) = payload
+        use cmd = new SqlCommandProvider<"""
+            INSERT INTO UserApplication(IdUserApplication, IdApplication, IdUser)
+            VALUES(@idUserApplication, @idApplication, @idUser)"""
+        , ConnectionString>(conn, transaction = trans)
+        let! _ =
+            cmd.AsyncExecute(
+                idApplication = idApplication,
+                idUser = idUser,
+                idUserApplication = id
+            )
+        return { Id = id; Success = true; Exception = None } |> Ok
     }
    

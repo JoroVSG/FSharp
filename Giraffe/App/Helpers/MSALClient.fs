@@ -15,7 +15,6 @@ open Newtonsoft.Json
 type MSALAccessTokenHolder = {
     mutable AccessToken: string option
 }
-    
 let acquireAccessTokenAsync = fun (config: IConfiguration) ->
     let authority = sprintf "%s%s.onmicrosoft.com" config.["GraphApi:Instance"] config.["GraphApi:Tenant"]
     task {

@@ -65,6 +65,7 @@
             <e p="Constants.fs" t="Include" />
             <e p="HelperFunctions.fs" t="Include" />
             <e p="MSALClient.fs" t="Include" />
+            <e p="SMTPClient.fs" t="Include" />
           </e>
           <e p="Mapping" t="Include">
             <e p="ApplicationMapper.fs" t="Include" />

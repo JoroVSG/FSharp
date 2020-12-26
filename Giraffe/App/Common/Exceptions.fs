@@ -3,6 +3,7 @@ module App.Common.Exceptions
 open System
 open System.Collections.Generic
 open System.Data
+open FSharp.Data
 open JsonApiSerializer
 open JsonApiSerializer.JsonApi
 open Microsoft.AspNetCore.Http
@@ -57,4 +58,10 @@ let handleErrorJsonAPI = fun (ex: Exception) _ (ctx: HttpContext) ->
         
         return! earlyReturn ctx
     }
+let createResponse = fun status message ->
+    setStatusCode status >=> (json <| createJsonApiError message status)
+
+type ErrorMessage = string
+let notFound: (ErrorMessage -> HttpHandler) = createResponse HttpStatusCodes.NotFound
+let forbidden: (ErrorMessage -> HttpHandler) = createResponse HttpStatusCodes.Forbidden
   

@@ -3,6 +3,7 @@ module App.DTOs.UserInviteDTO
 open System
 open App.DTOs.ApplicationDTO
 
+[<CLIMutable>]
 type UserInviteDTO = {
     Id: Guid
     Email: string 

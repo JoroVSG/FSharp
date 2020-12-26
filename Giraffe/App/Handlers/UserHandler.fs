@@ -22,6 +22,7 @@ open System.Threading.Tasks
 open App.Common.Transaction
 open App.Mapping.UserMapper
 open FSharp.Core.Fluent
+open App.Common.Exceptions
 
 let orEmptyString = fun endOfList -> if endOfList then "" else "or "
 
