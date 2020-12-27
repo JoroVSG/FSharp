@@ -14,6 +14,7 @@
   <component name="ChangeListManager">
     <list default="true" id="46d54f0c-fb97-4b15-8016-29c67a0ec41f" name="Default Changelist" comment="Adding Fluent library">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crypto/AzureAdB2CAuthenticationBuilderExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Crypto/AzureAdB2CAuthenticationBuilderExtensions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/ValidationHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/ValidationHandler.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Giraffe/Program.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/Program.fs" afterDir="false" />
     </list>
@@ -114,8 +115,8 @@
       <option value="$PROJECT_DIR$/Giraffe/appsettings.json" />
       <option value="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" />
       <option value="$PROJECT_DIR$/Crypto/AzureAdB2CAuthenticationBuilderExtensions.cs" />
-      <option value="$PROJECT_DIR$/Giraffe/Program.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ValidationHandler.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/Program.fs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1kLQBBDfi4aavyj6sU3WXmRSSxU" />
@@ -264,7 +265,7 @@
       <workItem from="1608740614338" duration="642000" />
       <workItem from="1608741567579" duration="706000" />
       <workItem from="1608912740755" duration="6538000" />
-      <workItem from="1608925104590" duration="29838000" />
+      <workItem from="1608925104590" duration="32615000" />
     </task>
     <task id="LOCAL-00001" summary="Clean up on AnimalData.fs">
       <created>1605628859739</created>
@@ -595,7 +596,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609083182676</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Invitation process part 3">
+      <created>1609084989361</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1609084989361</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -631,7 +639,6 @@
       <path value="$PROJECT_DIR$/Giraffe" />
     </ignored-roots>
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SQlClient implementation + FSharp Dapper" />
     <MESSAGE value="SQlClient withTransaction HttpHandler" />
     <MESSAGE value="withTransaction'" />
     <MESSAGE value="Adding TransactionPayload" />
@@ -656,24 +663,12 @@
     <MESSAGE value="Invite process part 1" />
     <MESSAGE value="Prepending api on routes" />
     <MESSAGE value="Invitation process part 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Invitation process part 2" />
+    <MESSAGE value="Invitation process part 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Invitation process part 3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Crypto/AzureAdB2CAuthenticationBuilderExtensions.cs</url>
-          <line>70</line>
-          <properties documentPath="C:\Projects\WebApiFSharp\FSharp\Crypto\AzureAdB2CAuthenticationBuilderExtensions.cs" initialLine="70" containingFunctionPresentation="method 'OnRedirectToIdentityProviderAsync'">
-            <startOffsets>
-              <option value="3020" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3072" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Giraffe/App/Common/Exceptions.fs</url>
           <line>34</line>
@@ -687,6 +682,34 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Giraffe/App/Handlers/ValidationHandler.fs</url>
+          <line>90</line>
+          <properties documentPath="C:\Projects\WebApiFSharp\FSharp\Giraffe\App\Handlers\ValidationHandler.fs" initialLine="90" isMultiMethodBreakpoint="true">
+            <option name="multiMethodBreakpoint" value="true" />
+            <startOffsets>
+              <option value="3782" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3798" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Giraffe/App/Handlers/ValidationHandler.fs</url>
+          <line>61</line>
+          <properties documentPath="C:\Projects\WebApiFSharp\FSharp\Giraffe\App\Handlers\ValidationHandler.fs" initialLine="61" isMultiMethodBreakpoint="true">
+            <option name="multiMethodBreakpoint" value="true" />
+            <startOffsets>
+              <option value="2286" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2328" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

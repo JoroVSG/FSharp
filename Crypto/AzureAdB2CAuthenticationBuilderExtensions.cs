@@ -227,10 +227,10 @@ namespace Crypto
 
         private static async Task MapUserAfterCreateAsync(AuthorizationCodeReceivedContext context)
         {
-            //var appSettings = context.HttpContext.RequestServices.GetRequiredService<IOptions<AppSettings>>().Value;
+            // var appSettings = context.HttpContext.RequestServices.GetRequiredService<IOptions<AppSettings>>().Value;
             // var service = context.HttpContext.RequestServices.GetRequiredService<IUserMappingService>();
             // await service.MapUserAsync(context.Principal);
-            context.Response.Redirect("appSettings.DashboardUrl");
+            // context.Response.Redirect("appSettings.DashboardUrl");
             context.HandleResponse();
         }
 
