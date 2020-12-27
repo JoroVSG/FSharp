@@ -5,6 +5,7 @@ open System.IO
 open App.Common.Converters
 open App.Helpers.MSALClient
 open Crypto
+open Crypto.Authentication
 open Dapper.FSharp
 open Giraffe
 open Giraffe.Serialization
@@ -26,7 +27,7 @@ open App.Mapping.Automapper.MapperConfig
 open App.Handlers.FIHandler
 
 
-let mutable Configurations: IConfigurationRoot = null
+let mutable Configurations: IConfiguration = null
 
 let allGetRoutes: HttpHandler list =
     [ route "/" >=> text "Public endpoint."]
@@ -68,10 +69,14 @@ let jwtBearerOptions (cfg : JwtBearerOptions) =
     cfg.Audience <- Configurations.["AzureAd:Audience"]
     cfg.TokenValidationParameters <- (getTokenValidationParameters Configurations).Result
 
+let configureInviteOptions = fun (options: AzureAdB2COptions) ->
+    Configurations.Bind("Authentication:AzureAdB2C", options)
 let configureServices (services : IServiceCollection) =
     services
         .AddGiraffe()
         .AddAuthentication(authenticationOptions)
+        .AddCookie()
+        .AddAzureAdB2C(Action<AzureAdB2COptions> configureInviteOptions)
         .AddJwtBearer(Action<JwtBearerOptions> jwtBearerOptions) |> ignore
         
     let settings = JsonApiSerializerSettings()
@@ -82,6 +87,8 @@ let configureServices (services : IServiceCollection) =
     services.AddSingleton<ICryptoService>(CLCSCrypto()) |> ignore
     services.AddSingleton<MSALAccessTokenHolder>({ AccessToken = None }) |> ignore
     OptionTypes.register()
+    
+    services.AddOptions() |> ignore
     
     services.AddSingleton<IMapper>(createMapper) |> ignore
 

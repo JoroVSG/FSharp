@@ -8,8 +8,8 @@ type ConsoleMessage = ConsoleException of Exception | Message of string
 let printToConsole color (message: ConsoleMessage) =
     Console.ForegroundColor <- color
     match message with
-        | ConsoleException ex -> Console.WriteLine(ex) |> ignore
-        | Message str -> Console.WriteLine(str) |> ignore
+        | ConsoleException ex -> Console.WriteLine(ex)
+        | Message str -> Console.WriteLine(str)
     Console.ResetColor()
 let errorToConsole = printToConsole ConsoleColor.Red
 let successToConsole = printToConsole ConsoleColor.Green

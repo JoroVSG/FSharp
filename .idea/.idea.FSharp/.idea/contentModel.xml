@@ -3,14 +3,20 @@
   <component name="ContentModelStore">
     <e p="C:\Projects\WebApiFSharp\FSharp" t="IncludeFlat">
       <e p="Crypto" t="IncludeRecursive">
+        <e p="Authentication" t="Include">
+          <e p="AzureAdB2COptions.cs" t="Include" />
+          <e p="MSALSessionCache.cs" t="Include" />
+        </e>
+        <e p="AzureAdB2CAuthenticationBuilderExtensions.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Crypto.csproj" t="IncludeRecursive" />
         <e p="CryptoService.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="netstandard2.1" t="Include">
+            <e p=".net5.0" t="Include">
               <e p="Crypto.AssemblyInfo.cs" t="Include" />
             </e>
+            <e p="netstandard2.1" t="Include" />
           </e>
         </e>
       </e>
@@ -60,6 +66,7 @@
               <e p="Permissions.fs" t="Include" />
             </e>
             <e p="UserHandler.fs" t="Include" />
+            <e p="ValidationHandler.fs" t="Include" />
           </e>
           <e p="Helpers" t="Include">
             <e p="Constants.fs" t="Include" />

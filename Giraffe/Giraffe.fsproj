@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <Import Project="..\fsc.props" />
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>.net5.0</TargetFramework>
     <AssemblyName>Giraffe.App</AssemblyName>
     <DotnetFscCompilerPath />
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
@@ -19,6 +19,7 @@
     <PackageReference Include="FsToolkit.ErrorHandling" Version="2.0.0" />
     <PackageReference Include="FsToolkit.ErrorHandling.TaskResult" Version="2.0.0" />
     <PackageReference Include="JsonApiSerializer" Version="1.7.4" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
     <PackageReference Include="Microsoft.Identity.Client" Version="4.23.0" />
     <PackageReference Include="morelinq" Version="3.1.1" />
     <PackageReference Include="Newtonsoft.Json.FSharp" Version="3.2.2" />
@@ -61,6 +62,7 @@
     <Compile Include="App\Handlers\UserHandler.fs" />
     <Compile Include="App\Handlers\ApplicationHandler.fs" />
     <Compile Include="App\Handlers\FIHandler.fs" />
+    <Compile Include="App\Handlers\ValidationHandler.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>

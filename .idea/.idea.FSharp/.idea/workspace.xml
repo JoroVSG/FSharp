@@ -13,12 +13,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46d54f0c-fb97-4b15-8016-29c67a0ec41f" name="Default Changelist" comment="Adding Fluent library">
+      <change afterPath="$PROJECT_DIR$/Crypto/Authentication/AzureAdB2COptions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Crypto/Authentication/MSALSessionCache.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Crypto/AzureAdB2CAuthenticationBuilderExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/ValidationHandler.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Helpers/SMTPClient.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Helpers/SMTPClient.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crypto/Crypto.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Crypto/Crypto.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Giraffe/Program.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/Program.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/Migrate.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/Migrate.fs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,16 +108,22 @@
       <option value="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Common/Exceptions.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Handlers/Security/Permissions.fs" />
-      <option value="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" />
       <option value="$PROJECT_DIR$/Giraffe/App/Helpers/MSALClient.fs" />
-      <option value="$PROJECT_DIR$/Giraffe/appsettings.json" />
       <option value="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" />
-      <option value="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Helpers/SMTPClient.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" />
+      <option value="$PROJECT_DIR$/Crypto/Authentication/MSALSessionCache.cs" />
+      <option value="$PROJECT_DIR$/Crypto/Authentication/AzureAdB2COptions.cs" />
+      <option value="$PROJECT_DIR$/Crypto/Crypto.csproj" />
+      <option value="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" />
       <option value="$PROJECT_DIR$/Giraffe/Program.fs" />
+      <option value="$PROJECT_DIR$/Migrations/Migrate.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/appsettings.json" />
+      <option value="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ValidationHandler.fs" />
+      <option value="$PROJECT_DIR$/Crypto/AzureAdB2CAuthenticationBuilderExtensions.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1kLQBBDfi4aavyj6sU3WXmRSSxU" />
@@ -260,7 +272,7 @@
       <workItem from="1608740614338" duration="642000" />
       <workItem from="1608741567579" duration="706000" />
       <workItem from="1608912740755" duration="6538000" />
-      <workItem from="1608925104590" duration="22373000" />
+      <workItem from="1608925104590" duration="28184000" />
     </task>
     <task id="LOCAL-00001" summary="Clean up on AnimalData.fs">
       <created>1605628859739</created>
@@ -577,7 +589,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609019834537</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Prepending api on routes">
+      <created>1609059581939</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1609059581939</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -613,7 +632,6 @@
       <path value="$PROJECT_DIR$/Giraffe" />
     </ignored-roots>
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Fixing gitignore part 2" />
     <MESSAGE value="Adding Migrations" />
     <MESSAGE value="SQlClient implementation + FSharp Dapper" />
     <MESSAGE value="SQlClient withTransaction HttpHandler" />
@@ -638,9 +656,41 @@
     <MESSAGE value="Adding Fluent library" />
     <MESSAGE value="Adding ActivationKey.fs" />
     <MESSAGE value="Invite process part 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Invite process part 1" />
+    <MESSAGE value="Prepending api on routes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Prepending api on routes" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Giraffe/App/Handlers/ValidationHandler.fs</url>
+          <line>15</line>
+          <properties documentPath="C:\Projects\WebApiFSharp\FSharp\Giraffe\App\Handlers\ValidationHandler.fs" initialLine="15" isMultiMethodBreakpoint="true">
+            <option name="multiMethodBreakpoint" value="true" />
+            <startOffsets>
+              <option value="441" />
+            </startOffsets>
+            <endOffsets>
+              <option value="486" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Crypto/AzureAdB2CAuthenticationBuilderExtensions.cs</url>
+          <line>70</line>
+          <properties documentPath="C:\Projects\WebApiFSharp\FSharp\Crypto\AzureAdB2CAuthenticationBuilderExtensions.cs" initialLine="70" containingFunctionPresentation="method 'OnRedirectToIdentityProviderAsync'">
+            <startOffsets>
+              <option value="3020" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3072" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Type#Domains.Applications.Application+Application" memberName="Image" />

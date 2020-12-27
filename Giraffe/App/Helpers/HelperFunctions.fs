@@ -1,6 +1,7 @@
 module App.Helpers.HelperFunctions
 
 open System
+open System.Text
 open AutoMapper
 open FSharp.Data
 open Giraffe
@@ -70,5 +71,8 @@ let emptyArray =
     array
 
 let encodeBase64 (str: string) =
-    let plainTextBytes = Text.Encoding.UTF8.GetBytes(str);
-    Convert.ToBase64String(plainTextBytes);
+    let plainTextBytes = Encoding.UTF8.GetBytes(str);
+    Convert.ToBase64String(plainTextBytes)
+
+let decodeBase64 str =
+    Encoding.UTF8.GetString(Convert.FromBase64String(str));
