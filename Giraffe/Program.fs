@@ -25,6 +25,7 @@ open App.Common.Exceptions
 open App.Handlers.UserHandler
 open App.Mapping.Automapper.MapperConfig
 open App.Handlers.FIHandler
+open App.Handlers.ValidationHandler
 
 
 let mutable Configurations: IConfiguration = null
@@ -34,6 +35,7 @@ let allGetRoutes: HttpHandler list =
     @ applicationsGetRoutes
     @ usersGetRoutes
     @ fiGetRoutes
+    @ validationGetRoutes
 
 let allPostRoutes: HttpHandler list = applicationPostRoutes
                                       @ usersPostRoutes

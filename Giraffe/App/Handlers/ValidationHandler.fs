@@ -37,17 +37,21 @@ let invitation = fun (next: HttpFunc) (ctx: HttpContext) ->
         let properties = AuthenticationProperties (RedirectUri = url);
         
 
-        properties.Items.["Policy"] = config.["Authentication:AzureAdB2C:InvitePolicyId"] |> ignore
-        properties.Items.["verified_email"] = key.Email |> ignore
-        properties.Items.["display_name"] = wrapper.DisplayName |> ignore
-        properties.Items.["first_name"] = wrapper.FirstName |> ignore
-        properties.Items.["last_name"] = wrapper.LastName |> ignore
-        properties.Items.["phone"] = wrapper.Phone |> ignore
+        properties.Items.["Policy"] <- config.["Authentication:AzureAdB2C:InvitePolicyId"]
+        properties.Items.["verified_email"] <- key.Email
+        properties.Items.["display_name"] <- wrapper.DisplayName
+        properties.Items.["first_name"] <- wrapper.FirstName
+        properties.Items.["last_name"] <- wrapper.LastName
+        properties.Items.["phone"] <- wrapper.Phone
 
-        properties.Items.["activationKey"] = wrapper.ActivationKeyEncrypted |> ignore
+        properties.Items.["activationKey"] <- wrapper.ActivationKeyEncrypted
         let schema = OpenIdConnectDefaults.AuthenticationScheme
         
         do! ctx.ChallengeAsync(schema, properties = properties)
         
         return! next ctx
     }
+    
+let validationGetRoutes: HttpHandler list = [
+    routeCi "/validation/invitation" >=> invitation
+]
