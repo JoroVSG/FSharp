@@ -91,8 +91,8 @@ let profitStarsErrorHandler = forbidden "Only Profitstars or Financial Instituti
 
 let usersPermissionCheck = fun iid -> profitStarsFiAdminCombined iid >=> profitStarsFiAdminErrorHandling profitStarsErrorHandler fiAdminErrorHandler
 let usersGetRoutes: HttpHandler list = [
-     routef "/%s/relationship/users" (fun iid -> authorize >=> usersPermissionCheck iid >=> transaction (getAllUsersByFi iid))
+     routeCif "/%s/relationship/users" (fun iid -> authorize >=> usersPermissionCheck iid >=> transaction (getAllUsersByFi iid))
 ]
 let usersPostRoutes: HttpHandler list  = [
-     routef "/%s/relationship/users" (fun iid -> authorize >=> usersPermissionCheck iid >=> transaction (getAllUsersByFi iid))
+     routeCif "/%s/relationship/users" (fun iid -> authorize >=> usersPermissionCheck iid >=> transaction (getAllUsersByFi iid))
 ]

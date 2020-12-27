@@ -13,22 +13,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46d54f0c-fb97-4b15-8016-29c67a0ec41f" name="Default Changelist" comment="Adding Fluent library">
-      <change afterPath="$PROJECT_DIR$/FSharp.sln.DotSettings.user" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Giraffe/App/Helpers/SMTPClient.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Common/Exceptions.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Common/Exceptions.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/DTOs/UserInviteDTO.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/DTOs/UserInviteDTO.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/Security/Permissions.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/Security/Permissions.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Helpers/MSALClient.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Helpers/MSALClient.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/App/Helpers/SMTPClient.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Helpers/SMTPClient.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Giraffe/Program.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/Program.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" beforeDir="false" afterPath="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,22 +96,22 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" />
       <option value="$PROJECT_DIR$/PersistenceSQLClient/FiData.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/DTOs/UserInviteDTO.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/DTOs/ActivationKey.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Common/Exceptions.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Handlers/Security/Permissions.fs" />
-      <option value="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" />
       <option value="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" />
       <option value="$PROJECT_DIR$/Giraffe/App/Helpers/MSALClient.fs" />
       <option value="$PROJECT_DIR$/Giraffe/appsettings.json" />
       <option value="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" />
-      <option value="$PROJECT_DIR$/Giraffe/Program.fs" />
-      <option value="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Helpers/SMTPClient.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/Program.fs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1kLQBBDfi4aavyj6sU3WXmRSSxU" />
@@ -270,7 +260,7 @@
       <workItem from="1608740614338" duration="642000" />
       <workItem from="1608741567579" duration="706000" />
       <workItem from="1608912740755" duration="6538000" />
-      <workItem from="1608925104590" duration="20014000" />
+      <workItem from="1608925104590" duration="22373000" />
     </task>
     <task id="LOCAL-00001" summary="Clean up on AnimalData.fs">
       <created>1605628859739</created>
@@ -580,7 +570,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608934319113</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Invite process part 1">
+      <created>1609019834537</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1609019834537</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -616,7 +613,6 @@
       <path value="$PROJECT_DIR$/Giraffe" />
     </ignored-roots>
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Fixing gitignore" />
     <MESSAGE value="Fixing gitignore part 2" />
     <MESSAGE value="Adding Migrations" />
     <MESSAGE value="SQlClient implementation + FSharp Dapper" />
@@ -641,27 +637,10 @@
     <MESSAGE value="Returning to withTransaction approach" />
     <MESSAGE value="Adding Fluent library" />
     <MESSAGE value="Adding ActivationKey.fs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding ActivationKey.fs" />
+    <MESSAGE value="Invite process part 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Invite process part 1" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Giraffe/App/Common/Exceptions.fs</url>
-          <line>34</line>
-          <properties documentPath="C:\Projects\WebApiFSharp\FSharp\Giraffe\App\Common\Exceptions.fs" initialLine="34" isMultiMethodBreakpoint="true">
-            <option name="multiMethodBreakpoint" value="true" />
-            <startOffsets>
-              <option value="892" />
-            </startOffsets>
-            <endOffsets>
-              <option value="905" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Type#Domains.Applications.Application+Application" memberName="Image" />

@@ -5,6 +5,7 @@ open System.IO
 open App.Common.Converters
 open App.Helpers.MSALClient
 open Crypto
+open Dapper.FSharp
 open Giraffe
 open Giraffe.Serialization
 open JsonApiSerializer
@@ -39,11 +40,12 @@ let allPostRoutes: HttpHandler list = applicationPostRoutes
 let allDeleteRoutes: HttpHandler list = applicationDeleteRoutes
 
 let webApp =
-    choose [
-        GET >=> choose allGetRoutes
-        POST >=> choose allPostRoutes
-        DELETE >=> choose allDeleteRoutes
-        setStatusCode 404 >=> text "Not Found" ]
+    subRouteCi "/api"
+        <| choose [
+            GET >=> choose allGetRoutes
+            POST >=> choose allPostRoutes
+            DELETE >=> choose allDeleteRoutes
+            setStatusCode 404 >=> text "Not Found" ]
 
 let errorHandler (ex : Exception) (logger : ILogger) =
     logger.LogError(EventId(), ex, "An unhandled exception has occurred while executing the request.")
@@ -79,7 +81,7 @@ let configureServices (services : IServiceCollection) =
     services.AddSingleton<IJsonSerializer>(NewtonsoftJsonSerializer(settings)) |> ignore
     services.AddSingleton<ICryptoService>(CLCSCrypto()) |> ignore
     services.AddSingleton<MSALAccessTokenHolder>({ AccessToken = None }) |> ignore
-    Dapper.FSharp.OptionTypes.register() |> ignore
+    OptionTypes.register()
     
     services.AddSingleton<IMapper>(createMapper) |> ignore
 

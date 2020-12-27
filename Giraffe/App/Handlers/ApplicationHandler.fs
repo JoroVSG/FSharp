@@ -68,14 +68,14 @@ let deleteApplicationHandler guid payload ctx =
     |> wrap
     
 let applicationsGetRoutes: HttpHandler list = [
-    route "/applications" >=> authorize >=> transaction getAllApplications
-    routef "/applications/%O" (fun guid -> authorize >=> transaction (getApplicationById guid))
+    routeCi "/applications" >=> authorize >=> transaction getAllApplications
+    routeCif "/applications/%O" (fun guid -> authorize >=> transaction (getApplicationById guid))
 ]
 
 let applicationPostRoutes: HttpHandler list = [
-    route "/applications" >=> authorize >=> transaction createAndDelete
+    routeCi "/applications" >=> authorize >=> transaction createAndDelete
 ]
 
 let applicationDeleteRoutes: HttpHandler list = [
-    routef "/applications/%O" (fun guid -> authorize >=> transaction (deleteApplication guid))
+    routeCif "/applications/%O" (fun guid -> authorize >=> transaction (deleteApplication guid))
 ]
