@@ -79,7 +79,7 @@ let inviteUser = fun iid payload (ctx: HttpContext) ->
         
         match user with
             | Some usr ->
-                let! _ = updateUserAsync { usr with ActivationKey = Some keyToString } payload
+                let! _ = updateUserAsync { usr with ActivationKey = Some encrypted } payload
                 do! sendInviteEmailAsync ctx emailFrom inviteDto.Email keyWrapperStringify
                 return { Id = Guid.NewGuid(); Success = true; Exception = None } |> Ok
             | None ->
