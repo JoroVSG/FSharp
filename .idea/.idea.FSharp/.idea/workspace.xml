@@ -15,8 +15,18 @@
     <list default="true" id="46d54f0c-fb97-4b15-8016-29c67a0ec41f" name="Default Changelist" comment="Adding Fluent library">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Crypto/AzureAdB2CAuthenticationBuilderExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Crypto/AzureAdB2CAuthenticationBuilderExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/App/Common/Authentication.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Common/Authentication.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/App/Common/Exceptions.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Common/Exceptions.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/ValidationHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/ValidationHandler.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/Program.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/Program.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/App/Helpers/Constants.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Helpers/Constants.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/App/Helpers/MSALClient.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Helpers/MSALClient.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" beforeDir="false" afterPath="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,9 +56,11 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/F2B9B829-D955-4367-82F8-CEC710ADA7F3/0/IMapper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B19537B-F065-4C3F-9F78-85C4099CD3AA/14E/ExecutionContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9C56A7B9-1B03-44AD-BEB0-2B765074B67A/1/OpenIdConnectExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PersistenceSQLClient/Mapping.fs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12891E82-5FCE-44A5-81E5-BBBB579C1D49/11/JsonSerializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B7F86EBA-729B-7611-A87B-A0188AFE11AD/6/ResponseWriters.fs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/C9B6F300-1BF9-4085-83CA-B8BC34279A60/0/ClaimTypes.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8EA671DC-AA55-3F8B-3AE4-5555DE2BBE52/6f/87b694d9/SqlEntity.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B7F86EBA-729B-7611-A87B-A0188AFE11AD/D/Core.fs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8EA671DC-AA55-3F8B-3AE4-5555DE2BBE52/fd/2714731e/AsyncOperations.cs" root0="SKIP_HIGHLIGHTING" />
@@ -88,6 +100,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BA72EFE7-DBF2-49AD-BD79-C391E9EA1A4B/6/JwtSecurityTokenHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/473E6D84-B149-42D3-B722-AA3394DCC97D/86/7818cb7c/DatabaseUpgradeResult.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Projects/WebApiFSharp/FSharp/Giraffe/App/Handlers/ValidationHandler.fs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B8FBDA1D-094A-499E-A0FE-9E6D9A3EC1D7/7/ConcurrentDictionary.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B19537B-F065-4C3F-9F78-85C4099CD3AA/26A/ConditionalWeakTable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/DD3CEDB4-9263-45AB-B5DB-C8D5193FF049/30/HttpContext.cs" root0="SKIP_HIGHLIGHTING" />
@@ -98,25 +111,27 @@
       <option value="$PROJECT_DIR$/PersistenceSQLClient/FiData.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/DTOs/UserInviteDTO.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/DTOs/ActivationKey.fs" />
-      <option value="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" />
-      <option value="$PROJECT_DIR$/Giraffe/App/Common/Exceptions.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Handlers/Security/Permissions.fs" />
-      <option value="$PROJECT_DIR$/Giraffe/App/Helpers/MSALClient.fs" />
-      <option value="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Helpers/SMTPClient.fs" />
-      <option value="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" />
-      <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" />
-      <option value="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" />
       <option value="$PROJECT_DIR$/Crypto/Authentication/MSALSessionCache.cs" />
       <option value="$PROJECT_DIR$/Crypto/Authentication/AzureAdB2COptions.cs" />
       <option value="$PROJECT_DIR$/Crypto/Crypto.csproj" />
       <option value="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" />
       <option value="$PROJECT_DIR$/Migrations/Migrate.fs" />
       <option value="$PROJECT_DIR$/Giraffe/appsettings.json" />
-      <option value="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" />
-      <option value="$PROJECT_DIR$/Crypto/AzureAdB2CAuthenticationBuilderExtensions.cs" />
-      <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ValidationHandler.fs" />
       <option value="$PROJECT_DIR$/Giraffe/Program.fs" />
+      <option value="$PROJECT_DIR$/Crypto/AzureAdB2CAuthenticationBuilderExtensions.cs" />
+      <option value="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/App/Helpers/Constants.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/App/Common/Exceptions.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/App/Common/Authentication.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" />
+      <option value="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/App/Helpers/MSALClient.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ValidationHandler.fs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1kLQBBDfi4aavyj6sU3WXmRSSxU" />
@@ -265,7 +280,7 @@
       <workItem from="1608740614338" duration="642000" />
       <workItem from="1608741567579" duration="706000" />
       <workItem from="1608912740755" duration="6538000" />
-      <workItem from="1608925104590" duration="32615000" />
+      <workItem from="1608925104590" duration="55404000" />
     </task>
     <task id="LOCAL-00001" summary="Clean up on AnimalData.fs">
       <created>1605628859739</created>
@@ -603,7 +618,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609084989361</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Invitation process part 5">
+      <created>1609106319505</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1609106319505</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -639,7 +661,6 @@
       <path value="$PROJECT_DIR$/Giraffe" />
     </ignored-roots>
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SQlClient withTransaction HttpHandler" />
     <MESSAGE value="withTransaction'" />
     <MESSAGE value="Adding TransactionPayload" />
     <MESSAGE value="Adding TransactionPayload part 2" />
@@ -664,55 +685,10 @@
     <MESSAGE value="Prepending api on routes" />
     <MESSAGE value="Invitation process part 2" />
     <MESSAGE value="Invitation process part 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Invitation process part 3" />
+    <MESSAGE value="Invitation process part 5" />
+    <option name="LAST_COMMIT_MESSAGE" value="Invitation process part 5" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Giraffe/App/Common/Exceptions.fs</url>
-          <line>34</line>
-          <properties documentPath="C:\Projects\WebApiFSharp\FSharp\Giraffe\App\Common\Exceptions.fs" initialLine="34" isMultiMethodBreakpoint="true">
-            <option name="multiMethodBreakpoint" value="true" />
-            <startOffsets>
-              <option value="892" />
-            </startOffsets>
-            <endOffsets>
-              <option value="905" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Giraffe/App/Handlers/ValidationHandler.fs</url>
-          <line>90</line>
-          <properties documentPath="C:\Projects\WebApiFSharp\FSharp\Giraffe\App\Handlers\ValidationHandler.fs" initialLine="90" isMultiMethodBreakpoint="true">
-            <option name="multiMethodBreakpoint" value="true" />
-            <startOffsets>
-              <option value="3782" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3798" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Giraffe/App/Handlers/ValidationHandler.fs</url>
-          <line>61</line>
-          <properties documentPath="C:\Projects\WebApiFSharp\FSharp\Giraffe\App\Handlers\ValidationHandler.fs" initialLine="61" isMultiMethodBreakpoint="true">
-            <option name="multiMethodBreakpoint" value="true" />
-            <startOffsets>
-              <option value="2286" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2328" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Type#Domains.Applications.Application+Application" memberName="Image" />

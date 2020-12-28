@@ -53,7 +53,7 @@ let validateMsalToken = fun (config: IConfiguration) tokenHolder ->
         | None -> return! acquireAccessTokenAndMutateAsync tokenHolder config
     }
   
-let sendGraphApiWithConfigRequest<'T> = fun method (ctx: HttpContext) api ->
+let sendGraphApiWithConfigRequest<'T> = fun method body (ctx: HttpContext) api ->
     task {
         let config = ctx.GetService<IConfiguration>()
         let msalTokenHolder = ctx.GetService<MSALAccessTokenHolder>()
@@ -63,10 +63,13 @@ let sendGraphApiWithConfigRequest<'T> = fun method (ctx: HttpContext) api ->
         
         let! response = Http.AsyncRequestString(url,
                                                 httpMethod = method,
-                                                silentHttpErrors = true,
+                                                // silentHttpErrors = true,
+                                                body = TextRequest body,
                                                 headers = [ Authorization accessToken; ContentType HttpContentTypes.Json ])
         return JsonConvert.DeserializeObject<'T>(response)
     }
     
-let sendGETGraphApiWithConfigRequest<'T> = sendGraphApiWithConfigRequest<'T> HttpMethod.Get
-let sendPOSTGraphApiWithConfigRequest<'T> = sendGraphApiWithConfigRequest<'T> HttpMethod.Post
+let sendGETGraphApiWithConfigRequest<'T> = sendGraphApiWithConfigRequest<'T> HttpMethod.Get ""
+let sendPOSTGraphApiWithConfigRequest<'T> body = sendGraphApiWithConfigRequest<'T> HttpMethod.Post body
+let sendPATCHGraphApiWithConfigRequest<'T> body = sendGraphApiWithConfigRequest<'T> HttpMethod.Patch body
+let sendDELETEGraphApiWithConfigRequest<'T> = sendGraphApiWithConfigRequest<'T> HttpMethod.Delete ""

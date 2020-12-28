@@ -16,7 +16,13 @@ type TransactionException = PersistenceSQLClient.DbConfig.TransactionException
 
 type RestException(code, message) =
     inherit Exception(message)
-    member __.Code = code 
+    member __.Code = code
+    
+
+let RestExceptionResult code message = RestException(code, message) :> Exception
+
+let BadRequestResult = RestExceptionResult HttpStatusCodes.BadRequest
+let NotFoundRequestResult = RestExceptionResult HttpStatusCodes.NotFound
 
 let createJsonApiError = fun message code ->
     let error = Error()

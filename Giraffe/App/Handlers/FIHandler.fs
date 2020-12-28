@@ -21,7 +21,6 @@ open PersistenceSQLClient.UserData
 open App.Common.Exceptions
 open App.Helpers.SMTPClient
 
-
 let getFs = fun payload (ctx: HttpContext) ->
     task {
         let mapper = ctx.GetService<IMapper>()
@@ -87,12 +86,12 @@ let inviteUser = fun iid payload (ctx: HttpContext) ->
                 let! createdUserResult =
                     createUserAsync {
                         Email = inviteDto.Email
-                        ActivationKey = Some keyToString
-                        IsFiAdmin = Some inviteDto.IsFiAdmin
-                        IdFinancialInstitution = Some institution.Value.IdFinancialInstitution
+                        ActivationKey = keyToString |> Some
+                        IsFiAdmin = inviteDto.IsFiAdmin |> Some
+                        IdFinancialInstitution = institution.Value.IdFinancialInstitution |> Some
                         IdUser = Guid.NewGuid()
                         ObjectId = None
-                        ActivationStatus = Some "0"
+                        ActivationStatus = "0" |> Some
                     } payload
                     
                 let _ =

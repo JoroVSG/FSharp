@@ -27,7 +27,8 @@ let boolCaseInsensitive s =
 let bool = lower >> boolCaseInsensitive
 
 let wrap (a: Async<'a>) = task { return! a }
-    
+
+let tryGetClaimWithPredicate = fun predicate (ctx: HttpContext) -> ctx.User.Claims |> Seq.tryFind predicate 
 let tryGetClaim = fun claimType (ctx: HttpContext) -> ctx.User.Claims |> Seq.tryFind (fun claim -> claim.Type = claimType)
 let getClaim = fun claimType (ctx: HttpContext) -> ctx.User.Claims |> Seq.find (fun claim -> claim.Type = claimType)
 

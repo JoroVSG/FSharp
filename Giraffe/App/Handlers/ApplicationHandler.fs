@@ -55,7 +55,7 @@ let deleteApplication' = fun (op: OperationStatus) payload _ ->
     }
  
 
-let createAndDelete = createApp >>> deleteApplication'
+let createAndDelete = createApp >==> deleteApplication'
 
 let deleteApplicationWithError guid = deleteApplication guid => createApp => getApplicationById guid
 

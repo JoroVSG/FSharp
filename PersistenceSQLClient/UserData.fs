@@ -2,6 +2,7 @@ module PersistenceSQLClient.UserData
 
 open System
 open System.Data.SqlClient
+open Domains.Applications.Application
 open Domains.Common.CommonTypes
 open Domains.Users.CLCSUser
 open Domains.Users.CommonTypes
@@ -11,7 +12,6 @@ open PersistenceSQLClient.Mapping
 open FSharp.Control.Tasks.V2.ContextInsensitive
 open Dapper.FSharp
 open Dapper.FSharp.MSSQL
-
 
 let getAllUsersAsync = fun (connectionString: SqlConnection, trans) ->
      async {
@@ -36,6 +36,21 @@ let getUserByEmailAsync = fun email (connectionString: SqlConnection, trans) ->
         
     }
      
+let getUserApplicationsByEmail = fun email (connectionString: SqlConnection, trans) ->
+     async {
+        use cmd = new SqlCommandProvider<"""
+            SELECT a.* FROM dbo.[UserApplication] as ua
+                INNER JOIN dbo.[Application] as a on a.IdApplication = ua.IdApplication
+                INNER JOIN dbo.[User] as u on u.IdUser = ua.IdUser
+            WHERE u.Email = @email"""
+        , ConnectionString>(connectionString, transaction = trans)
+        let! apps = cmd.AsyncExecute(email = email)
+        return apps
+               |> Seq.map mapToRecord<Application>
+               |> Seq.toList
+        
+    }
+     
 let getAllUsersByInstitutionIdAsync = fun (connectionString: SqlConnection, trans) iid ->
      async {
         use cmd = new SqlCommandProvider<"""
@@ -43,7 +58,7 @@ let getAllUsersByInstitutionIdAsync = fun (connectionString: SqlConnection, tran
         , ConnectionString>(connectionString, transaction = trans)
         let! reader = cmd.AsyncExecute(idFinancialInstitution = iid)
         let res = reader
-                  |> Seq.map(fun app -> mapToRecord<CLCSUser> app)
+                  |> Seq.map mapToRecord<CLCSUser>
                   |> Seq.toList
         return res
     }

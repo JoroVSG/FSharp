@@ -2,6 +2,7 @@ module App.Common.Authentication
     
 open System.IdentityModel.Tokens.Jwt
 open System.Security.Claims
+open System.Threading
 open Microsoft.AspNetCore.Authentication.JwtBearer
 open Microsoft.AspNetCore.Http
 open Microsoft.Extensions.Configuration
@@ -79,7 +80,43 @@ let authorize'': HttpHandler =
             | false -> return! return401 ctx
         }
        
+
+let validateAzureB2CToken = fun (ctx: HttpContext) (token: string) ->
+    task {
+        try
+            let config = ctx.GetService<IConfiguration>()
+            let authority = sprintf "https://%s.b2clogin.com/%s.onmicrosoft.com/%s/v2.0"
+                                    config.["Authentication:AzureAdB2C:Tenant"]
+                                    config.["Authentication:AzureAdB2C:Tenant"]
+                                    config.["Authentication:AzureAdB2C:InvitePolicyId"]
+                                    
+            let configurationManager =
+                         ConfigurationManager<OpenIdConnectConfiguration>(sprintf "%s/.well-known/openid-configuration" authority,
+                             OpenIdConnectConfigurationRetriever());
+
+            let! openIdConfig = configurationManager.GetConfigurationAsync(CancellationToken.None);
+
+            let parameters =
+                    TokenValidationParameters (
+                        ValidateIssuer = true,
+                        ValidIssuer = openIdConfig.Issuer,
+                        ValidateIssuerSigningKey = true,
+                        ValidateAudience = true,
+                        ValidAudiences = [
+                            config.["AzureAd:IcApplicationId"]
+                        ],
+                        IssuerSigningKeys = openIdConfig.SigningKeys
+                    )
+            let handler = JwtSecurityTokenHandler()
         
+            let (claimsPrincipal, _) = handler.ValidateToken(token, parameters)
+            ctx.User <- claimsPrincipal
+            return claimsPrincipal |> Ok
+        
+        with ex -> return Error ex
+    }
+    
+    
 
 
 let authorize''': HttpHandler = requiresAuthentication unAuthorized

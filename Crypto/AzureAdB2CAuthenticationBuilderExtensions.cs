@@ -47,7 +47,6 @@ namespace Crypto
                 options.UseTokenLifetime = true;
                 options.ClientSecret = AzureAdB2COptions.ClientSecret;
                 options.TokenValidationParameters = new TokenValidationParameters { NameClaimType = "name" };
-                //options.CallbackPath = "/api/validation/redeemed";
                 options.MetadataAddress = $"{AzureAdB2COptions.Authority}/.well-known/openid-configuration";
                 options.ProtocolValidator = new OpenIdConnectProtocolValidator { RequireNonce = false, RequireState = false };
                 options.ResponseType = OpenIdConnectResponseType.CodeIdTokenToken;
@@ -86,14 +85,14 @@ namespace Crypto
 
                     if (context.Properties.Items.ContainsKey("verified_email"))
                     {
-                        var verifiedEmail = new Claim("verified_email", context.Properties.Items["verified_email"]);
+                        var verifiedEmail = new Claim("verified_email", context.Properties.Items["verified_email"] ?? string.Empty);
                         instancePolicyClaims.Add(verifiedEmail);
                         context.Properties.Items.Remove("verified_email");
                     }
 
                     if (context.Properties.Items.ContainsKey("activationKey"))
                     {
-                        var activationKey = new Claim("extension_ActivationKey", context.Properties.Items["activationKey"]);
+                        var activationKey = new Claim("extension_ActivationKey", context.Properties.Items["activationKey"] ?? string.Empty);
                         instancePolicyClaims.Add(activationKey);
                         context.Properties.Items.Remove("activationKey");
                     }
@@ -166,7 +165,7 @@ namespace Crypto
                 else
                 {
                     
-                    context.Response.Redirect($"api/validation/error?message={context.Failure.Message}");
+                    context.Response.Redirect($"api/validation/error?message={context.Failure?.Message}");
                 }
                 return Task.FromResult(0);
             }
@@ -180,20 +179,10 @@ namespace Crypto
 
                 var userTokenCache = new MSALSessionCache(signedInUserId, context.HttpContext).GetMsalCacheInstance();
                 var cca = new ConfidentialClientApplication(AzureAdB2COptions.ClientId, AzureAdB2COptions.Authority, AzureAdB2COptions.RedirectUri, new ClientCredential(AzureAdB2COptions.ClientSecret), userTokenCache, null);
-                try
-                {
-                    AuthenticationResult result = await cca.AcquireTokenByAuthorizationCodeAsync(code, new[] { AzureAdB2COptions.IcScope });
+                
+                AuthenticationResult result = await cca.AcquireTokenByAuthorizationCodeAsync(code, new[] { AzureAdB2COptions.IcScope });
 
-                    await MapUserAfterCreateAsync(context);
-
-                    context.HandleCodeRedemption(result.AccessToken, result.IdToken);
-                }
-                catch (Exception ex)
-                {
-                   
-                    // logger?.Error(ex);
-                    throw;
-                }
+                context.HandleCodeRedemption(result.AccessToken, result.IdToken);
             }
         }
 
@@ -222,16 +211,6 @@ namespace Crypto
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
-        }
-
-
-        private static async Task MapUserAfterCreateAsync(AuthorizationCodeReceivedContext context)
-        {
-            // var appSettings = context.HttpContext.RequestServices.GetRequiredService<IOptions<AppSettings>>().Value;
-            // var service = context.HttpContext.RequestServices.GetRequiredService<IUserMappingService>();
-            // await service.MapUserAsync(context.Principal);
-            // context.Response.Redirect("appSettings.DashboardUrl");
-            context.HandleResponse();
         }
 
         

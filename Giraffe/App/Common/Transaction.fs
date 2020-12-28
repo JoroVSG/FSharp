@@ -4,17 +4,17 @@ open System
 open System.Data.SqlClient
 open System.Threading.Tasks
 open Giraffe
-open App.Common.JsonApiResponse
 open Microsoft.AspNetCore.Http
 open FSharp.Control.Tasks.V2.ContextInsensitive
 open Microsoft.Extensions.Configuration
 open PersistenceSQLClient.DbConfig
 open FsToolkit.ErrorHandling.AsyncResultCE
 open App.Helpers.HelperFunctions
+open App.Common.Exceptions
 
 type TransactionFunction<'a, 'b> =  TransactionPayload -> HttpContext -> Task<Result<'a, 'b>>
 type TransactionFunction'<'a> = TransactionFunction<'a>
-let withTransaction<'a> = fun (f: TransactionFunction<'a, 'b>) (ctx: HttpContext) ->
+let withTransaction<'a> = fun (f: TransactionFunction<'a, exn>) (ctx: HttpContext) ->
     task {
         let config = ctx.GetService<IConfiguration>()
         let connectionStringFromConfig = config.["ConnectionString:DefaultConnectionString"]
@@ -25,16 +25,21 @@ let withTransaction<'a> = fun (f: TransactionFunction<'a, 'b>) (ctx: HttpContext
             let! res = f (connectionString, trans) ctx
             do! trans.CommitAsync()
             do! connectionString.CloseAsync()
-            return res
+            match res with
+                | Ok a -> return a |> Ok
+                | Error exp ->
+                    do! trans.RollbackAsync()
+                    return exp |> Error
         with ex ->
             do! trans.RollbackAsync()
-            return raise ex
+            return Error ex
     }
     
 let transaction = fun f next ctx ->
     task {
-        let! res = withTransaction f ctx
-        return! jsonApiWrapHandler' res next ctx
+        match! withTransaction f ctx with
+            | Ok res -> return! json res next ctx
+            | Error exp -> return! handleErrorJsonAPI exp next ctx
     }
 
 type TransactionBuilder(connectionString) =
@@ -151,7 +156,17 @@ let transactionFunctionCompose'= fun (f1: TransactionFunction<'a, 'b>) (f2: 'a -
         }
         |> wrap
 
+let transactionFunctionComposeIgnoreValue = fun (f1: TransactionFunction<'a, 'b>) (f2: TransactionFunction<'c, 'b>) ->
+    fun (payload: TransactionPayload) (ctx: HttpContext) ->
+        asyncResult {
+            let! _ = f1 payload ctx
+            let! res2 = f2 payload ctx
+            return res2
+        }
+        |> wrap
+
  
 let (=>) = transactionFunctionCompose
-let (>>>) = transactionFunctionCompose'
+let (>==>) = transactionFunctionCompose'
+let (>>!) = transactionFunctionComposeIgnoreValue
     

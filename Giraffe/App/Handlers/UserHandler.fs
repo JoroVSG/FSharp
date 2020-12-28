@@ -74,7 +74,7 @@ let getAllUsersByFi = fun iid transPayload (ctx: HttpContext) ->
                 task {
                     let matchFound = userMerged.find(fun u -> user.ObjectId.Value = u.Id)
                     let! apps = getApplicationsByUserIdAsync user.IdUser transPayload
-                    let appMapped = apps.map(fun a -> mapper.Map<ApplicationDTO>(a)) |> Seq.toList
+                    let appMapped = apps.map(mapper.Map<ApplicationDTO>) |> Seq.toList
                     return mapToUserDTO appMapped matchFound user
                 }
             )
