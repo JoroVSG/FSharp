@@ -17,7 +17,6 @@ open Microsoft.AspNetCore.Authentication.OpenIdConnect
 open Microsoft.AspNetCore.Http
 open FSharp.Control.Tasks.V2.ContextInsensitive
 open App.Helpers.HelperFunctions
-open Microsoft.Extensions.Configuration
 open App.Common.Authentication
 open App.Common.Exceptions
 open App.Common.Transaction
@@ -63,7 +62,6 @@ let invitation = fun (next: HttpFunc) (ctx: HttpContext) ->
 
                 properties.Items.["activationKey"] <- wrapper.ActivationKeyEncrypted
                 let schema = OpenIdConnectDefaults.AuthenticationScheme
-                
                 do! ctx.ChallengeAsync(schema, properties = properties)
                 
                 return! next ctx
@@ -145,9 +143,11 @@ let assignedTheUserToAzureFiGroup = fun (user: CLCSUser, fi: FI) _ (ctx: HttpCon
         let userGroup = {
             OdataId = userRef
         }
-        let api = sprintf "%s/groups/%s/$ref" config.["GraphApi:ApiVersion"] (string <| getValue fi.ObjectId)
         
-        do! sendPOSTGraphApiWithConfigRequest (string userGroup) ctx api
+        let userGroupStr = string userGroup
+        let api = sprintf "%s/groups/%s/members/$ref" config.["GraphApi:ApiVersion"] (string <| getValue fi.ObjectId)
+        
+        do! sendPOSTGraphApiWithConfigRequest userGroupStr ctx api
         return (user, fi) |> Ok
         
         //        var userRef =
@@ -187,11 +187,11 @@ let updatingUserApplicationClaim = fun (user: CLCSUser, _) payload (ctx: HttpCon
             
             claim.Add(claimName, claimValue)
             let body = JsonConvert.SerializeObject(claim)
-            let api = sprintf "/users/%s" (string <| getValue user.ObjectId)
+            let api = sprintf "%s/users/%s" config.["GraphApi:ApiVersion"] (string <| getValue user.ObjectId)
             do! sendPATCHGraphApiWithConfigRequest body ctx api
-            return () |> Ok
+            return true |> Ok
         else
-            return () |> Ok
+            return false |> Ok
     }
 
 let redeemed = parseAndValidateToken
@@ -218,6 +218,7 @@ let redeemAndRedirect  next ctx =
                 return! redirectTo true config.["AfterUserCreationRedirectUrl"] next ctx
             | Error exp ->
                 do! deleteAzureUserIfSomethingGoesWrong ctx
+                do! ctx.SignOutAsync()
                 return! handleErrorJsonAPI exp next ctx
     }
 

@@ -15,18 +15,9 @@
     <list default="true" id="46d54f0c-fb97-4b15-8016-29c67a0ec41f" name="Default Changelist" comment="Adding Fluent library">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Crypto/AzureAdB2CAuthenticationBuilderExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Crypto/AzureAdB2CAuthenticationBuilderExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Common/Authentication.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Common/Authentication.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Common/Exceptions.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Common/Exceptions.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/ValidationHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/ValidationHandler.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Helpers/Constants.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Helpers/Constants.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Helpers/MSALClient.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Helpers/MSALClient.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" beforeDir="false" afterPath="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/Program.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/Program.fs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +63,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8EA671DC-AA55-3F8B-3AE4-5555DE2BBE52/16/486b1580/Seq.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B19537B-F065-4C3F-9F78-85C4099CD3AA/16F/TaskContinuation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B19537B-F065-4C3F-9F78-85C4099CD3AA/147/CancellationToken.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Projects/WebApiFSharp/FSharp/Giraffe/App/Handlers/ValidationHandler.fs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/IL/0A06CD3F-C48C-4801-A858-F75C007863D2/15/dd318783/02000016.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/6b/81b5ba46/DocumentRoot`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B19537B-F065-4C3F-9F78-85C4099CD3AA/16B/Task.cs" root0="SKIP_HIGHLIGHTING" />
@@ -119,19 +111,19 @@
       <option value="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" />
       <option value="$PROJECT_DIR$/Migrations/Migrate.fs" />
       <option value="$PROJECT_DIR$/Giraffe/appsettings.json" />
-      <option value="$PROJECT_DIR$/Giraffe/Program.fs" />
-      <option value="$PROJECT_DIR$/Crypto/AzureAdB2CAuthenticationBuilderExtensions.cs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Helpers/Constants.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Common/Exceptions.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Common/Authentication.fs" />
-      <option value="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" />
       <option value="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" />
-      <option value="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Helpers/MSALClient.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/Program.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ValidationHandler.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" />
+      <option value="$PROJECT_DIR$/Crypto/AzureAdB2CAuthenticationBuilderExtensions.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1kLQBBDfi4aavyj6sU3WXmRSSxU" />
@@ -280,14 +272,7 @@
       <workItem from="1608740614338" duration="642000" />
       <workItem from="1608741567579" duration="706000" />
       <workItem from="1608912740755" duration="6538000" />
-      <workItem from="1608925104590" duration="55404000" />
-    </task>
-    <task id="LOCAL-00001" summary="Clean up on AnimalData.fs">
-      <created>1605628859739</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1605628859739</updated>
+      <workItem from="1608925104590" duration="62293000" />
     </task>
     <task id="LOCAL-00002" summary="Refactoring and adding authorization''">
       <created>1605959639773</created>
@@ -625,7 +610,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609106319505</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Invitation process part 6">
+      <created>1609173471245</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1609173471246</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -661,7 +653,6 @@
       <path value="$PROJECT_DIR$/Giraffe" />
     </ignored-roots>
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="withTransaction'" />
     <MESSAGE value="Adding TransactionPayload" />
     <MESSAGE value="Adding TransactionPayload part 2" />
     <MESSAGE value="Bringing back FSharp.Dapper" />
@@ -686,9 +677,41 @@
     <MESSAGE value="Invitation process part 2" />
     <MESSAGE value="Invitation process part 3" />
     <MESSAGE value="Invitation process part 5" />
-    <option name="LAST_COMMIT_MESSAGE" value="Invitation process part 5" />
+    <MESSAGE value="Invitation process part 6" />
+    <option name="LAST_COMMIT_MESSAGE" value="Invitation process part 6" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs</url>
+          <line>35</line>
+          <properties documentPath="C:\Projects\WebApiFSharp\FSharp\Giraffe\App\Common\Transaction.fs" initialLine="35" isMultiMethodBreakpoint="true">
+            <option name="multiMethodBreakpoint" value="true" />
+            <startOffsets>
+              <option value="1403" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1428" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Crypto/AzureAdB2CAuthenticationBuilderExtensions.cs</url>
+          <line>71</line>
+          <properties documentPath="C:\Projects\WebApiFSharp\FSharp\Crypto\AzureAdB2CAuthenticationBuilderExtensions.cs" initialLine="69" containingFunctionPresentation="method 'OnRedirectToIdentityProviderAsync'">
+            <startOffsets>
+              <option value="2953" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3005" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Type#Domains.Applications.Application+Application" memberName="Image" />

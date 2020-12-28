@@ -13,6 +13,7 @@ open JsonApiSerializer
 open AutoMapper
 open Microsoft.AspNetCore.Authentication
 open Microsoft.AspNetCore.Authentication.JwtBearer
+open Microsoft.AspNetCore.Authentication.OpenIdConnect
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Hosting
 open Microsoft.Extensions.Configuration
@@ -64,6 +65,7 @@ let configureApp (app : IApplicationBuilder) =
 let authenticationOptions (o : AuthenticationOptions) =
     o.DefaultAuthenticateScheme <- JwtBearerDefaults.AuthenticationScheme
     o.DefaultChallengeScheme <- JwtBearerDefaults.AuthenticationScheme
+    o.DefaultSignOutScheme <- OpenIdConnectDefaults.AuthenticationScheme
 
 let jwtBearerOptions (cfg : JwtBearerOptions) =
     cfg.SaveToken <- true

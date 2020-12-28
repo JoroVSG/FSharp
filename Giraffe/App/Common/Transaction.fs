@@ -29,9 +29,13 @@ let withTransaction<'a> = fun (f: TransactionFunction<'a, exn>) (ctx: HttpContex
                 | Ok a -> return a |> Ok
                 | Error exp ->
                     do! trans.RollbackAsync()
+                    do! trans.DisposeAsync()
+                    do! connectionString.DisposeAsync()
                     return exp |> Error
         with ex ->
             do! trans.RollbackAsync()
+            do! trans.DisposeAsync()
+            do! connectionString.DisposeAsync()
             return Error ex
     }
     
