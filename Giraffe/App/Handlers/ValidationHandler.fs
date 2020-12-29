@@ -72,7 +72,7 @@ let invitation = fun (next: HttpFunc) (ctx: HttpContext) ->
         
     }
 
-let getEmail = fun __ _ (ctx: HttpContext) ->
+let getEmail = fun _ _ (ctx: HttpContext) ->
     task {
         //        var email = user.Claims?.FirstOrDefault(c => c.Type == "emails")?.Value ??
         //                            user.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
@@ -129,7 +129,7 @@ let updateUserObjectId = fun user payload ctx ->
     task {
         match tryGetClaim ClaimTypes.NameIdentifier ctx with
             | Some oid ->
-                let u: CLCSUser = { user with ObjectId = Guid(oid.Value) |> Some;  ActivationStatus = "1" |> Some }
+                let u = { user with ObjectId = Guid(oid.Value) |> Some;  ActivationStatus = "1" |> Some }
                 let! _ = updateUserAsync u payload
                 return u |> Ok
             | None -> return NotFoundRequestResult "ObjectId Claim not found" |> Error
