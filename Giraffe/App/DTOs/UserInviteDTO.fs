@@ -14,7 +14,7 @@ type UserInviteDTO = {
     InstitutionId: string
     RoutingNumber: string
     IsFiAdmin: bool
-    Applications: ApplicationDTO list
+    Applications: ApplicationDTO list option
 }
 with member this.HasErrors() =
         if      this.FirstName.Length < 3  then Some "First name is too short."

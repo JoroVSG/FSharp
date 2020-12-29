@@ -63,7 +63,7 @@ let sendGraphApiWithConfigRequest<'T> = fun method body (ctx: HttpContext) api -
         
         let! response = Http.AsyncRequestString(url,
                                                 httpMethod = method,
-                                                // silentHttpErrors = true,
+                                                silentHttpErrors = true,
                                                 body = TextRequest body,
                                                 headers = [ Authorization accessToken; ContentType HttpContentTypes.Json ])
         return JsonConvert.DeserializeObject<'T>(response)

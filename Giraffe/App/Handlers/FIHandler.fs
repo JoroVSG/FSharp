@@ -86,7 +86,7 @@ let inviteUser = fun iid payload (ctx: HttpContext) ->
                 let! createdUserResult =
                     createUserAsync {
                         Email = inviteDto.Email
-                        ActivationKey = keyToString |> Some
+                        ActivationKey = encrypted |> Some
                         IsFiAdmin = inviteDto.IsFiAdmin |> Some
                         IdFinancialInstitution = institution.Value.IdFinancialInstitution |> Some
                         IdUser = Guid.NewGuid()
@@ -96,17 +96,19 @@ let inviteUser = fun iid payload (ctx: HttpContext) ->
                     
                 let _ =
                     match createdUserResult with
-                    | Ok u ->   
-                        inviteDto.Applications
-                                |> Seq.map(fun app ->
-                                    async {
-                                        let! y = insertUserApplication app.IdApplication u.Id payload
-                                        return y
-                                    })
-                                |> Async.Parallel
-                                |> Async.Ignore
-                                |> Async.RunSynchronously
-                            
+                    | Ok u ->
+                        match inviteDto.Applications with
+                            | Some app -> 
+                                 app
+                                        |> Seq.map(fun app ->
+                                            async {
+                                                let! y = insertUserApplication app.IdApplication u.Id payload
+                                                return y
+                                            })
+                                        |> Async.Parallel
+                                        |> Async.Ignore
+                                        |> Async.RunSynchronously
+                            | None -> ()      
                         true
                     | _ -> true          
                 do! sendInviteEmailAsync ctx emailFrom inviteDto.Email keyWrapperStringify
