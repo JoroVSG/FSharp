@@ -1,7 +1,6 @@
 module PersistenceSQLClient.ApplicationData
 
 open System
-open System.Net
 open DbConfig
 open FSharp.Data
 open Domains.Applications.Application
@@ -20,10 +19,9 @@ let getAllApplicationsAsync = fun payload ->
         , ConnectionString>(conn, transaction = trans)
         let! reader = cmd.AsyncExecute()
         let res = reader
-                  |> Seq.map(fun app -> mapToRecord<Application> app)
+                  |> Seq.map mapToRecord<Application>
                   |> Seq.toList
         return res
-        //|> ResultSuccess
     }
     
 let getAllApplicationById = fun idApplication payload ->
@@ -31,13 +29,11 @@ let getAllApplicationById = fun idApplication payload ->
    async {
         use cmd =
             new SqlCommandProvider<"""
-                select * from dbo.[Application] where IdApplication = @idApplication
+                SELECT * FROM dbo.[Application] WHERE IdApplication = @idApplication
             """ , ConnectionString, SingleRow=true>(conn, transaction = trans)
         
         let! app = cmd.AsyncExecute(idApplication = idApplication)
-        return match app with
-                | Some a -> mapToRecord<Application> a |> Some
-                | None -> None
+        return app |> Option.map mapToRecord<Application>
    }
    
 let getApplicationsByUserIdAsync idUser payload =
@@ -53,9 +49,8 @@ let getApplicationsByUserIdAsync idUser payload =
         
         let! reader = cmd.AsyncExecute(idUser = idUser)
         return reader
-                  |> Seq.map(fun app -> mapToRecord<Application> app)
+                  |> Seq.map mapToRecord<Application>
                   |> Seq.toList
-                  //|> ResultSuccess
     }
 
 let deleteApplicationAsync = fun idApp payload ->
@@ -99,15 +94,12 @@ let createApplicationAsync = fun app (payload: TransactionPayload) ->
             table "Application"
             value app'
         }
-        let! rowAffected = conn.InsertAsync(insertCE, trans)
-        
+        let! rowsAffected = conn.InsertAsync(insertCE, trans)
         return
-            if rowAffected = 1
-            then  { Id = guid; Success = true; Exception = None } |> Ok
-            else
-                let ex = TransactionException(HttpStatusCode.BadRequest, "Error occur during creation") :> Exception
-                ex |> Result.Error
-                
+            if rowsAffected = 1
+            then Some { Id = guid; Success = true; Exception = None }
+            else None
+                        
     }
     
     

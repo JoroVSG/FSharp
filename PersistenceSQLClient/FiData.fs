@@ -14,9 +14,7 @@ let getFiByInstitutionId = fun iid payload ->
             """ , ConnectionString, SingleRow=true>(con, transaction=trans)
         
         let! fi = cmd.AsyncExecute(iid = iid)
-        return match fi with
-                | Some f -> mapToRecord<FI> f |> Some
-                | None -> None
+        return fi |> Option.map mapToRecord<FI>
     }
     
 let getFiById = fun iid payload ->
@@ -28,9 +26,7 @@ let getFiById = fun iid payload ->
             """ , ConnectionString, SingleRow=true>(con, transaction=trans)
         
         let! fi = cmd.AsyncExecute(id = iid)
-        return match fi with
-                | Some f -> mapToRecord<FI> f |> Some
-                | None -> None
+        return fi |> Option.map mapToRecord<FI>
     }
 
 
@@ -41,9 +37,8 @@ let getFis = fun payload ->
         
         let! fi = cmd.AsyncExecute()
         let res = fi
-                  |> Seq.map(fun app -> mapToRecord<FI> app)
+                  |> Seq.map mapToRecord<FI>
                   |> Seq.toList
         
-        return res 
-        // |> ResultSuccess
+        return res
     }

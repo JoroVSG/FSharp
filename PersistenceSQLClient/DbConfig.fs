@@ -11,13 +11,6 @@ let ConnectionString = "Server=192.168.5.11;Initial Catalog=CLCSPortal;Persist S
 // let ConnectionString = "data source=.;Initial catalog=LoanVantage_Trunk_IBS_1;Integrated Security=SSPI;";
 type TransactionResult<'a> = Success of Option<'a> | Error' of Exception
 
-let x y =
-    match y with
-    | Ok s -> s 
-    | Error ex -> ex
-    
-
-let ResultNone<'a> = None |> Success :> TransactionResult<'a>
 let ResultSuccess(a: 'a) = Some a |> Success
 
 type TransactionPayload = (SqlConnection * SqlTransaction)

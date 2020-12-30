@@ -9,7 +9,6 @@ open JsonApiSerializer.JsonApi
 open Microsoft.AspNetCore.Http
 open FSharp.Control.Tasks.V2.ContextInsensitive
 open Giraffe
-open Microsoft.AspNetCore.Server.IIS
 open Microsoft.Data.SqlClient
 open Newtonsoft.Json
 type TransactionException = PersistenceSQLClient.DbConfig.TransactionException

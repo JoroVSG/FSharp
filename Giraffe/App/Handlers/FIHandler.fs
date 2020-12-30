@@ -94,23 +94,18 @@ let inviteUser = fun iid payload (ctx: HttpContext) ->
                         ActivationStatus = "0" |> Some
                     } payload
                     
-                let _ =
-                    match createdUserResult with
-                    | Ok u ->
-                        match inviteDto.Applications with
-                            | Some app -> 
-                                 app
-                                        |> Seq.map(fun app ->
-                                            async {
-                                                let! y = insertUserApplication app.IdApplication u.Id payload
-                                                return y
-                                            })
-                                        |> Async.Parallel
-                                        |> Async.Ignore
-                                        |> Async.RunSynchronously
-                            | None -> ()      
-                        true
-                    | _ -> true          
+                match inviteDto.Applications with
+                    | Some app -> 
+                         app
+                                |> Seq.map(fun app ->
+                                    async {
+                                        let! y = insertUserApplication app.IdApplication createdUserResult.Id payload
+                                        return y
+                                    })
+                                |> Async.Parallel
+                                |> Async.Ignore
+                                |> Async.RunSynchronously
+                    | None -> ()          
                 do! sendInviteEmailAsync ctx emailFrom inviteDto.Email keyWrapperStringify
                 return { Id = Guid.NewGuid(); Success = true; Exception = None } |> Ok
     }

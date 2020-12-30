@@ -40,7 +40,7 @@ let createApp = fun payload (ctx: HttpContext) ->
         let mapper = ctx.GetService<IMapper>()
         let model = mapper.Map<Application> application
         let! result = createApplicationAsync model payload
-        return result
+        return result |> resultOrNotFound
     }  
 let deleteApplication = fun guid payload _ ->
     task {

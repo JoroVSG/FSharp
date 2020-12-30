@@ -20,7 +20,7 @@ let getAllUsersAsync = fun (connectionString: SqlConnection, trans) ->
         , ConnectionString>(connectionString, transaction = trans)
         let! reader = cmd.AsyncExecute()
         let res = reader
-                  |> Seq.map(fun app -> mapToRecord<CLCSUser> app)
+                  |> Seq.map mapToRecord<CLCSUser>
                   |> Seq.toList
         return res
     }
@@ -30,10 +30,7 @@ let getUserByEmailAsync = fun email (connectionString: SqlConnection, trans) ->
             SELECT * FROM dbo.[User] where email = @email"""
         , ConnectionString, SingleRow=true>(connectionString, transaction = trans)
         let! user = cmd.AsyncExecute(email = email)
-        return match user with
-                | Some a -> mapToRecord<CLCSUser> a |> Some
-                | None -> None
-        
+        return user |> Option.map mapToRecord<CLCSUser>
     }
      
 let getUserApplicationsByEmail = fun email (connectionString: SqlConnection, trans) ->
@@ -90,11 +87,10 @@ let getUsersByEmailAsync = fun (emails: Email seq) (payload: TransactionPayload)
         , ConnectionString>(connectionString, transaction = trans)
         let! reader = cmd.AsyncExecute(emails = inClause)
         let res = reader
-                  |> Seq.map(fun app -> mapToRecord<CLCSUser> app)
+                  |> Seq.map mapToRecord<CLCSUser>
                   |> Seq.toList
         
-        return res 
-        //|> ResultSuccess
+        return res
     }
 let createUserAsync = fun (user: CLCSUser) (payload: TransactionPayload) ->
     let (conn, trans) = payload
@@ -104,7 +100,7 @@ let createUserAsync = fun (user: CLCSUser) (payload: TransactionPayload) ->
             value user
         }
         let! _ = conn.InsertAsync(insertCE, trans)
-        return { Id = user.IdUser; Success = true; Exception = None } |> Ok
+        return { Id = user.IdUser; Success = true; Exception = None }
             
     }
 let updateUserAsync = fun (user: CLCSUser) (payload: TransactionPayload) ->
@@ -116,7 +112,7 @@ let updateUserAsync = fun (user: CLCSUser) (payload: TransactionPayload) ->
             where (eq "IdUser" user.IdUser)
         }
         let! _ = conn.UpdateAsync(updateCE, trans)
-        return { Id = user.IdUser; Success = true; Exception = None } |> Ok
+        return { Id = user.IdUser; Success = true; Exception = None }
             
     }
 
@@ -134,6 +130,6 @@ let insertUserApplication = fun idApplication idUser payload ->
                 idUser = idUser,
                 idUserApplication = id
             )
-        return { Id = id; Success = true; Exception = None } |> Ok
+        return { Id = id; Success = true; Exception = None }
     }
    
