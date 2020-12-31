@@ -1,6 +1,8 @@
 module App.Handlers.FIHandler
 
 open System
+open App.DTOs.UserDTO
+open Crypto.Resolvers
 open Domains.Common.CommonTypes
 open App.DTOs.ActivationKey
 open App.DTOs.FiDTO
@@ -12,6 +14,7 @@ open App.Common.JsonApiResponse
 open App.Common.Transaction
 open Microsoft.AspNetCore.Http
 open Microsoft.Extensions.Configuration
+open Newtonsoft.Json
 open PersistenceSQLClient.FiData
 open App.Handlers.Security.Permissions
 open FSharp.Control.Tasks.V2.ContextInsensitive
@@ -20,6 +23,8 @@ open App.DTOs.UserInviteDTO
 open PersistenceSQLClient.UserData
 open App.Common.Exceptions
 open App.Helpers.SMTPClient
+open App.Helpers.MSALClient
+open App.Helpers.HelperFunctions
 
 let getFs = fun payload (ctx: HttpContext) ->
     task {
@@ -97,19 +102,64 @@ let inviteUser = fun iid payload (ctx: HttpContext) ->
                 match inviteDto.Applications with
                     | Some app -> 
                          app
-                                |> Seq.map(fun app ->
-                                    async {
-                                        let! y = insertUserApplication app.IdApplication createdUserResult.Id payload
-                                        return y
-                                    })
-                                |> Async.Parallel
-                                |> Async.Ignore
-                                |> Async.RunSynchronously
+                            |> Seq.map(fun app ->
+                                async {
+                                    let! y = insertUserApplication app.IdApplication createdUserResult.Id payload
+                                    return y
+                                })
+                            |> Async.Parallel
+                            |> Async.Ignore
+                            |> Async.RunSynchronously
                     | None -> ()          
                 do! sendInviteEmailAsync ctx emailFrom inviteDto.Email keyWrapperStringify
                 return { Id = Guid.NewGuid(); Success = true; Exception = None } |> Ok
     }
 
+let updateUser = fun (uid: Guid) payload (ctx: HttpContext) ->
+    task {
+        let! userDto = ctx.BindJsonAsync<UserUpdateDTO>()
+        let config = ctx.GetService<IConfiguration>()
+        
+        match! getUserByObjectId uid payload  with
+            | Some local ->
+                let propertyRenameContractResolver = PropertyRenameAndIgnoreSerializerContractResolver()
+                let claimName = sprintf "extension_%s_IsFiAdmin" (config.["GraphApi:ClientId"].Replace("-", ""))
+                propertyRenameContractResolver.RenameProperty(userDto.GetType(), "isFiAdmin", claimName);
+                
+                match local.ObjectId with
+                    | Some oid ->
+                        let mutable email = local.Email
+                        
+                        
+                        let userMapped =
+                            if userDto.Email <> null then
+                                let identity = {
+                                    SignInType = "emailAddress"
+                                    Issuer = sprintf "%s.onmicrosoft.com" config.["GraphApi:Tenant"]
+                                    IssuerAssignedId = email
+                                }
+                                
+                                email <- userDto.Email
+                                
+                                { userDto with Identities = [identity]; ObjectId = null; Email = null }
+                            else
+                                { userDto with ObjectId = null }
+                                
+                        let isFiAdmin = if userDto.IsFiAdmin <> null then userDto.IsFiAdmin else string local.IsFiAdmin.Value
+                        
+                        let serializerSettings = JsonSerializerSettings()
+                        serializerSettings.DefaultValueHandling <- DefaultValueHandling.Ignore
+                        serializerSettings.ContractResolver <- propertyRenameContractResolver
+                        
+                        let p = JsonConvert.SerializeObject(userMapped, serializerSettings)
+                        let api = sprintf "%s/users/%s" config.["GraphApi:ApiVersion"] (string oid)
+                        do! sendPATCHGraphApiWithConfigRequest p ctx api
+                        let! _ = updateUserAsync { local with Email = email; IsFiAdmin = (bool isFiAdmin |> Some) } payload
+                        
+                        return { Id = Guid.NewGuid(); Success = true; Exception = None } |> Ok
+                    | None -> return NotFoundRequestResult "User has not been mapped to Azure B2C" |> Error
+            | None -> return NotFoundRequestResult "User not found by object Id" |> Error
+    }
 
 let profitStarsErrorHandler = forbidden "Only Profitstars or Financial Institution admins are allowed to retrieve users for that financial institution"
 let usersPermissionCheckInvite = fun iid -> profitStarsFiAdminCombined iid >=> profitStarsFiAdminErrorHandling (forbidden INVITE_USER_PROFIT_STARS_FAIL) (forbidden INVITE_USER_FI_FAIL)
@@ -121,4 +171,8 @@ let fiGetRoutes: HttpHandler list = [
 
 let fiPostRoutes: HttpHandler list = [
     routeCif "/fi/%s/users/invite" (fun iid -> authorize >=> usersPermissionCheckInvite iid >=> transaction (inviteUser iid)) 
+]
+
+let fiPatchRoutes: HttpHandler list = [
+    routeCif "/fi/%s/relationship/users/%O" (fun (iid, uid) -> authorize >=> usersPermissionCheckInvite iid >=> transaction (updateUser uid))
 ]

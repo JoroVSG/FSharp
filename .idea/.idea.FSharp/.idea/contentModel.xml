@@ -19,6 +19,9 @@
             <e p="netstandard2.1" t="Include" />
           </e>
         </e>
+        <e p="Resolvers" t="Include">
+          <e p="PropertyRenameAndIgnoreSerializerContractResolver.cs" t="Include" />
+        </e>
       </e>
       <e p="Domains" t="IncludeRecursive">
         <e p="Applications" t="Include">

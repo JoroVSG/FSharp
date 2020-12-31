@@ -55,13 +55,13 @@ let getAllUsersByFi = fun iid transPayload (ctx: HttpContext) ->
         let! userMergedTasks =
             partitioned
                 .map(fun chunk ->
-                task {
-                    let graphApiUserFilter = msalFilter iid config.["GraphApi:ClientId"] (chunk |> Seq.toList)
-                    let api = sprintf "%s/users?%s" config.["GraphApi:ApiVersion"] graphApiUserFilter
-                    
-                    let! b2cUsers = sendGETGraphApiWithConfigRequest<B2CResponse> ctx api
-                    return b2cUsers.B2CGraphUsers
-                })
+                    task {
+                        let graphApiUserFilter = msalFilter iid config.["GraphApi:ClientId"] (chunk |> Seq.toList)
+                        let api = sprintf "%s/users?%s" config.["GraphApi:ApiVersion"] graphApiUserFilter
+                        
+                        let! b2cUsers = sendGETGraphApiWithConfigRequest<B2CResponse> ctx api
+                        return b2cUsers.B2CGraphUsers
+                    })
             |> Task.WhenAll
             
             

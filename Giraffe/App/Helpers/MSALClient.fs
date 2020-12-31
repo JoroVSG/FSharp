@@ -61,19 +61,23 @@ let sendGraphApiWithConfigRequest<'T> = fun method body (ctx: HttpContext) api -
         
         let! accessToken = validateMsalToken config msalTokenHolder
         
-        if method <> HttpMethod.Get then
-            let! response = Http.AsyncRequestString(url,
-                                                    httpMethod = method,
-                                                    silentHttpErrors = true,
-                                                    body = TextRequest body,
-                                                    headers = [ Authorization accessToken; ContentType HttpContentTypes.Json ])
-            return JsonConvert.DeserializeObject<'T>(response)
-        else
-            let! response = Http.AsyncRequestString(url,
-                                                    httpMethod = method,
-                                                    silentHttpErrors = true,
-                                                    headers = [ Authorization accessToken; ContentType HttpContentTypes.Json ])
-            return JsonConvert.DeserializeObject<'T>(response)
+        let! response = 
+            if method = HttpMethod.Get then
+                Http.AsyncRequestString(url,
+                    httpMethod = method,
+                    //silentHttpErrors = true,
+                    headers = [ Authorization accessToken; ContentType HttpContentTypes.Json ])
+            else
+                Http.AsyncRequestString(url,
+                    httpMethod = method,
+                    //silentHttpErrors = true,
+                    body = TextRequest body,
+                    headers = [ Authorization accessToken; ContentType HttpContentTypes.Json ])
+        
+        let extensionProperties = sprintf "extension_%s_" (config.["GraphApi:ClientId"].Replace("-", ""))
+        let replaced = response.Replace(extensionProperties, "")
+        
+        return JsonConvert.DeserializeObject<'T>(replaced)        
     }
     
 let sendGETGraphApiWithConfigRequest<'T> = sendGraphApiWithConfigRequest<'T> HttpMethod.Get ""

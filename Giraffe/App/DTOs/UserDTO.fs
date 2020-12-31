@@ -4,7 +4,9 @@ open System
 open JsonApiSerializer.JsonApi
 open App.DTOs.ApplicationDTO
 open Domains.B2CUser
+open Newtonsoft.Json
 
+[<CLIMutable>]
 type UserDTO = {
     Id: Guid
     IdUser: Guid
@@ -38,6 +40,21 @@ type UserDTO = {
     Type: string
     ActivationStatus: string option
     Applications: Relationship<ApplicationDTO list>
-    // IsFiAdmin: bool
+    IsFiAdmin: bool
 }
 
+type B2CIdentities = {
+    [<JsonProperty("signInType")>]SignInType: string
+    [<JsonProperty("issuer")>]Issuer: string
+    [<JsonProperty("issuerAssignedId")>]IssuerAssignedId: string
+}
+
+[<CLIMutable>]
+type UserUpdateDTO = {
+    [<JsonProperty("id"); JsonIgnore>]Id: string
+    [<JsonProperty("isFiAdmin")>]IsFiAdmin: string
+    [<JsonProperty("objectId")>]mutable ObjectId: string
+    [<JsonProperty("email")>]mutable Email: string
+    [<JsonProperty("identities")>]mutable Identities: B2CIdentities list
+
+}

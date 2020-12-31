@@ -16,6 +16,7 @@ open Microsoft.AspNetCore.Authentication.JwtBearer
 open Microsoft.AspNetCore.Authentication.OpenIdConnect
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Hosting
+open Microsoft.AspNetCore.Http
 open Microsoft.Extensions.Configuration
 open Microsoft.Extensions.Logging
 open Microsoft.Extensions.Hosting
@@ -38,11 +39,13 @@ let allGetRoutes: HttpHandler list =
     @ fiGetRoutes
     @ validationGetRoutes
 
-let allPostRoutes: HttpHandler list = applicationPostRoutes
-                                      @ usersPostRoutes
-                                      @ fiPostRoutes
-                                      @ validationPostRoutes
+let allPostRoutes: HttpHandler list =
+    applicationPostRoutes
+      @ usersPostRoutes
+      @ fiPostRoutes
+      @ validationPostRoutes
 let allDeleteRoutes: HttpHandler list = applicationDeleteRoutes
+let allPatchRoutes: HttpHandler list = fiPatchRoutes
 
 let webApp =
     subRouteCi "/api"
@@ -50,6 +53,7 @@ let webApp =
             GET >=> choose allGetRoutes
             POST >=> choose allPostRoutes
             DELETE >=> choose allDeleteRoutes
+            PATCH >=> choose allPatchRoutes
             setStatusCode 404 >=> text "Not Found" ]
 
 let errorHandler (ex : Exception) (logger : ILogger) =
@@ -61,6 +65,8 @@ let configureApp (app : IApplicationBuilder) =
        .UseGiraffeErrorHandler(errorHandler)
        .UseStaticFiles()
        .UseGiraffe webApp
+       
+    app.UsePathBase(PathString "/api/") |> ignore
 
 let authenticationOptions (o : AuthenticationOptions) =
     o.DefaultAuthenticateScheme <- JwtBearerDefaults.AuthenticationScheme

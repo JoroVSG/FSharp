@@ -65,4 +65,5 @@ type B2CUser = {
     [<JsonProperty("userIdentities")>] UserIdentities: obj list
     [<JsonProperty("userPrincipalName")>] UserPrincipalName: string
     [<JsonProperty("userType")>] UserType: string 
+    IsFiAdmin: bool 
 }
