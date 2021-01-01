@@ -52,9 +52,12 @@ type B2CIdentities = {
 [<CLIMutable>]
 type UserUpdateDTO = {
     [<JsonProperty("id"); JsonIgnore>]Id: string
-    [<JsonProperty("isFiAdmin")>]IsFiAdmin: string
+    [<JsonProperty("isFiAdmin")>]mutable IsFiAdmin: string
     [<JsonProperty("objectId")>]mutable ObjectId: string
     [<JsonProperty("email")>]mutable Email: string
     [<JsonProperty("identities")>]mutable Identities: B2CIdentities list
+    [<JsonProperty("displayName")>]mutable DisplayName: string
+    [<JsonProperty("givenName")>]mutable GivenName: string
+    [<JsonProperty("surName")>]mutable SurName: string
 
 }
