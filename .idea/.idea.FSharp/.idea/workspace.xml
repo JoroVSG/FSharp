@@ -14,8 +14,8 @@
   <component name="ChangeListManager">
     <list default="true" id="46d54f0c-fb97-4b15-8016-29c67a0ec41f" name="Default Changelist" comment="Adding Fluent library">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FSharp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/DTOs/UserDTO.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/DTOs/UserDTO.fs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" beforeDir="false" afterPath="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,6 +99,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/IL/0A06CD3F-C48C-4801-A858-F75C007863D2/15/dd318783/02000016.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/6b/81b5ba46/DocumentRoot`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B19537B-F065-4C3F-9F78-85C4099CD3AA/16B/Task.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Projects/WebApiFSharp/FSharp/Giraffe/App/Handlers/UserHandler.fs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/B7F86EBA-729B-7611-A87B-A0188AFE11AD/A/ModelBinding.fs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0A06CD3F-C48C-4801-A858-F75C007863D2/5b/45f69aac/JsonApiContractResolver.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/A7BD76B1-E4BB-5E55-F477-E28DCB1AC56C/3/seq.fs" root0="SKIP_HIGHLIGHTING" />
@@ -123,12 +124,9 @@
       <option value="$PROJECT_DIR$/Giraffe/App/Helpers/Constants.fs" />
       <option value="$PROJECT_DIR$/Crypto/AzureAdB2CAuthenticationBuilderExtensions.cs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Handlers/Security/Permissions.fs" />
-      <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ValidationHandler.fs" />
-      <option value="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ApplicationHandler.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Common/Authentication.fs" />
       <option value="$PROJECT_DIR$/PersistenceSQLClient/FiData.fs" />
-      <option value="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" />
       <option value="$PROJECT_DIR$/Giraffe/App/Common/Exceptions.fs" />
       <option value="$PROJECT_DIR$/PersistenceSQLClient/DbConfig.fs" />
       <option value="$PROJECT_DIR$/PersistenceSQLClient/ApplicationData.fs" />
@@ -137,12 +135,15 @@
       <option value="$PROJECT_DIR$/Giraffe/Properties/launchSettings.json" />
       <option value="$PROJECT_DIR$/Domains/Users/B2CUser.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Mapping/UserMapper.fs" />
-      <option value="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Helpers/MSALClient.fs" />
       <option value="$PROJECT_DIR$/PersistenceSQLClient/UserData.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/Helpers/HelperFunctions.fs" />
       <option value="$PROJECT_DIR$/Giraffe/App/DTOs/UserDTO.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/App/Common/Transaction.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/App/Handlers/UserHandler.fs" />
+      <option value="$PROJECT_DIR$/Giraffe/Giraffe.fsproj" />
+      <option value="$PROJECT_DIR$/Giraffe/App/Handlers/ValidationHandler.fs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1kLQBBDfi4aavyj6sU3WXmRSSxU" />
@@ -294,14 +295,8 @@
       <workItem from="1608912740755" duration="6538000" />
       <workItem from="1608925104590" duration="62293000" />
       <workItem from="1609399142472" duration="2682000" />
-      <workItem from="1609405249151" duration="11146000" />
-    </task>
-    <task id="LOCAL-00005" summary="Adding Applications delete request">
-      <created>1606119300542</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1606119300542</updated>
+      <workItem from="1609405249151" duration="16475000" />
+      <workItem from="1609774055118" duration="547000" />
     </task>
     <task id="LOCAL-00006" summary="Intoducing to JSON api error handling">
       <created>1606169821329</created>
@@ -639,7 +634,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609416843911</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Adding Update user (displayName, givenName, surname)">
+      <created>1609496924061</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1609496924061</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -675,7 +677,6 @@
       <path value="$PROJECT_DIR$/Giraffe" />
     </ignored-roots>
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Adding ApplicationDTO and manual mappings" />
     <MESSAGE value="Introducing Automapper" />
     <MESSAGE value="Implementing generic mapper for result set in db" />
     <MESSAGE value="Implementing generic mapper for result set in db part 2" />
@@ -700,38 +701,25 @@
     <MESSAGE value="Invitation Process part 10" />
     <MESSAGE value="Clean up" />
     <MESSAGE value="Adding Update user (email + isFiAdmin)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding Update user (email + isFiAdmin)" />
+    <MESSAGE value="Adding Update user (displayName, givenName, surname)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Update user (displayName, givenName, surname)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Giraffe/App/Common/Converters.fs</url>
-          <line>122</line>
-          <properties documentPath="C:\Projects\WebApiFSharp\FSharp\Giraffe\App\Common\Converters.fs" initialLine="122" isMultiMethodBreakpoint="true">
+          <url>file://$PROJECT_DIR$/Giraffe/App/Helpers/MSALClient.fs</url>
+          <line>79</line>
+          <properties documentPath="C:\Projects\WebApiFSharp\FSharp\Giraffe\App\Helpers\MSALClient.fs" initialLine="79" isMultiMethodBreakpoint="true">
             <option name="multiMethodBreakpoint" value="true" />
             <startOffsets>
-              <option value="5113" />
+              <option value="3101" />
             </startOffsets>
             <endOffsets>
-              <option value="5165" />
+              <option value="3151" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="86" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Giraffe/App/Handlers/FIHandler.fs</url>
-          <line>120</line>
-          <properties documentPath="C:\Projects\WebApiFSharp\FSharp\Giraffe\App\Handlers\FIHandler.fs" initialLine="120" isMultiMethodBreakpoint="true">
-            <option name="multiMethodBreakpoint" value="true" />
-            <startOffsets>
-              <option value="4426" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4471" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="108" />
+          <option name="timeStamp" value="109" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>.net5.0</TargetFramework>
     <AssemblyName>Giraffe.App</AssemblyName>
+    <WarningsAsErrors>FS0025</WarningsAsErrors>
     <DotnetFscCompilerPath />
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
   </PropertyGroup>
