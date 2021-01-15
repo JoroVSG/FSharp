@@ -22,7 +22,7 @@ let boolCaseInsensitive s =
     match s with
     | "true" -> true
     | "false" -> false
-    | _-> failwith("Error: returns " + s)
+    | _-> failwith("String -> bool convert error: returns " + s)
 
 let bool = lower >> boolCaseInsensitive
 

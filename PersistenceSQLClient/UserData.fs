@@ -32,6 +32,14 @@ let getUserByEmailAsync = fun email (connectionString: SqlConnection, trans) ->
         let! user = cmd.AsyncExecute(email = email)
         return user |> Option.map mapToRecord<CLCSUser>
     }
+let getUserByObjectId = fun oid (connectionString: SqlConnection, trans) ->
+     async {
+        use cmd = new SqlCommandProvider<"""
+            SELECT * FROM dbo.[User] where ObjectId = @oid OR IdUser = @oid"""
+        , ConnectionString, SingleRow=true>(connectionString, transaction = trans)
+        let! user = cmd.AsyncExecute(oid = oid)
+        return user |> Option.map mapToRecord<CLCSUser>
+    }
      
 let getUserApplicationsByEmail = fun email (connectionString: SqlConnection, trans) ->
      async {

@@ -43,5 +43,6 @@ let mapToUserDTO = fun apps (b2cUser:B2CUser) (clcsUser: CLCSUser) ->
         UserType = b2cUser.UserType
         Type = "user"
         Applications = relationshipApps
+        IsFiAdmin = b2cUser.IsFiAdmin
     }
     dto
