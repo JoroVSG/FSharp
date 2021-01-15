@@ -169,4 +169,50 @@ let transactionFunctionComposeIgnoreValue = fun (f1: TransactionFunction<'a, 'b>
 let (=>) = transactionFunctionCompose
 let (>==>) = transactionFunctionCompose'
 let (>>!) = transactionFunctionComposeIgnoreValue
+
+
+
+type State = int
+
+let bind = fun monad binder ->
+    fun initialState ->
+            let x, newState = monad initialState
+            let y, ss = binder x newState
+            (y, ss)
     
+type StateMonad() =
+    let (>>=) monad binder = bind monad binder
+    member __.Bind(monad, binder) = monad >>= binder     
+    member __.Return(a) = fun s -> (a, s)
+    member __.Combine(statefulA, statefulB) =
+        statefulA >>= (fun _ -> statefulB)
+
+
+let tick = fun (s: State) -> ((), s + 1)
+
+type Term =
+    | Const of int
+    | Div of (Term * Term)
+
+let state = StateMonad()
+    
+let rec eval = fun (term: Term) ->
+    state {
+        match term with
+            | Const a -> return a
+            | Div (x, y) ->
+                let! x' = eval x
+                let! z = eval y
+                
+                do! tick   
+                do! tick   
+                do! tick   
+                do! tick   
+                do! tick   
+                do! tick
+                
+                return (x' / z)
+    }
+    
+let term = (Const 6, Const 2) |> Div
+let (res, calculatedState) = eval term 0   
